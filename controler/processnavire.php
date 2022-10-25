@@ -1,5 +1,5 @@
 <?php
-require_once 'model.php';
+require_once '../model/modelnavire.php';
 $db = new Database();
 // creation des liste de bateau
 if (isset($_POST['action']) && $_POST['action'] == 'create') {
@@ -13,11 +13,12 @@ if (isset($_POST['action']) && $_POST['action'] == 'fetch') {
     if ($db->countBills() > 0) {
         $bills = $db->read();
         $output .= '
-        <table class="table table-striped">
+        <table id="table" class="table table-striped">
           <thead>
             <tr>
               <th scope="col">ID</th>
-              <th scope="col">Nom du bateaux</th>
+              <th scope="col">Numero de quai</th>
+              <th scope="col">Nom du Navire</th>
               <th scope="col">Marque</th>
               <th scope="col">Categories</th>
               <th scope="col">charge maximal</th>
@@ -30,9 +31,9 @@ if (isset($_POST['action']) && $_POST['action'] == 'fetch') {
         ';
         foreach ($bills as $bill) {
             $output .= " 
-
                 <tr>
                     <th scope=\"row\">$bill->ID</th>
+                    <th scope=\"row\">$bill->numQuai</th>
                     <td>$bill->Nombateau</td>
                     <td>$bill->Marque</td>
                     <td>$bill->categories</td>
@@ -70,5 +71,33 @@ if (isset($_POST['action']) && $_POST['action'] == 'Update') {
 if (isset($_POST['informationId'])) {
     $informationId = (int)$_POST['informationId'];
     echo json_encode($db->getSingleBill($informationId));
+}
+//suppression
+if (isset($_POST['deleteId'])) {
+    $deleteId = (int)$_POST['deleteId'];
+    echo ($db->delete($deleteId));
+}
+
+//exportation
+if (isset($_GET['action']) && $_GET['action'] == 'Exporter') {
+    $excelFileName="Liste des bateaux".date('YmdHis').'xls';
+    header("contein-Type: application/vnd.ms-excel");
+    header("conteint-Disposition: attachement; filename=$excelFileName");
+
+    $nomcolonne = ['Identifiant', 'Nom', 'Marque', 'categories', 'chargemaximale', 'chargemine', 'Type'];
+
+    $data = implode("\t", array_values($nomcolonne)). "\n";
+    if($db->countBills()>0){
+        $bill= $db->read();  
+        foreach($bills as $bill) {
+            $exceldata = [$bill->id, $bill->Nombateau, $bill->Marque, $bill->categories, $bill->chargemax, $bill->chargemax, $bill->typeproduit];
+            $data .= implode("\t", $exceldata). "\n";
+
+        } 
+    }else{
+        $data="Aucun liste trouver...." . "\n"; 
+    }
+   echo $data;
+   die();
 }
 

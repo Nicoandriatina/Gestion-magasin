@@ -2,11 +2,9 @@
 
 class Database
 {
-    // erreur tato le host, nom table facture sans "s" ary reseived
     private $host = 'mysql:host=localhost;dbname=crudajax';
     private $user = 'root';
     private $password = '';
-
     private function getconnexion()
     {
         try {
@@ -15,17 +13,18 @@ class Database
             die('erreur:' . $e->getMessage());
         }
     }
-    public function create(string $Nombateau, string $Marque, string $categories, string $chargemax, string $chargemin, string $typeproduit)
+    public function create(string $Nombateau, string $Marque, string $categories, string $chargemax, string $chargemin, string $typeproduit, int $numQuai)
     {
-        $q = $this->getconnexion()->prepare("INSERT INTO bateaux(Nombateau, Marque, categories, chargemax, chargemin, typeproduit)
-         VALUES (:Nombateau, :Marque, :categories, :chargemax, :chargemin, :typeproduit)");
+        $q = $this->getconnexion()->prepare("INSERT INTO bateaux(Nombateau, Marque, categories, chargemax, chargemin, typeproduit, numQuai)
+         VALUES (:Nombateau, :Marque, :categories, :chargemax, :chargemin, :typeproduit, :numQuai)");
         return $q->execute([
             'Nombateau' => $Nombateau,
             'Marque' => $Marque,
             'categories' => $categories,
             'chargemax' => $chargemax,
             'chargemin' => $chargemin,
-            'typeproduit' => $typeproduit
+            'typeproduit' => $typeproduit,
+            'numQuai' => $numQuai
         ]);
     }
     public function read()
@@ -42,9 +41,9 @@ class Database
         $q->execute(['id' => $id]);
         return $q->fetch(PDO::FETCH_OBJ);
     }
-    public function update(int $id, string $Nombateau, string $Marque, string $categories, string $chargemax, string $chargemin, string $typeproduit)
+    public function update(int $id, string $Nombateau, string $Marque, string $categories, string $chargemax, string $chargemin, string $typeproduit, int $numQuai)
     {
-        $q = $this->getconnexion()->prepare("UPDATE bateaux SET Nombateau=:Nombateau, Marque=:Marque, categories=:categories, chargemax=:chargemax, chargemin=:chargemin, typeproduit=:typeproduit WHERE ID=:id");
+        $q = $this->getconnexion()->prepare("UPDATE bateaux SET Nombateau=:Nombateau, Marque=:Marque, categories=:categories, chargemax=:chargemax, chargemin=:chargemin, typeproduit=:typeproduit, numQuai=:numQuai, WHERE ID=:id");
         return $q->execute([
             'Nombateau' => $Nombateau,
             'Marque' => $Marque,
@@ -52,7 +51,13 @@ class Database
             'chargemax' => $chargemax,
             'chargemin' => $chargemin,
             'typeproduit' => $typeproduit,
-            'id' => $id
+            'id' => $id,
+            'numQuai' => $numQuai
         ]);
     }
+    public function delete(int $id){
+        $q = $this->getconnexion()->prepare(" DELETE FROM bateaux WHERE id = :id");
+        return $q->execute(['id' => $id]);
+    }
 }
+?>

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1
--- Généré le : lun. 03 oct. 2022 à 18:34
+-- Généré le : mar. 25 oct. 2022 à 08:20
 -- Version du serveur : 10.4.22-MariaDB
 -- Version de PHP : 7.3.33
 
@@ -34,8 +34,29 @@ CREATE TABLE `bateaux` (
   `categories` varchar(10) NOT NULL,
   `chargemax` varchar(20) NOT NULL,
   `chargemin` varchar(20) NOT NULL,
-  `typeproduit` varchar(100) NOT NULL
+  `typeproduit` varchar(100) NOT NULL,
+  `numQuai` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `quai`
+--
+
+CREATE TABLE `quai` (
+  `NumQuai` int(11) NOT NULL,
+  `Capacite` varchar(30) NOT NULL,
+  `ville` varchar(20) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Déchargement des données de la table `quai`
+--
+
+INSERT INTO `quai` (`NumQuai`, `Capacite`, `ville`) VALUES
+(1, '3 Navires', 'Toamasina'),
+(2, '1 Navire', 'Toamasina');
 
 --
 -- Index pour les tables déchargées
@@ -45,7 +66,14 @@ CREATE TABLE `bateaux` (
 -- Index pour la table `bateaux`
 --
 ALTER TABLE `bateaux`
-  ADD PRIMARY KEY (`ID`);
+  ADD PRIMARY KEY (`ID`),
+  ADD KEY `numQuai` (`numQuai`);
+
+--
+-- Index pour la table `quai`
+--
+ALTER TABLE `quai`
+  ADD PRIMARY KEY (`NumQuai`);
 
 --
 -- AUTO_INCREMENT pour les tables déchargées
@@ -55,7 +83,23 @@ ALTER TABLE `bateaux`
 -- AUTO_INCREMENT pour la table `bateaux`
 --
 ALTER TABLE `bateaux`
-  MODIFY `ID` int(20) NOT NULL AUTO_INCREMENT;
+  MODIFY `ID` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT pour la table `quai`
+--
+ALTER TABLE `quai`
+  MODIFY `NumQuai` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- Contraintes pour les tables déchargées
+--
+
+--
+-- Contraintes pour la table `bateaux`
+--
+ALTER TABLE `bateaux`
+  ADD CONSTRAINT `bateaux_ibfk_1` FOREIGN KEY (`numQuai`) REFERENCES `bateaux` (`ID`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
