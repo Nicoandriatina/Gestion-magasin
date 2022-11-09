@@ -1,5 +1,5 @@
 <?php
-require_once '../model/modelnavire.php';
+require_once '../model/modelquai.php';
 $db = new Database();
 // creation des liste de bateau
 if (isset($_POST['action']) && $_POST['action'] == 'create') {
@@ -13,7 +13,7 @@ if (isset($_POST['action']) && $_POST['action'] == 'fetch') {
     if ($db->countBills() > 0) {
         $bills = $db->read();
         $output .= '
-        <table id="table" class="table table-striped">
+        <table id="table" class="table table-dark table-striped">
           <thead>
             <tr>
               <th scope="col">Numero du Quai</th>
@@ -31,9 +31,9 @@ if (isset($_POST['action']) && $_POST['action'] == 'fetch') {
                     <td>$bill->Capacite</td>
                     <td>$bill->ville</td>
                     <td>
-                    <a href=\"#\" class=\"text-info me-2 infoBtn\" title=\"voir detail\" data-id=\"$bill->NumQuai\"> <i class=\"fas fa-info-circle\"></i> </a>
-                    <a href=\"#\" class=\"text-primary me-2 editBtn\" title=\"voir detail\" data-id=\"$bill->NumQuai\"> <i class=\"fas fa-edit\" data-bs-toggle='modal' data-bs-target='#UpdateModal'></i> </a>
-                    <a href=\"#\" class=\"text-danger me-2 deleteBtn\" title=\"voir detail\" data-id=\"$bill->NumQuai\"> <i class=\"fas fa-trash-alt\"></i> </a>
+                    <a href=\"#\" class=\"text-info me-2 infoBtnQuai\" title=\"voir detail\" data-id=\"$bill->NumQuai\"> <i class=\"fas fa-info-circle\"></i> </a>
+                    <a href=\"#\" class=\"text-primary me-2 editBtnQuai\" title=\"voir detail\" data-id=\"$bill->NumQuai\"> <i class=\"fas fa-edit\" data-bs-toggle='modal' data-bs-target='#UpdateModal'></i> </a>
+                    <a href=\"#\" class=\"text-danger me-2 deleteBtnQuai\" title=\"voir detail\" data-id=\"$bill->NumQuai\"> <i class=\"fas fa-trash-alt\"></i> </a>
                     </td>
                 </tr>
             ";

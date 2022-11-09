@@ -4,21 +4,21 @@ $db = new Database();
 // creation des liste de bateau
 if (isset($_POST['action']) && $_POST['action'] == 'create') {
     extract($_POST);
-    $db->create($Nombateau, $Marque, $categories, $chargemax, $chargemin, $typeproduit);
+    $db->create($Nombateau, $Marque, $categories, $chargemax, $chargemin, $typeproduit, $numQuai);
     echo 'perfect';
 }
-//recuperation des liste de bateau
+//recuperation de liste des bateau
 if (isset($_POST['action']) && $_POST['action'] == 'fetch') {
     $output = '';
     if ($db->countBills() > 0) {
         $bills = $db->read();
         $output .= '
-        <table id="table" class="table table-striped">
+        <table id="table" class="table table-dark table-striped">
           <thead>
             <tr>
               <th scope="col">ID</th>
               <th scope="col">Numero de quai</th>
-              <th scope="col">Nom du Navire</th>
+              <th scope="col">Nom du bateaux</th>
               <th scope="col">Marque</th>
               <th scope="col">Categories</th>
               <th scope="col">charge maximal</th>
@@ -33,7 +33,7 @@ if (isset($_POST['action']) && $_POST['action'] == 'fetch') {
             $output .= " 
                 <tr>
                     <th scope=\"row\">$bill->ID</th>
-                    <th scope=\"row\">$bill->numQuai</th>
+                    <td>$bill->NumQuai</td>
                     <td>$bill->Nombateau</td>
                     <td>$bill->Marque</td>
                     <td>$bill->categories</td>
@@ -62,7 +62,7 @@ if (isset($_POST['workingId'])) {
 // Modification des bateau
 if (isset($_POST['action']) && $_POST['action'] == 'Update') {
     extract($_POST);
-    $db->update($id, $UpdateNombateau, $UpdateMarque, $Updatecategories, $Updatechargemax, $Updatechargemin, $Updatetypeproduit);
+    $db->update($id, $UpdateNombateau, $UpdateMarque, $Updatecategories, $Updatechargemax, $Updatechargemin, $Updatetypeproduit, $UpdatenumQuai);
 
     echo 'perfect';
 }
@@ -79,19 +79,19 @@ if (isset($_POST['deleteId'])) {
 }
 
 //exportation
-if (isset($_GET['action']) && $_GET['action'] == 'Exporter') {
+if (isset($_GET['action']) && $_GET['action'] == 'export') {
     $excelFileName="Liste des bateaux".date('YmdHis').'xls';
     header("contein-Type: application/vnd.ms-excel");
     header("conteint-Disposition: attachement; filename=$excelFileName");
 
-    $nomcolonne = ['Identifiant', 'Nom', 'Marque', 'categories', 'chargemaximale', 'chargemine', 'Type'];
+    $nomcolonne = ['Identifiant','Numquai', 'Nom', 'Marque', 'categories', 'chargemaximale', 'chargemine', 'Type'];
 
     $data = implode("\t", array_values($nomcolonne)). "\n";
     if($db->countBills()>0){
-        $bill= $db->read();  
-        foreach($bills as $bill) {
-            $exceldata = [$bill->id, $bill->Nombateau, $bill->Marque, $bill->categories, $bill->chargemax, $bill->chargemax, $bill->typeproduit];
-            $data .= implode("\t", $exceldata). "\n";
+        $bills= $db->read();  
+        foreach ($bills as $bill) {
+            $excelData = [$bill->ID,$bill->NumQuai ,$bill->Nombateau, $bill->Marque, $bill->categories, $bill->chargemax, $bill->chargemax, $bill->typeproduit];
+            $data .= implode("\t", $excelData). "\n";
 
         } 
     }else{

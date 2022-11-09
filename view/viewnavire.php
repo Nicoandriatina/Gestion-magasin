@@ -23,7 +23,7 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav me-auto mb-2 mb-lg-0">
             <li class="nav-item">
-              <a class="nav-link " aria-current="page" href="../index.php">Acceuil</a>
+              <a class="nav-link " aria-current="page" href="../index.html">Acceuil</a>
             </li>
             <li class="nav-item">
               <a class="nav-link active" href="./viewnavire.php">Navires</a>
@@ -137,7 +137,7 @@
       <div class="col-md-6">
         <div class="d-flex justify-content-end">
           <button class="btn btn-primary btn-sm me-3" data-bs-toggle="modal" data-bs-target="#createModal"> <i class="fas fa-folder-plus">Nouveau</i> </button>
-          <a href="/process.php?action=exporter" class="btn btn-success-btn-sm" id="export"> <i class="fas fa-table">Exporter</i> </a>
+          <a href="../controler/processnavire.php?action=export" class="btn btn-success-btn-sm" id="export"> <i class="fas fa-table">Exporter</i> </a>
         </div>
       </div>
     </div>

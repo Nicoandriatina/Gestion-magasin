@@ -1,6 +1,6 @@
 $(function () {
   
-    //creation du liste des bateau
+//creation du liste des quai(mankany @bd ian)
     $('#create').on('click', function (e) {
         let formOrder = $('#formOrderQuai')
         if (formOrder[0].checkValidity())
@@ -21,7 +21,8 @@ $(function () {
             }
         })
     })
-    //recuperation du la liste de bateau
+
+//recuperation du la liste de quai(manao affiche @interface)
     getBills();
     function getBills() {
         $.ajax({
@@ -38,7 +39,8 @@ $(function () {
             }
         })
     }
-    $('body').on('click', '.editBtn', function (e) {
+//modification
+    $('body').on('click', '.editBtnQuai', function (e) {
         e.preventDefault();
         $.ajax({
             url: '../controler/processquai.php',
@@ -47,21 +49,23 @@ $(function () {
             success: function (response) {
                 let billinfo = JSON.parse(response);
                 console.log('billinfo', billinfo);
-                $('#bill_id').val(billinfo.ID);
-                $('#UpdateNombateau').val(billinfo.Nombateau);
-                $('#UpdateMarque').val(billinfo.Marque);
-                $('#Updatecategories').val(billinfo.categories);
-                $('#Updatechargemax').val(billinfo.chargemax);
-                $('#Updatechargemin').val(billinfo.chargemin);
-                let select = document.querySelector('#Updatetypeproduit');
-                let UpdatetypeproduitOption = Array.from(select.options);
-                UpdatetypeproduitOption.forEach((o, i) => {
-                    if (o.value == billinfo.state) select.selectedIndex = i;
-                })
+                $('#bill_NumQuai').val(billinfo.NumQuai);
+                $('#UpdateCapacite').val(billinfo.Capacite);
+                $('#Updateville').val(billinfo.ville);
+                // $('#Updatecategories').val(billinfo.categories);
+                // $('#Updatechargemax').val(billinfo.chargemax);
+                // $('#Updatechargemin').val(billinfo.chargemin);
+                // let select = document.querySelector('#Updatetypeproduit');
+                // let UpdatetypeproduitOption = Array.from(select.options);
+                // UpdatetypeproduitOption.forEach((o, i) => {
+                //     if (o.value == billinfo.state) select.selectedIndex = i;
+                // })
             }
         })
     })
-    //Modification du liste de bateaux
+
+
+//Modification du liste de quai
     $('#Update').on('click', function (e) {
         let formOrder = $('#UpdateformOrderQuai')
         if (formOrder[0].checkValidity()) {
@@ -83,24 +87,22 @@ $(function () {
             })
         }
     })
-    $('body').on('click', '.infoBtn', function (e) {
+
+    //information
+    $('body').on('click', '.infoBtnQuai', function (e) {
         e.preventDefault();
         $.ajax({
             url: '../controler/processquai.php',
             type: 'post',
-            data: { informationId: this.dataset.id },
+            data: { informationNumQuai: this.dataset.NumQuai },
             success: function (response) {
                 let informations = JSON.parse(response);
                 Swal.fire({
-                    title:  `<strong>Information de la bateaux Numero ${informations.id} </strong> `,
+                    title:  `<strong>Information de la Quai${informations.NumQuai} </strong> `,
                     icon: 'info',
                     html:
-                        `Nom du Bateau: <b>${informations.Nombateau}</b><br>` +
-                        `Marque du bateau: <b>${informations.Marque}</b> </br>` +
-                        `Categorie du Bateau: <b>${informations.categories}</b><br>` +
-                        `charge Maximal du Bateau: <b>${informations.chargemax}</b><br>` +
-                        `Charge Minimal du Bateau: <b>${informations.chrgemin}</b><br>` +
-                        `types de produit que le  Bateau transporte: <b>${informations.typeproduit}</b><br>`,
+                        `Capacite du quai: <b>${informations.Capacite}</b><br>` +
+                        `ville d'emplacement du quai: <b>${informations.ville}</b><br>`,
                     showCloseButton: true,
                     showCancelButton: true,
                     focusConfirm: false,
@@ -112,7 +114,8 @@ $(function () {
         })
     })
 
-    $('body').on('click', '.deleteBtn', function (e) {
+//suppression
+    $('body').on('click', '.deleteBtnQuai', function (e) {
         e.preventDefault();
         Swal.fire({
             title: 'vous volez vraiment supprimer' + this.dataset.id,

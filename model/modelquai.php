@@ -14,9 +14,9 @@ class Database
             die('erreur:' . $e->getMessage());
         }
     }
-    public function create(string $Capacite, string $ville, )
+    public function create(string $Capacite, string $ville)
     {
-        $q = $this->getconnexion()->prepare("INSERT INTO quai(Capacite, ville)  VALUES (:Capacite, :ville)");
+        $q = $this->getconnexion()->prepare("INSERT INTO quai (Capacite, ville)  VALUES (:Capacite, :ville)");
         return $q->execute([
             'Capacite' => $Capacite,
             'ville' => $ville
@@ -38,10 +38,13 @@ class Database
     }
     public function update(int $NumQuai, string $Capacite, string $ville)
     {
-        $q = $this->getconnexion()->prepare("UPDATE quai SET Capacite=:Capacite, ville=:ville WHERE NumQuai=:NumQuai");
+        $q = $this->getconnexion()->prepare("UPDATE quai SET NumQuai=:NumQuai Capacite=:Capacite, ville=:ville WHERE NumQuai=:NumQuai");
         return $q->execute([
             'Capacite' => $Capacite,
-            'ville' => $ville
+            'ville' => $ville,
+            'NumQuai' => $NumQuai
+            
+ 
         ]);
     }
     public function delete(int $NumQuai){

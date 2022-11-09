@@ -38,6 +38,8 @@ $(function () {
             }
         })
     }
+
+    //modification
     $('body').on('click', '.editBtn', function (e) {
         e.preventDefault();
         $.ajax({
@@ -48,6 +50,7 @@ $(function () {
                 let billinfo = JSON.parse(response);
                 console.log('billinfo', billinfo);
                 $('#bill_id').val(billinfo.ID);
+                $('#UpdatenumQuai').val(billinfo.numQuai);
                 $('#UpdateNombateau').val(billinfo.Nombateau);
                 $('#UpdateMarque').val(billinfo.Marque);
                 $('#Updatecategories').val(billinfo.categories);
@@ -61,7 +64,6 @@ $(function () {
             }
         })
     })
-    //Modification du liste de bateaux
     $('#Update').on('click', function (e) {
         let formOrder = $('#UpdateformOrder')
         if (formOrder[0].checkValidity()) {
@@ -83,23 +85,26 @@ $(function () {
             })
         }
     })
+
+    //affichage info @icon info @actions
     $('body').on('click', '.infoBtn', function (e) {
         e.preventDefault();
         $.ajax({
             url: '../controler/processnavire.php',
             type: 'post',
-            data: { informationId: this.dataset.id },
+            data: { informationId: this.dataset.id},
             success: function (response) {
                 let informations = JSON.parse(response);
                 Swal.fire({
-                    title:  `<strong>Information de la bateaux Numero ${informations.id} </strong> `,
+                    title:  `<strong>Information de la bateaux Numero ${informations.ID} </strong> `,
                     icon: 'info',
                     html:
                         `Nom du Bateau: <b>${informations.Nombateau}</b><br>` +
+                        `Numero du quai: <b>${informations.NumQuai}</b><br>` +
                         `Marque du bateau: <b>${informations.Marque}</b> </br>` +
                         `Categorie du Bateau: <b>${informations.categories}</b><br>` +
                         `charge Maximal du Bateau: <b>${informations.chargemax}</b><br>` +
-                        `Charge Minimal du Bateau: <b>${informations.chrgemin}</b><br>` +
+                        `Charge Minimal du Bateau: <b>${informations.chargemin}</b><br>` +
                         `types de produit que le  Bateau transporte: <b>${informations.typeproduit}</b><br>`,
                     showCloseButton: true,
                     showCancelButton: true,
@@ -143,8 +148,5 @@ $(function () {
             }
         })
     })
-
-
-
 
 })

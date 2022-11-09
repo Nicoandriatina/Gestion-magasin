@@ -23,7 +23,7 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
             <li class="nav-item">
-              <a class="nav-link " aria-current="page" href="../index.php">Acceuil</a>
+              <a class="nav-link " aria-current="page" href="../index.html">Acceuil</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="./viewnavire.php">Navires</a>
@@ -73,7 +73,7 @@
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
           <div class="modal-body">
-            <form action="" method="post" id="formOrderQuai">
+            <form action="create" method="post" id="formOrderQuai">
               <div class="form-floating mb-3">
                 <input type="text" class="form-control" id="Capacite" name="Capacite">
                 <label for="Capacite">capacite</label>
@@ -123,8 +123,8 @@
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
           <div class="modal-body">
-            <form action="" method="post" id="UpdateformOrderQuai">
-              <input type="hidden" name="id" id="bill_id">
+            <form action="update" method="post" id="UpdateformOrderQuai">
+              <input type="hidden" name="id" id="bill_NumQuai">
               <div class="form-floating mb-3">
                 <input type="text" class="form-control" id="UpdateCapacite" name="UpdateCapacite">
                 <label for="UpdateCapacite">capacite</label>
