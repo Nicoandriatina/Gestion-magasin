@@ -1,7 +1,7 @@
 $(function () {
   
 //creation du liste des quai(mankany @bd ian)
-    $('#create').on('click', function (e) {
+    $('#createQuai').on('click', function (e) {
         let formOrder = $('#formOrderQuai')
         if (formOrder[0].checkValidity())
             console.log('data ', formOrder.serialize());
@@ -146,8 +146,6 @@ $(function () {
             }
         })
     })
-
-
 
 
 })

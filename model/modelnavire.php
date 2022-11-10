@@ -53,7 +53,8 @@ class Database
             'chargemin' => $chargemin,
             'typeproduit' => $typeproduit,
             'id' => $id,
-            'NumQuai'=>$NumQuai
+            'NumQuai'=> $NumQuai
+
         ]);
     }
     public function delete(int $id){

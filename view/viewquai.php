@@ -87,7 +87,7 @@
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">annuler</button>
-            <button type="button" class="btn btn-primary" id="create" name="create"> <i class="fas fa-plus"></i> Ajouter</button>
+            <button type="button" class="btn btn-primary" id="createQuai" name="create"> <i class="fas fa-plus"></i> Ajouter</button>
           </div>
         </div>
       </div>
@@ -105,7 +105,7 @@
       <div class="col-md-6">
         <div class="d-flex justify-content-end">
           <button class="btn btn-primary btn-sm me-3" data-bs-toggle="modal" data-bs-target="#createModal"> <i class="fas fa-folder-plus">Nouveau</i> </button>
-          <a href="/process.php?action=exporter" class="btn btn-success-btn-sm" id="export"> <i class="fas fa-table">Exporter</i> </a>
+          <a href="../controler/processquai.php?action=Exporter" class="btn btn-success-btn-sm" id="export"> <i class="fas fa-table">Exporter</i> </a>
         </div>
       </div>
     </div>
