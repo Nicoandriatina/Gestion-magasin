@@ -1,6 +1,6 @@
 $(function () {
-  
-//creation du liste des quai(mankany @bd ian)
+
+    //creation du liste des quai(mankany @bd ian)
     $('#createQuai').on('click', function (e) {
         let formOrder = $('#formOrderQuai')
         if (formOrder[0].checkValidity())
@@ -22,7 +22,7 @@ $(function () {
         })
     })
 
-//recuperation du la liste de quai(manao affiche @interface)
+    //recuperation du la liste de quai(manao affiche @interface)
     getBills();
     function getBills() {
         $.ajax({
@@ -39,7 +39,7 @@ $(function () {
             }
         })
     }
-//modification
+    //modification
     $('body').on('click', '.editBtnQuai', function (e) {
         e.preventDefault();
         $.ajax({
@@ -65,7 +65,7 @@ $(function () {
     })
 
 
-//Modification du liste de quai
+    //Modification du liste de quai
     $('#Update').on('click', function (e) {
         let formOrder = $('#UpdateformOrderQuai')
         if (formOrder[0].checkValidity()) {
@@ -98,7 +98,7 @@ $(function () {
             success: function (response) {
                 let informations = JSON.parse(response);
                 Swal.fire({
-                    title:  `<strong>Information de la Quai${informations.NumQuai} </strong> `,
+                    title: `<strong>Information de la Quai${informations.NumQuai} </strong> `,
                     icon: 'info',
                     html:
                         `Capacite du quai: <b>${informations.Capacite}</b><br>` +
@@ -114,7 +114,7 @@ $(function () {
         })
     })
 
-//suppression
+    //suppression
     $('body').on('click', '.deleteBtnQuai', function (e) {
         e.preventDefault();
         Swal.fire({
