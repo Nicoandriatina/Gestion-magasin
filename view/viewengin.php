@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -10,17 +12,16 @@
   <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs5/dt-1.12.1/datatables.min.css" />
   <title>SMMC Port Toamasina</title>
 </head>
-
 <body>
   <header>
-    <nav class="navbar navbar-expand-lg  bg-success">
+  <nav class="navbar navbar-expand-lg  bg-success">
       <div class="container-fluid">
-        <a class="navbar-brand" href="./index.php"> <img src="../images/Logo.png" class="rounded" alt="logo du SMMC"> </i></a>
+      <a class="navbar-brand" href="./index.php"> <img src="../images/Logo.png" class="rounded" alt="logo du SMMC"> </i></a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
             <li class="nav-item">
               <a class="nav-link " aria-current="page" href="../index.html">Acceuil</a>
             </li>
@@ -68,18 +69,26 @@
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title" id="createModalLabel">Ajout d'un novelle Quai</h5>
+            <h5 class="modal-title" id="createModalLabel">Ajout d'un novelle Engin</h5>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
           <div class="modal-body">
-            <form action="create" method="post" id="formOrderQuai">
+            <form action="create" method="post" id="formOrderEngin">
               <div class="form-floating mb-3">
-                <input type="text" class="form-control" id="Capacite" name="Capacite">
-                <label for="Capacite">capacite</label>
+                <input type="text" class="form-control" id="numMatricule" name="numMatricule">
+                <label for="numMatricule">Numero Matricule</label>
               </div>
               <div class="form-floating mb-3">
-                <input type="text" class="form-control" id="ville" name="ville">
-                <label for="ville">Ville d'emplacement</label>
+                <select class="form-select" id="typeEngin" aria-label="typeEngin" name="typeEngin">
+                  <option value="Tracteurs portuaire">Tracteurs portuaire</option>
+                  <option value="chariot elevater">chariot elevater</option>
+                  <option value="Camion transporteur">Camion transporteur</option>
+                </select>
+                <label for="typeEngin">Types d'Engin</label>
+              <div class="form-floating mb-3">
+                <input type="text" class="form-control" id="chauffeur " name="chauffeur ">
+                <label for="chauffeur ">L'identifiant du chauffeur</label>
+              </div>
               </div>
             </form>
           </div>
@@ -98,7 +107,7 @@
     <div class="dropdown-divider"> </div>
     <div class="row">
       <div class="col-md-6">
-        <h5 class="fw-bold mb-8">Liste des Quais</h5>
+        <h5 class="fw-bold mb-8">Liste des engins</h5>
       </div>
       <div class="col-md-6">
         <div class="d-flex justify-content-end">
@@ -121,32 +130,37 @@
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
           <div class="modal-body">
-            <form action="update" method="post" id="UpdateformOrderQuai">
-              <input type="hidden" name="id" id="bill_NumQuai">
+            <form action="create" method="post" id="formOrderEngin">
               <div class="form-floating mb-3">
-                <input type="text" class="form-control" id="UpdateCapacite" name="UpdateCapacite">
-                <label for="UpdateCapacite">capacite</label>
+                <input type="text" class="form-control" id="UpdatenumMatricule" name="UpdatenumMatricule">
+                <label for="UpdatenumMatricule">Numero Matricule</label>
               </div>
               <div class="form-floating mb-3">
-                <input type="text" class="form-control" id="Updateville" name="Updateville">
-                <label for="Updateville">ville d'emplacement</label>
+                <select class="form-select" id="typeEngin" aria-label="UpdatetypeEngin" name="UpdatetypeEngin">
+                  <option value="Tracteurs portuaire">Tracteurs portuaire</option>
+                  <option value="chariot elevater">chariot elevater</option>
+                  <option value="Camion transporteur">Camion transporteur</option>
+                </select>
+                <label for="UpdatetypeEngin">Types d'Engin</label>
+              <div class="form-floating mb-3">
+                <input type="text" class="form-control" id="Updatechauffeur " name="Updatechauffeur ">
+                <label for="Updatechauffeur ">L'identifiant du chauffeur</label>
               </div>
+              </div>
+            </form>
           </div>
-          </form>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">annuler</button>
-          <button type="button" class="btn btn-primary" id="Update" name="Update"> <i class="fas fa-sync"></i> Modifier</button>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">annuler</button>
+            <button type="button" class="btn btn-primary" id="Update" name="Update"> <i class="fas fa-sync"></i> Modifier</button>
+          </div>
         </div>
       </div>
-    </div>
     </div>
   </section>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js" integrity="sha512-aVKKRRi/Q/YV+4mjoKBsE4x3H+BkegoM/em46NNlCqNTmUYADjBbeNefNxYV7giUp0VxICtqdrbqU7iVaeZNXA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
   <script type="text/javascript" src="https://cdn.datatables.net/v/bs5/dt-1.12.1/datatables.min.js"></script>
   <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-  <script type="text/javascript" src="../controler/processquai.js"></script>
+  <script src="../controler/processquai.js"></script>
 </body>
-
 </html>
