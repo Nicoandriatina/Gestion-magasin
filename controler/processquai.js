@@ -42,16 +42,20 @@ $(function () {
     //modification
     $('body').on('click', '.editBtnQuai', function (e) {
         e.preventDefault();
+        console.log(e);
         $.ajax({
             url: '../controler/processquai.php',
             type: 'post',
-            data: { workingId: this.dataset.id },
+            data: { workingNumQuai: e.currentTarget.dataset.id },
             success: function (response) {
+                console.log(response);
+
                 let billinfo = JSON.parse(response);
                 console.log('billinfo', billinfo);
                 $('#bill_NumQuai').val(billinfo.NumQuai);
                 $('#UpdateCapacite').val(billinfo.Capacite);
                 $('#Updateville').val(billinfo.ville);
+
                 // $('#Updatecategories').val(billinfo.categories);
                 // $('#Updatechargemax').val(billinfo.chargemax);
                 // $('#Updatechargemin').val(billinfo.chargemin);
@@ -118,7 +122,7 @@ $(function () {
     $('body').on('click', '.deleteBtnQuai', function (e) {
         e.preventDefault();
         Swal.fire({
-            title: 'vous volez vraiment supprimer' + this.dataset.id,
+            title: 'vous volez vraiment supprimer ' + this.dataset.id,
             text: "cette action est irreversible!",
             icon: 'warning',
             showCancelButton: true,
@@ -130,7 +134,11 @@ $(function () {
                 $.ajax({
                     url: '../controler/processquai.php',
                     type: 'post',
-                    data: { deleteId: this.dataset.id },
+                    // jereo tsara ny correspondance des variables
+                    // code teo aloha
+                    // data: { deleteId: this.dataset.id },
+
+                    data: { deleteNumQuai: this.dataset.id },
                     success: function (response) {
                         if (response == 1) {
                             Swal.fire(

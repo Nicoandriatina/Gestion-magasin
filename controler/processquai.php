@@ -52,8 +52,13 @@ if (isset($_POST['workingNumQuai'])) {
 // Modification des bateau
 if (isset($_POST['action']) && $_POST['action'] == 'Update') {
     extract($_POST);
-    $db->update($NumQuai, $UpdateCapacite, $Updateville);
 
+    // jereo tsara ny correspondance de variable, ny avy any front id fa tsy NumQuai, 
+    //ampiasao foana ny console.log sns
+    // io ny code teo aloha
+    // $db->update($NumQuai, $UpdateCapacite, $Updateville);
+
+    $db->update($id, $UpdateCapacite, $Updateville);
     echo 'perfect';
 }
 
@@ -70,24 +75,22 @@ if (isset($_POST['deleteNumQuai'])) {
 
 //exportation
 if (isset($_GET['action']) && $_GET['action'] == 'Exporter') {
-    $excelFileName="Liste des quais".date('YmdHis').'xls';
+    $excelFileName = "Liste des quais" . date('YmdHis') . 'xls';
     header("contein-Type: application/vnd.ms-excel");
     header("conteint-Disposition: attachement; filename=$excelFileName");
 
     $nomcolonne = ['NumeroQuai', 'Capacite', 'ville'];
 
-    $data = implode("\t", array_values($nomcolonne)). "\n";
-    if($db->countBills()>0){
-        $bills= $db->read();  
-        foreach($bills as $bill) {
+    $data = implode("\t", array_values($nomcolonne)) . "\n";
+    if ($db->countBills() > 0) {
+        $bills = $db->read();
+        foreach ($bills as $bill) {
             $exceldata = [$bill->NumQuai, $bill->Capacite, $bill->ville];
-            $data .= implode("\t", $exceldata). "\n";
-
-        } 
-    }else{
-        $data="Aucun liste trouver...." . "\n"; 
+            $data .= implode("\t", $exceldata) . "\n";
+        }
+    } else {
+        $data = "Aucun liste trouver...." . "\n";
     }
-   echo $data;
-   die();
+    echo $data;
+    die();
 }
-
