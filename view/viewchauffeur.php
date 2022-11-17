@@ -69,45 +69,37 @@
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title" id="createModalLabel">Ajout d'un novelle Engin</h5>
+            <h5 class="modal-title" id="createModalLabel">Ajout d'un noveau chauffeur</h5>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
           <div class="modal-body">
-            <form action="create" method="post" id="formOrderEngin">
+            <form action="create" method="post" id="formOrderChauffeur">
               <div class="form-floating mb-3">
-                <input type="text" class="form-control" id="numMatricule" name="numMatricule">
-                <label for="numMatricule">Numero Matricule</label>
+                <input type="text" class="form-control" id="Nom" name="Nom">
+                <label for="Nom">Nom du chauffeur</label>
               </div>
               <div class="form-floating mb-3">
-                <select class="form-select" id="typeEngin" aria-label="typeEngin" name="typeEngin">
-                  <option value="Tracteurs portuaire">Tracteurs portuaire</option>
-                  <option value="chariot elevater">chariot elevater</option>
-                  <option value="Camion transporteur">Camion transporteur</option>
-                </select>
-                <label for="typeEngin">Types d'Engin</label>
-              <div class="form-floating mb-3">
-                <input type="text" class="form-control" id="chauffeur " name="chauffeur ">
-                <label for="chauffeur ">L'identifiant du chauffeur</label>
-              </div>
+                <input type="text" class="form-control" id="Adresse " name="Adresse ">
+                <label for="Adresse ">L'adresse du chauffeur</label>
               </div>
             </form>
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">annuler</button>
-            <button type="button" class="btn btn-primary" id="createQuai" name="create"> <i class="fas fa-plus"></i> Ajouter</button>
+            <button type="button" class="btn btn-primary" id="create" name="create"> <i class="fas fa-plus"></i> Ajouter</button>
           </div>
         </div>
       </div>
     </div>
     <div class="row">
       <div class="col-lg8 col-sm mb-5 mx-auto">
-        <h1 class="fs-4 text-center lead text-prymary"> Engins </h1>
+        <h1 class="fs-4 text-center lead text-prymary"> Chauffeur </h1>
       </div>
     </div>
     <div class="dropdown-divider"> </div>
     <div class="row">
       <div class="col-md-6">
-        <h5 class="fw-bold mb-8">Liste des engins</h5>
+        <h5 class="fw-bold mb-8">Liste des chauffeur</hh5>
       </div>
       <div class="col-md-6">
         <div class="d-flex justify-content-end">
@@ -126,26 +118,19 @@
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title" id="UpdateModalLabel">Modification du liste de quai</h5>
+            <h5 class="modal-title" id="UpdateModalLabel">Modification du liste du chauffeur</h5>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
           <div class="modal-body">
-            <form action="create" method="post" id="formOrderEngin">
+            <form action="update" method="post" id="UpdateformOrderChauffeur">
+            <input type="hidden" name="id" id="bill_IDchauffeur">
               <div class="form-floating mb-3">
-                <input type="text" class="form-control" id="UpdatenumMatricule" name="UpdatenumMatricule">
-                <label for="UpdatenumMatricule">Numero Matricule</label>
+                <input type="text" class="form-control" id="UpdateNom" name="UpdateNom">
+                <label for="UpdateNom"></label>
               </div>
               <div class="form-floating mb-3">
-                <select class="form-select" id="typeEngin" aria-label="UpdatetypeEngin" name="UpdatetypeEngin">
-                  <option value="Tracteurs portuaire">Tracteurs portuaire</option>
-                  <option value="chariot elevater">chariot elevater</option>
-                  <option value="Camion transporteur">Camion transporteur</option>
-                </select>
-                <label for="UpdatetypeEngin">Types d'Engin</label>
-              <div class="form-floating mb-3">
-                <input type="text" class="form-control" id="Updatechauffeur " name="Updatechauffeur ">
-                <label for="Updatechauffeur ">L'identifiant du chauffeur</label>
-              </div>
+                <input type="text" class="form-control" id="UpdateAdresse " name="UpdateAdresse ">
+                <label for="UpdateAdresse ">L'adresse du chauffeur</label>
               </div>
             </form>
           </div>
@@ -161,6 +146,6 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
   <script type="text/javascript" src="https://cdn.datatables.net/v/bs5/dt-1.12.1/datatables.min.js"></script>
   <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-  <script src="../controler/processengin.js"></script>
+  <script src="../controler/processchauffeur.js"></script>
 </body>
 </html>

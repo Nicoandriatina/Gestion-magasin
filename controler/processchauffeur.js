@@ -1,13 +1,13 @@
 $(function () {
-  
-    //creation du liste des bateau
+
+    //creation du liste des quai(mankany @bd ian)
     $('#create').on('click', function (e) {
-        let formOrder = $('#formOrderEngin')
+        let formOrder = $('#formOrderChauffeur')
         if (formOrder[0].checkValidity())
             console.log('data ', formOrder.serialize());
         e.preventDefault();
         $.ajax({
-            url: '../controler/processengin.php',
+            url: '../controler/processchauffeur.php',
             type: 'post',
             data: formOrder.serialize() + '&action=create',
             success: function (response) {
@@ -21,11 +21,12 @@ $(function () {
             }
         })
     })
-    //recuperation du la liste de bateau
+
+    //recuperation du la liste de chauffeur(manao affiche @interface)
     getBills();
     function getBills() {
         $.ajax({
-            url: '../controler/processengin.php',
+            url: '../controler/processchauffeur.php',
             type: 'post',
             data: { action: 'fetch' },
             success: function (response) {
@@ -38,35 +39,34 @@ $(function () {
             }
         })
     }
-
     //modification
-    $('body').on('click', '.editBtn', function (e) {
+    $('body').on('click', '.editBtnChauffeur', function (e) {
         e.preventDefault();
+        console.log(e);
         $.ajax({
-            url: '../controler/processengin.php',
+            url: '../controler/processchauffeur.php',
             type: 'post',
-            data: { workingnumMatricule: this.dataset.id },
+            data: { workingIDchauffeur: e.currentTarget.dataset.id },
             success: function (response) {
+                console.log(response);
                 let billinfo = JSON.parse(response);
                 console.log('billinfo', billinfo);
-                $('#bill_numMatricule').val(billinfo.numMatricule);
-                $('#UpdatenumMatricule').val(billinfo.numMatricule);
-                $('#Updatechauffeur').val(billinfo.chauffeur);
-                let select = document.querySelector('#UpdatetypesEngin');
-                let UpdatetypeproduitOption = Array.from(select.options);
-                UpdatetypeproduitOption.forEach((o, i) => {
-                    if (o.value == billinfo.state) select.selectedIndex = i;
-                })
+                $('#bill_IDchauffeur').val(billinfo.IDchauffeur);
+                $('#UpdateNom').val(billinfo.Nom);
+                $('#UpdateAdresse').val(billinfo.Adresse);
             }
         })
     })
+
+
+    //update
     $('#Update').on('click', function (e) {
-        let formOrder = $('#UpdateformOrderEngin')
+        let formOrder = $('#UpdateformOrderChauffeur')
         if (formOrder[0].checkValidity()) {
             console.log('data ', formOrder.serialize());
             e.preventDefault();
             $.ajax({
-                url: '../controler/processengin.php',
+                url: '../controler/processchauffeur.php',
                 type: 'post',
                 data: formOrder.serialize() + '&action=Update',
                 success: function (response) {
@@ -82,26 +82,21 @@ $(function () {
         }
     })
 
-    //affichage info @icon info @actions
-    $('body').on('click', '.infoBtn', function (e) {
+    //information
+    $('body').on('click', '.infoBtnChauffeur', function (e) {
         e.preventDefault();
         $.ajax({
-            url: '../controler/processengin.php',
+            url: '../controler/processchauffeur.php',
             type: 'post',
-            data: { informationnumMatricule: this.dataset.id},
+            data: { informationIDchauffeur: this.dataset.id },
             success: function (response) {
                 let informations = JSON.parse(response);
                 Swal.fire({
-                    title:  `<strong>Information de la bateaux Numero ${informations.ID} </strong> `,
+                    title: `<strong>Information de la Quai${informations.IDchauffeur} </strong> `,
                     icon: 'info',
                     html:
-                        `Nom du Bateau: <b>${informations.Nombateau}</b><br>` +
-                        `Numero du quai: <b>${informations.NumQuai}</b><br>` +
-                        `Marque du bateau: <b>${informations.Marque}</b> </br>` +
-                        `Categorie du Bateau: <b>${informations.categories}</b><br>` +
-                        `charge Maximal du Bateau: <b>${informations.chargemax}</b><br>` +
-                        `Charge Minimal du Bateau: <b>${informations.chargemin}</b><br>` +
-                        `types de produit que le  Bateau transporte: <b>${informations.typeproduit}</b><br>`,
+                        `Capacite du quai: <b>${informations.Nom}</b><br>` +
+                        `ville d'emplacement du quai: <b>${informations.Adresse}</b><br>`,
                     showCloseButton: true,
                     showCancelButton: true,
                     focusConfirm: false,
@@ -113,27 +108,32 @@ $(function () {
         })
     })
 
-    $('body').on('click', '.deleteBtn', function (e) {
+    //suppression
+    $('body').on('click', '.deleteBtnChauffeur', function (e) {
         e.preventDefault();
         Swal.fire({
-            title: 'vous volez vraiment supprimer' + this.dataset.id,
+            title: 'vous volez vraiment supprimer ' + this.dataset.id,
             text: "cette action est irreversible!",
             icon: 'warning',
             showCancelButton: true,
             confirmButtonColor: '#3085d6',
             cancelButtonColor: '#d33',
-            confirmButtonText: 'OK supprimer'
+            confirmButtonText: 'OUI'
         }).then((result) => {
             if (result.isConfirmed) {
                 $.ajax({
-                    url: '../controler/processengin.php',
+                    url: '../controler/processchauffeur.php',
                     type: 'post',
-                    data: { deletenumMatricule: this.dataset.id },
+                    // jereo tsara ny correspondance des variables
+                    // code teo aloha
+                    // data: { deleteId: this.dataset.id },
+
+                    data: { deleteIDchauffeur: this.dataset.id },
                     success: function (response) {
                         if (response == 1) {
                             Swal.fire(
-                                'Supprimer!',
-                                'suppression avec succes!',
+                                'Deleted!',
+                                'Your file has been deleted!',
                                 'success'
                             )
                             getBills();
@@ -144,5 +144,6 @@ $(function () {
             }
         })
     })
+
 
 })

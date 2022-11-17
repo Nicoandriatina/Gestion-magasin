@@ -55,15 +55,6 @@ $(function () {
                 $('#bill_NumQuai').val(billinfo.NumQuai);
                 $('#UpdateCapacite').val(billinfo.Capacite);
                 $('#Updateville').val(billinfo.ville);
-
-                // $('#Updatecategories').val(billinfo.categories);
-                // $('#Updatechargemax').val(billinfo.chargemax);
-                // $('#Updatechargemin').val(billinfo.chargemin);
-                // let select = document.querySelector('#Updatetypeproduit');
-                // let UpdatetypeproduitOption = Array.from(select.options);
-                // UpdatetypeproduitOption.forEach((o, i) => {
-                //     if (o.value == billinfo.state) select.selectedIndex = i;
-                // })
             }
         })
     })
@@ -98,7 +89,7 @@ $(function () {
         $.ajax({
             url: '../controler/processquai.php',
             type: 'post',
-            data: { informationNumQuai: this.dataset.NumQuai },
+            data: { informationNumQuai: this.dataset.id },
             success: function (response) {
                 let informations = JSON.parse(response);
                 Swal.fire({

@@ -44,16 +44,17 @@ class Database
 
         $q = $this->getconnexion()->prepare("UPDATE quai SET Capacite=:Capacite, ville=:ville WHERE NumQuai=:NumQuai");
 
-        //ity ny code teo aloha,
+    //ity ny code teo aloha,
         // return $q->execute([
         //     'Capacite' => $Capacite,
         //     'ville' => $ville,
         //     'NumQuai' => $NumQuai
-        // ]);
+        // ]);    
 
         return $q->execute([
             'Capacite' => $Capacite,
-            'ville' => $ville
+            'ville' => $ville,
+            'NumQuai' => $NumQuai
         ]);
     }
     public function delete(int $NumQuai)

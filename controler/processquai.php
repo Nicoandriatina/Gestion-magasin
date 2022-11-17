@@ -41,7 +41,7 @@ if (isset($_POST['action']) && $_POST['action'] == 'fetch') {
         $output .= "</tbody></table>";
         echo $output;
     } else {
-        echo 'aucune facture pour le moment';
+        echo 'aucune liste pour le moment';
     }
 }
 //info pour detail de bateux

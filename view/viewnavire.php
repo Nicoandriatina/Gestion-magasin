@@ -33,11 +33,11 @@
             </li>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Engins</a>
+              <a class="nav-link" href="./viewengin.php">Engins</a>
             </li>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">chauffeur</a>
+              <a class="nav-link" href="./viewchauffeur.php">chauffeur</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="#">Transport</a>
@@ -168,6 +168,13 @@
               <div class="form-floating mb-3">
                 <input type="text" class="form-control" id="UpdatenumQuai" name="UpdatenumQuai">
                 <label for="UpdatenumQuai">Numero de Quai</label>
+                <select class="form-select" id="UpdatenumQuai" aria-label="UpdatenumQuai" name="UpdatenumQuai">
+                  <option value="Produit métallurgiques">Produit métallurgiques</option>
+                  <option value="Produit Alimentaires">Produit Alimentaires</option>
+                  <option value="Produit Forestiers">Produit Forestiers</option>
+                  <option value="Produit Forestiers">Produit Finis</option>
+                </select>
+                <label for="state">Marchandise</label>
               </div>
               <div class="form-floating mb-3">
                 <select class="form-select" id="Updatetypeproduit" aria-label="Updatetypeproduit" name="Updatetypeproduit">
@@ -176,7 +183,7 @@
                   <option value="Produit Forestiers">Produit Forestiers</option>
                   <option value="Produit Forestiers">Produit Finis</option>
                 </select>
-                <label for="state">Marchandise</label>
+                <label for="state">Numero de quai</label>
               </div>
               <div class="row g-2">
                 <div class="col-md">

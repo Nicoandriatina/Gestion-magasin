@@ -52,7 +52,7 @@ if (isset($_POST['workingnumMatricule'])) {
 // Modification des bateau
 if (isset($_POST['action']) && $_POST['action'] == 'Update') {
     extract($_POST);
-    $db->update($UpdatenumMatricule, $UpdatetypesEngins, $Updatechauffeur);
+    $db->update($id, $UpdatetypesEngins, $Updatechauffeur);
 
     echo 'perfect';
 }

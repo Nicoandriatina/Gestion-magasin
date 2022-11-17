@@ -29,11 +29,11 @@
             </li>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Engins</a>
+              <a class="nav-link" href="./viewengin.php">Engins</a>
             </li>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">chauffeur</a>
+              <a class="nav-link" href="./viewchauffeur.php">chauffeur</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="#">Transport</a>
@@ -122,7 +122,7 @@
           </div>
           <div class="modal-body">
             <form action="update" method="post" id="UpdateformOrderQuai">
-              <input type="hidden" name="id" id="bill_NumQuai">
+              <input type="hidden" name="id" id="bill_IDchauffeur">
               <div class="form-floating mb-3">
                 <input type="text" class="form-control" id="UpdateCapacite" name="UpdateCapacite">
                 <label for="UpdateCapacite">capacite</label>

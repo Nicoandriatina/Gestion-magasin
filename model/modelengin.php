@@ -39,9 +39,8 @@ class Database
     }
     public function update(int $numMatricule, string $typesEngin, int $chauffeur)
     {
-        $q = $this->getconnexion()->prepare("UPDATE  engin SET numMatricule=:numMatricule, typesEngin=:typesEngin, chauffeur=:chauffeur WHERE numMatricule=:numMatricule");
+        $q = $this->getconnexion()->prepare("UPDATE  engin SET typesEngin=:typesEngin, chauffeur=:chauffeur WHERE numMatricule=:numMatricule");
         return $q->execute([
-           'numMatricule' => $numMatricule,
            'typesEngin'=>$typesEngin,
            'chauffeur'=>$chauffeur
         ]);
