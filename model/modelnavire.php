@@ -14,16 +14,16 @@ class Database
             die('erreur:' . $e->getMessage());
         }
     }
-    public function create(string $Nombateau, string $Marque, string $categories, string $chargemax, string $chargemin, string $typeproduit, int $NumQuai)
+    public function create(string $Nombateau, string $Marque, string $categories, string $chargemax, datetime $temps, string $typeproduit, int $NumQuai)
     {
-        $q = $this->getconnexion()->prepare("INSERT INTO bateaux(Nombateau, Marque, categories, chargemax, chargemin, typeproduit, NumQuai )
-         VALUES (:Nombateau, :Marque, :categories, :chargemax, :chargemin, :typeproduit, :NumQuai)");
+        $q = $this->getconnexion()->prepare("INSERT INTO bateaux(Nombateau, Marque, categories, chargemax, temps, typeproduit, NumQuai )
+         VALUES (:Nombateau, :Marque, :categories, :chargemax, :temps, :typeproduit, :NumQuai)");
         return $q->execute([
             'Nombateau' => $Nombateau,
             'Marque' => $Marque,
             'categories' => $categories,
             'chargemax' => $chargemax,
-            'chargemin' => $chargemin,
+            'temps' => $temps,
             'typeproduit' => $typeproduit,
             'NumQuai'=>$NumQuai
         ]);
@@ -42,15 +42,15 @@ class Database
         $q->execute(['id' => $id]);
         return $q->fetch(PDO::FETCH_OBJ);
     }
-    public function update(int $id, string $Nombateau, string $Marque, string $categories, string $chargemax, string $chargemin, string $typeproduit, int $NumQuai)
+    public function update(int $id, string $Nombateau, string $Marque, string $categories, string $chargemax, datetime $temps, string $typeproduit, int $NumQuai)
     {
-        $q = $this->getconnexion()->prepare("UPDATE bateaux SET Nombateau=:Nombateau, Marque=:Marque, categories=:categories, chargemax=:chargemax, chargemin=:chargemin, typeproduit=:typeproduit, NumQuai=:NumQuai WHERE ID=:id");
+        $q = $this->getconnexion()->prepare("UPDATE bateaux SET Nombateau=:Nombateau, Marque=:Marque, categories=:categories, chargemax=:chargemax, temps=:temps, typeproduit=:typeproduit, NumQuai=:NumQuai WHERE ID=:id");
         return $q->execute([
             'Nombateau' => $Nombateau,
             'Marque' => $Marque,
             'categories' => $categories,
             'chargemax' => $chargemax,
-            'chargemin' => $chargemin,
+            'temps' => $temps,
             'typeproduit' => $typeproduit,
             'id' => $id,
             'NumQuai'=> $NumQuai

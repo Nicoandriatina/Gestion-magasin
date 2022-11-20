@@ -36,7 +36,7 @@ class Database
         $q->execute(['IDchauffeur' => $IDchauffeur]);
         return $q->fetch(PDO::FETCH_OBJ);
     }
-    public function update(int $IDchauffeur, string $Nom, string $Adresse)
+    public function update( string $Nom, string $Adresse)
     {
         // rehefa manao update dia tsy atao update ny ID, jereo tsara foana ny correspondance des variables
         // ito ny code taloha
@@ -53,8 +53,7 @@ class Database
 
         return $q->execute([
             'Nom' => $Nom,
-            'Adresse' => $Adresse,
-            'IDchauffeur'=>$IDchauffeur
+            'Adresse' => $Adresse
         ]);
     }
     public function delete(int $IDchauffeur)

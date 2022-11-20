@@ -92,7 +92,7 @@ $(function () {
             success: function (response) {
                 let informations = JSON.parse(response);
                 Swal.fire({
-                    title: `<strong>Information de la Quai${informations.IDchauffeur} </strong> `,
+                    title: `<strong>Information de la chauffeur${informations.IDchauffeur} </strong> `,
                     icon: 'info',
                     html:
                         `Capacite du quai: <b>${informations.Nom}</b><br>` +
