@@ -104,14 +104,14 @@
                 </div>
                 <div class="col-md">
                   <div class="form-floating mb-3">
-                    <input type="text" class="form-control" id="chargemax" name="chargemax">
-                    <label for="chargemax">charge Maximal</label>
+                    <input type="datetime-local" class="form-control" id="datetime" name="datetime">
+                    <label for="datetime">date et heure d'arriver</label>
                   </div>
                 </div>
                 <div class="col-md">
                   <div class="form-floating mb-3">
-                    <input type="text" class="form-control" id="chargemin" name="chargemin">
-                    <label for="chargemin">charge Minimal</label>
+                    <input type="text" class="form-control" id="chargemax" name="chargemax">
+                    <label for="chargemax">charge Maximal</label>
                   </div>
                 </div>
               </div>
@@ -166,15 +166,8 @@
                 <label for="UpdateMarque">Marque</label>
               </div>
               <div class="form-floating mb-3">
-                <input type="text" class="form-control" id="UpdatenumQuai" name="UpdatenumQuai">
-                <label for="UpdatenumQuai">Numero de Quai</label>
-                <select class="form-select" id="UpdatenumQuai" aria-label="UpdatenumQuai" name="UpdatenumQuai">
-                  <option value="Produit métallurgiques">Produit métallurgiques</option>
-                  <option value="Produit Alimentaires">Produit Alimentaires</option>
-                  <option value="Produit Forestiers">Produit Forestiers</option>
-                  <option value="Produit Forestiers">Produit Finis</option>
-                </select>
-                <label for="state">Marchandise</label>
+                <input type="text" class="form-control" id="UpdateNumQuai" name="UpdateNumQuai">
+                <label for="UpdateNumQuai">Numero du quai</label>
               </div>
               <div class="form-floating mb-3">
                 <select class="form-select" id="Updatetypeproduit" aria-label="Updatetypeproduit" name="Updatetypeproduit">
@@ -183,7 +176,7 @@
                   <option value="Produit Forestiers">Produit Forestiers</option>
                   <option value="Produit Forestiers">Produit Finis</option>
                 </select>
-                <label for="state">Numero de quai</label>
+                <label for="state">Marchandise</label>
               </div>
               <div class="row g-2">
                 <div class="col-md">
@@ -200,8 +193,8 @@
                 </div>
                 <div class="col-md">
                   <div class="form-floating mb-3">
-                    <input type="text" class="form-control" id="Updatechargemin" name="Updatechargemin">
-                    <label for="Updatechargemin">charge Minimal</label>
+                    <input type="datetime-local" class="form-control" id="Updatedatetime" name="Updatedatetime">
+                    <label for="Updatedatetime">date et heure d'arriver</label>
                   </div>
                 </div>
             </form>

@@ -22,7 +22,7 @@ if (isset($_POST['action']) && $_POST['action'] == 'fetch') {
               <th scope="col">Marque</th>
               <th scope="col">Categories</th>
               <th scope="col">charge maximal</th>
-              <th scope="col">charge minimal</th>
+              <th scope="col">date et heure</th>
               <th scope="col">types de marchandise</th>
               <th scope="col">Action</th>
             </tr>
@@ -38,7 +38,7 @@ if (isset($_POST['action']) && $_POST['action'] == 'fetch') {
                     <td>$bill->Marque</td>
                     <td>$bill->categories</td>
                     <td>$bill->chargemax</td>
-                    <td>$bill->chargemin</td>
+                    <td>$bill->temps</td>
                     <td>$bill->typeproduit</td>
                     <td>
                     <a href=\"#\" class=\"text-info me-2 infoBtn\" title=\"voir detail\" data-id=\"$bill->ID\"> <i class=\"fas fa-info-circle\"></i> </a>
@@ -62,7 +62,7 @@ if (isset($_POST['workingId'])) {
 // Modification des bateau
 if (isset($_POST['action']) && $_POST['action'] == 'Update') {
     extract($_POST);
-    $db->update($id, $UpdateNombateau, $UpdateMarque, $Updatecategories, $Updatechargemax, $Updatechargemin, $Updatetypeproduit, $UpdatenumQuai);
+    $db->update($id, $UpdateNombateau, $UpdateMarque, $Updatecategories, $Updatechargemax, $Updatedatetime, $Updatetypeproduit, $UpdatenumQuai);
 
     echo 'perfect';
 }

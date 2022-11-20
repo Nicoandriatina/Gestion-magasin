@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.1
+-- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1
--- Généré le : jeu. 10 nov. 2022 à 21:33
--- Version du serveur : 10.4.22-MariaDB
--- Version de PHP : 7.3.33
+-- Généré le : dim. 20 nov. 2022 à 14:50
+-- Version du serveur : 10.4.25-MariaDB
+-- Version de PHP : 8.1.10
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -33,7 +33,7 @@ CREATE TABLE `bateaux` (
   `Marque` varchar(200) NOT NULL,
   `categories` varchar(10) NOT NULL,
   `chargemax` varchar(20) NOT NULL,
-  `chargemin` varchar(20) NOT NULL,
+  `datetime` datetime NOT NULL,
   `typeproduit` varchar(100) NOT NULL,
   `NumQuai` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -42,8 +42,8 @@ CREATE TABLE `bateaux` (
 -- Déchargement des données de la table `bateaux`
 --
 
-INSERT INTO `bateaux` (`ID`, `Nombateau`, `Marque`, `categories`, `chargemax`, `chargemin`, `typeproduit`, `NumQuai`) VALUES
-(3, 'sambo', 'botry', 'B', '21113', '11313', 'Produit métallurgiques', 1);
+INSERT INTO `bateaux` (`ID`, `Nombateau`, `Marque`, `categories`, `chargemax`, `datetime`, `typeproduit`, `NumQuai`) VALUES
+(3, 'sambo', 'botry', 'B', '21113', '0000-00-00 00:00:00', 'Produit métallurgiques', 1);
 
 -- --------------------------------------------------------
 

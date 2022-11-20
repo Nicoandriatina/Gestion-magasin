@@ -55,7 +55,7 @@ $(function () {
                 $('#UpdateMarque').val(billinfo.Marque);
                 $('#Updatecategories').val(billinfo.categories);
                 $('#Updatechargemax').val(billinfo.chargemax);
-                $('#Updatechargemin').val(billinfo.chargemin);
+                $('#Updatechargemin').val(billinfo.temps);
                 let select = document.querySelector('#Updatetypeproduit');
                 let UpdatetypeproduitOption = Array.from(select.options);
                 UpdatetypeproduitOption.forEach((o, i) => {
@@ -104,7 +104,7 @@ $(function () {
                         `Marque du bateau: <b>${informations.Marque}</b> </br>` +
                         `Categorie du Bateau: <b>${informations.categories}</b><br>` +
                         `charge Maximal du Bateau: <b>${informations.chargemax}</b><br>` +
-                        `Charge Minimal du Bateau: <b>${informations.chargemin}</b><br>` +
+                        `Charge Minimal du Bateau: <b>${informations.temps}</b><br>` +
                         `types de produit que le  Bateau transporte: <b>${informations.typeproduit}</b><br>`,
                     showCloseButton: true,
                     showCancelButton: true,
