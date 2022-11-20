@@ -32,8 +32,8 @@ if (isset($_POST['action']) && $_POST['action'] == 'fetch') {
                     <td>$bill->Adresse</td>
                     <td>
                     <a href=\"#\" class=\"text-info me-2 infoBtnChauffeur\" title=\"voir detail\" data-id=\"$bill->IDchauffeur\"> <i class=\"fas fa-info-circle\"></i> </a>
-                    <a href=\"#\" class=\"text-primary me-2 editBtnchauffeur\" title=\"voir detail\" data-id=\"$bill->IDchauffeur\"> <i class=\"fas fa-edit\" data-bs-toggle='modal' data-bs-target='#UpdateModal'></i> </a>
-                    <a href=\"#\" class=\"text-danger me-2 deleteBtnchauffeur\" title=\"voir detail\" data-id=\"$bill->IDchauffeur\"> <i class=\"fas fa-trash-alt\"></i> </a>
+                    <a href=\"#\" class=\"text-primary me-2 editBtnChauffeur\" title=\"voir detail\" data-id=\"$bill->IDchauffeur\"> <i class=\"fas fa-edit\" data-bs-toggle='modal' data-bs-target='#UpdateModal'></i> </a>
+                    <a href=\"#\" class=\"text-danger me-2 deleteBtnChauffeur\" title=\"voir detail\" data-id=\"$bill->IDchauffeur\"> <i class=\"fas fa-trash-alt\"></i> </a>
                     </td>
                 </tr>
             ";

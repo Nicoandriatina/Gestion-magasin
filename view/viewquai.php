@@ -122,7 +122,9 @@
           </div>
           <div class="modal-body">
             <form action="update" method="post" id="UpdateformOrderQuai">
-              <input type="hidden" name="id" id="bill_IDchauffeur">
+              <!-- code teo aloha ity, diso ny id -->
+              <!-- <input type="hidden" name="id" id="bill_IDchauffeur"> -->
+              <input type="hidden" name="id" id="bill_NumQuai">
               <div class="form-floating mb-3">
                 <input type="text" class="form-control" id="UpdateCapacite" name="UpdateCapacite">
                 <label for="UpdateCapacite">capacite</label>

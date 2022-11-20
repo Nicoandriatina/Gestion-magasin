@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -12,16 +10,17 @@
   <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs5/dt-1.12.1/datatables.min.css" />
   <title>SMMC Port Toamasina</title>
 </head>
+
 <body>
   <header>
-  <nav class="navbar navbar-expand-lg  bg-success">
+    <nav class="navbar navbar-expand-lg  bg-success">
       <div class="container-fluid">
-      <a class="navbar-brand" href="./index.php"> <img src="../images/Logo.png" class="rounded" alt="logo du SMMC"> </i></a>
+        <a class="navbar-brand" href="./index.php"> <img src="../images/Logo.png" class="rounded" alt="logo du SMMC"> </i></a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
             <li class="nav-item">
               <a class="nav-link " aria-current="page" href="../index.html">Acceuil</a>
             </li>
@@ -79,7 +78,9 @@
                 <label for="Nom">Nom du chauffeur</label>
               </div>
               <div class="form-floating mb-3">
-                <input type="text" class="form-control" id="Adresse " name="Adresse ">
+                <!-- code teo aloha, misy espace le adresse id="Adresse " -->
+                <!-- <input type="text" class="form-control" id="Adresse " name="Adresse "> -->
+                <input type="text" class="form-control" id="Adresse" name="Adresse">
                 <label for="Adresse ">L'adresse du chauffeur</label>
               </div>
             </form>
@@ -123,13 +124,15 @@
           </div>
           <div class="modal-body">
             <form action="update" method="post" id="UpdateformOrderChauffeur">
-            <input type="hidden" name="id" id="bill_IDchauffeur">
+              <input type="hidden" name="id" id="bill_IDchauffeur">
               <div class="form-floating mb-3">
                 <input type="text" class="form-control" id="UpdateNom" name="UpdateNom">
                 <label for="UpdateNom"></label>
               </div>
               <div class="form-floating mb-3">
-                <input type="text" class="form-control" id="UpdateAdresse " name="UpdateAdresse ">
+                <!-- oode teo aloha, probleme espace teo am id  -->
+                <!-- <input type="text" class="form-control" id="UpdateAdresse " name="UpdateAdresse "> -->
+                <input type="text" class="form-control" id="UpdateAdresse" name="UpdateAdresse">
                 <label for="UpdateAdresse ">L'adresse du chauffeur</label>
               </div>
             </form>
@@ -148,4 +151,5 @@
   <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   <script src="../controler/processchauffeur.js"></script>
 </body>
+
 </html>
