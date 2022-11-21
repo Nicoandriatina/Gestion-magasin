@@ -104,8 +104,8 @@
                 </div>
                 <div class="col-md">
                   <div class="form-floating mb-3">
-                    <input type="datetime-local" class="form-control" id="datetime" name="datetime">
-                    <label for="datetime">date et heure d'arriver</label>
+                    <input type="datetime-local" class="form-control" id="temps" name="temps">
+                    <label for="temps">date et heure d'arriver</label>
                   </div>
                 </div>
                 <div class="col-md">
@@ -193,8 +193,8 @@
                 </div>
                 <div class="col-md">
                   <div class="form-floating mb-3">
-                    <input type="datetime-local" class="form-control" id="Updatedatetime" name="Updatedatetime">
-                    <label for="Updatedatetime">date et heure d'arriver</label>
+                    <input type="datetime-local" class="form-control" id="Updatetemps" name="Updatetemps">
+                    <label for="Updatetemps">date et heure d'arriver</label>
                   </div>
                 </div>
             </form>

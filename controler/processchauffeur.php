@@ -44,20 +44,14 @@ if (isset($_POST['action']) && $_POST['action'] == 'fetch') {
         echo 'aucune liste pour le moment';
     }
 }
-//info pour detail de bateux
+//info pour detail de Chauffeur
 if (isset($_POST['workingIDchauffeur'])) {
     $workingIDchauffeur = (int)$_POST['workingIDchauffeur'];
     echo json_encode($db->getSingleBill($workingIDchauffeur));
 }
-// Modification des bateau
+// Modification des Chauffeur
 if (isset($_POST['action']) && $_POST['action'] == 'Update') {
     extract($_POST);
-
-    // jereo tsara ny correspondance de variable, ny avy any front id fa tsy NumQuai, 
-    //ampiasao foana ny console.log sns
-    // io ny code teo aloha
-    // $db->update($NumQuai, $UpdateCapacite, $Updateville);
-
     $db->update($id, $UpdateNom, $UpdateAdresse);
     echo 'perfect';
 }
@@ -72,6 +66,17 @@ if (isset($_POST['deleteIDchauffeur'])) {
     $deleteIDchauffeur = (int)$_POST['deleteIDchauffeur'];
     echo ($db->delete($deleteIDchauffeur));
 }
+
+
+
+
+
+
+
+
+
+
+
 
 // //exportation
 // if (isset($_GET['action']) && $_GET['action'] == 'Exporter') {

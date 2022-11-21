@@ -4,7 +4,7 @@ $db = new Database();
 // creation des liste de bateau
 if (isset($_POST['action']) && $_POST['action'] == 'create') {
     extract($_POST);
-    $db->create($Nombateau, $Marque, $categories, $chargemax, $chargemin, $typeproduit, $numQuai);
+    $db->create($Nombateau, $Marque, $categories, $chargemax, $temps, $typeproduit, $numQuai);
     echo 'perfect';
 }
 //recuperation de liste des bateau
@@ -52,6 +52,7 @@ if (isset($_POST['action']) && $_POST['action'] == 'fetch') {
         echo $output;
     } else {
         echo 'aucune facture pour le moment';
+        
     }
 }
 //info pour detail de bateux
@@ -62,7 +63,7 @@ if (isset($_POST['workingId'])) {
 // Modification des bateau
 if (isset($_POST['action']) && $_POST['action'] == 'Update') {
     extract($_POST);
-    $db->update($id, $UpdateNombateau, $UpdateMarque, $Updatecategories, $Updatechargemax, $Updatedatetime, $Updatetypeproduit, $UpdatenumQuai);
+    $db->update($id, $UpdateNombateau, $UpdateMarque, $Updatecategories, $Updatechargemax, $Updatetemps, $Updatetypeproduit, $UpdateNumQuai);
 
     echo 'perfect';
 }

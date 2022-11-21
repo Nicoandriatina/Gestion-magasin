@@ -1,6 +1,6 @@
 $(function () {
 
-    //creation du liste des quai(mankany @bd ian)
+    //creation du liste dans la bd
     $('#create').on('click', function (e) {
         let formOrder = $('#formOrderChauffeur')
         if (formOrder[0].checkValidity())
@@ -22,7 +22,7 @@ $(function () {
         })
     })
 
-    //recuperation du la liste de chauffeur(manao affiche @interface)
+    //recuperation du la liste et affichage sur l'interface
     getBills();
     function getBills() {
         $.ajax({
@@ -39,7 +39,7 @@ $(function () {
             }
         })
     }
-    //modification
+    //recuperation des elements a modiffier
     $('body').on('click', '.editBtnChauffeur', function (e) {
         e.preventDefault();
         console.log(e);
@@ -59,7 +59,7 @@ $(function () {
     })
 
 
-    //update
+    //Modification
     $('#Update').on('click', function (e) {
         let formOrder = $('#UpdateformOrderChauffeur')
         if (formOrder[0].checkValidity()) {
@@ -82,7 +82,7 @@ $(function () {
         }
     })
 
-    //information
+    //affichage de l'information
     $('body').on('click', '.infoBtnChauffeur', function (e) {
         e.preventDefault();
         $.ajax({
@@ -124,10 +124,6 @@ $(function () {
                 $.ajax({
                     url: '../controler/processchauffeur.php',
                     type: 'post',
-                    // jereo tsara ny correspondance des variables
-                    // code teo aloha
-                    // data: { deleteId: this.dataset.id },
-
                     data: { deleteIDchauffeur: this.dataset.id },
                     success: function (response) {
                         if (response == 1) {
@@ -144,6 +140,4 @@ $(function () {
             }
         })
     })
-
-
 })

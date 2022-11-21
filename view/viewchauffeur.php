@@ -130,8 +130,6 @@
                 <label for="UpdateNom"></label>
               </div>
               <div class="form-floating mb-3">
-                <!-- oode teo aloha, probleme espace teo am id  -->
-                <!-- <input type="text" class="form-control" id="UpdateAdresse " name="UpdateAdresse "> -->
                 <input type="text" class="form-control" id="UpdateAdresse" name="UpdateAdresse">
                 <label for="UpdateAdresse ">L'adresse du chauffeur</label>
               </div>
