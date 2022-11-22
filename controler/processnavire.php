@@ -38,7 +38,7 @@ if (isset($_POST['action']) && $_POST['action'] == 'fetch') {
                     <td>$bill->Marque</td>
                     <td>$bill->categories</td>
                     <td>$bill->chargemax</td>
-                    <td>$bill->temps</td>
+                    <td>$bill->datetimes</td>
                     <td>$bill->typeproduit</td>
                     <td>
                     <a href=\"#\" class=\"text-info me-2 infoBtn\" title=\"voir detail\" data-id=\"$bill->ID\"> <i class=\"fas fa-info-circle\"></i> </a>
@@ -52,7 +52,6 @@ if (isset($_POST['action']) && $_POST['action'] == 'fetch') {
         echo $output;
     } else {
         echo 'aucune facture pour le moment';
-        
     }
 }
 //info pour detail de bateux
@@ -81,24 +80,22 @@ if (isset($_POST['deleteId'])) {
 
 //exportation
 if (isset($_GET['action']) && $_GET['action'] == 'export') {
-    $excelFileName="Liste des bateaux".date('YmdHis').'xls';
+    $excelFileName = "Liste des bateaux" . date('YmdHis') . 'xls';
     header("contein-Type: application/vnd.ms-excel");
     header("conteint-Disposition: attachement; filename=$excelFileName");
 
-    $nomcolonne = ['Identifiant','Numquai', 'Nom', 'Marque', 'categories', 'chargemaximale', 'chargemine', 'Type'];
+    $nomcolonne = ['Identifiant', 'Numquai', 'Nom', 'Marque', 'categories', 'chargemaximale', 'chargemine', 'Type'];
 
-    $data = implode("\t", array_values($nomcolonne)). "\n";
-    if($db->countBills()>0){
-        $bills= $db->read();  
+    $data = implode("\t", array_values($nomcolonne)) . "\n";
+    if ($db->countBills() > 0) {
+        $bills = $db->read();
         foreach ($bills as $bill) {
-            $excelData = [$bill->ID,$bill->NumQuai ,$bill->Nombateau, $bill->Marque, $bill->categories, $bill->chargemax, $bill->chargemax, $bill->typeproduit];
-            $data .= implode("\t", $excelData). "\n";
-
-        } 
-    }else{
-        $data="Aucun liste trouver...." . "\n"; 
+            $excelData = [$bill->ID, $bill->NumQuai, $bill->Nombateau, $bill->Marque, $bill->categories, $bill->chargemax, $bill->chargemax, $bill->typeproduit];
+            $data .= implode("\t", $excelData) . "\n";
+        }
+    } else {
+        $data = "Aucun liste trouver...." . "\n";
     }
-   echo $data;
-   die();
+    echo $data;
+    die();
 }
-

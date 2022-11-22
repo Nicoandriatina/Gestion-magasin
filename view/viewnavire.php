@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -12,11 +10,12 @@
   <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs5/dt-1.12.1/datatables.min.css" />
   <title>SMMC Port Toamasina</title>
 </head>
+
 <body>
   <header>
-  <nav class="navbar navbar-expand-lg  bg-success">
+    <nav class="navbar navbar-expand-lg  bg-success">
       <div class="container-fluid">
-      <a class="navbar-brand" href="./index.php"> <img src="../images/Logo.png" class="rounded" alt="logo du SMMC"> </i></a>
+        <a class="navbar-brand" href="./index.php"> <img src="../images/Logo.png" class="rounded" alt="logo du SMMC"> </i></a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -83,7 +82,17 @@
                 <label for="Marque">Marque</label>
               </div>
               <div class="form-floating mb-3">
-                <input type="text" class="form-control" id="numQuai" name="numQuai">
+                <select class="form-select" id="numQuai" aria-label="numQuai" name="numQuai">
+                  <?php
+                  require_once '../model/modelquai.php';
+                  $db = new Database();
+                  $db->countBills();
+                  $bills = $db->read();
+                  var_dump($bills);
+                  foreach ($bills as $bill) { ?>
+                    <option value="<?php echo $bill->NumQuai ?>"><?php echo $bill->ville ?></option>
+                  <?php } ?>
+                </select>
                 <label for="numQuai">Numero de Quai</label>
               </div>
               <div class="form-floating mb-3">
@@ -213,4 +222,5 @@
   <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   <script src="../controler/processnavire.js"></script>
 </body>
+
 </html>

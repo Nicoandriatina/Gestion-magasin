@@ -1,10 +1,11 @@
 $(function () {
-  
+
     //creation du liste des bateau
     $('#create').on('click', function (e) {
         let formOrder = $('#formOrder')
         if (formOrder[0].checkValidity())
             console.log('data ', formOrder.serialize());
+        console.log("tayyyyy");
         e.preventDefault();
         $.ajax({
             url: '../controler/processnavire.php',
@@ -92,11 +93,11 @@ $(function () {
         $.ajax({
             url: '../controler/processnavire.php',
             type: 'post',
-            data: { informationId: this.dataset.id},
+            data: { informationId: this.dataset.id },
             success: function (response) {
                 let informations = JSON.parse(response);
                 Swal.fire({
-                    title:  `<strong>Information de la bateaux Numero ${informations.ID} </strong> `,
+                    title: `<strong>Information de la bateaux Numero ${informations.ID} </strong> `,
                     icon: 'info',
                     html:
                         `Nom du Bateau: <b>${informations.Nombateau}</b><br>` +

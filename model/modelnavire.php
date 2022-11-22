@@ -14,21 +14,19 @@ class Database
             die('erreur:' . $e->getMessage());
         }
     }
-    public function create(string $Nombateau, string $Marque, string $categories, string $chargemax, DateTime $temps, string $typeproduit, int $NumQuai)
-     {
-    //     $q = $this->getconnexion()->prepare("INSERT INTO bateaux(Nombateau, Marque, categories, chargemax, temps, typeproduit, NumQuai )
-    //      VALUES (:Nombateau, :Marque, :categories, :chargemax, :temps, :typeproduit, :NumQuai)");
-        return  gettype($temps);
-        // return $q->execute([
-        //     'Nombateau' => $Nombateau,
-        //     'Marque' => $Marque,
-        //     'categories' => $categories,
-        //     'chargemax' => $chargemax,
-        //     'temps' => $temps,
-        //     'typeproduit' => $typeproduit,
-        //     'NumQuai'=>$NumQuai
-        // ]);
-       
+    public function create(string $Nombateau, string $Marque, string $categories, string $chargemax,  $temps, string $typeproduit, int $NumQuai)
+    {
+        $q = $this->getconnexion()->prepare("INSERT INTO bateaux(Nombateau, Marque, categories, chargemax, datetimes, typeproduit, NumQuai )
+             VALUES (:Nombateau, :Marque, :categories, :chargemax, :temps, :typeproduit, :NumQuai)");
+        return $q->execute([
+            'Nombateau' => $Nombateau,
+            'Marque' => $Marque,
+            'categories' => $categories,
+            'chargemax' => $chargemax,
+            'temps' => $temps,
+            'typeproduit' => $typeproduit,
+            'NumQuai' => $NumQuai
+        ]);
     }
     public function read()
     {
@@ -55,13 +53,13 @@ class Database
             'temps' => $temps,
             'typeproduit' => $typeproduit,
             'id' => $id,
-            'NumQuai'=> $NumQuai
+            'NumQuai' => $NumQuai
 
         ]);
     }
-    public function delete(int $id){
+    public function delete(int $id)
+    {
         $q = $this->getconnexion()->prepare(" DELETE FROM bateaux WHERE id = :id");
         return $q->execute(['id' => $id]);
     }
 }
-?>
