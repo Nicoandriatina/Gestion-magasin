@@ -16,7 +16,7 @@ class Database
     }
     public function create(int $numMatricule, string $typesEngin, int $chauffeur)
     {
-        $q = $this->getconnexion()->prepare("INSERT INTO engin(numMatricule, typesEngin, chauffeur)VALUES (:numMatricule, :typesEngin, :chauffeur:)");
+        $q = $this->getconnexion()->prepare("INSERT INTO engin(numMatricule, typesEngin, chauffeur)VALUES (:numMatricule, :typesEngin, :chauffeur)");
         return $q->execute([
            'numMatricule' => $numMatricule,
            'typesEngin'=>$typesEngin,
@@ -51,4 +51,3 @@ class Database
         return $q->execute(['numMatricule' => $numMatricule]);
     }
 }
-?>

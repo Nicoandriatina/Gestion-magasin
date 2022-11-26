@@ -4,7 +4,11 @@ $db = new Database();
 // creation des liste de bateau
 if (isset($_POST['action']) && $_POST['action'] == 'create') {
     extract($_POST);
-    $db->create( $numMatricule, $typesEngin, $chauffeur);
+
+    $db->create($numMatricule, $typeEngin, $chauffeur);
+
+    // code teo aloha , ERREUR COPIER COLLER plus de "s" sur $typesEngin
+    // $db->create( $numMatricule, $typesEngin, $chauffeur);
     echo 'perfect';
 }
 //recuperation de liste des bateau
@@ -90,4 +94,3 @@ if (isset($_POST['deletenumMatricule'])) {
 //    echo $data;
 //    die();
 // }
-

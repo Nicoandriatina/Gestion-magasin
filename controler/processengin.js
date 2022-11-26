@@ -1,8 +1,10 @@
 $(function () {
-  
+
     //creation du liste 
     $('#create').on('click', function (e) {
-        let formOrder = $('#formOrderEngin')
+        let formOrder = $('#formOrderEngins')
+        // io ny code teo aloha, ERREUR COPIER COLLER manque "s"
+        // let formOrder = $('#formOrderEngin')
         if (formOrder[0].checkValidity())
             console.log('data ', formOrder.serialize());
         e.preventDefault();
@@ -88,15 +90,15 @@ $(function () {
         $.ajax({
             url: '../controler/processengin.php',
             type: 'post',
-            data: { informationnumMatricule: this.dataset.id},
+            data: { informationnumMatricule: this.dataset.id },
             success: function (response) {
                 let informations = JSON.parse(response);
                 Swal.fire({
-                    title:  `<strong>Information de l'engin Numero ${informations.numMatricule} </strong> `,
+                    title: `<strong>Information de l'engin Numero ${informations.numMatricule} </strong> `,
                     icon: 'info',
                     html:
                         `Types d'engin <b>${informations.typesEngin}</b><br>` +
-                        `L'identifiant du chauffeur: <b>${informations.chauffeur}</b><br>` ,
+                        `L'identifiant du chauffeur: <b>${informations.chauffeur}</b><br>`,
                     showCloseButton: true,
                     showCancelButton: true,
                     focusConfirm: false,
