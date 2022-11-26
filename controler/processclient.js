@@ -1,13 +1,13 @@
 $(function () {
-  
-    //creation du liste 
+
+    //creation du liste dans la bd
     $('#create').on('click', function (e) {
-        let formOrder = $('#formOrderEngin')
+        let formOrder = $('#formOrderClient')
         if (formOrder[0].checkValidity())
             console.log('data ', formOrder.serialize());
         e.preventDefault();
         $.ajax({
-            url: '../controler/processengin.php',
+            url: '../controler/processclient.php',
             type: 'post',
             data: formOrder.serialize() + '&action=create',
             success: function (response) {
@@ -21,11 +21,12 @@ $(function () {
             }
         })
     })
-    //recuperation du la liste de bateau
+
+    //recuperation du la liste et affichage sur l'interface
     getBills();
     function getBills() {
         $.ajax({
-            url: '../controler/processengin.php',
+            url: '../controler/processclient.php',
             type: 'post',
             data: { action: 'fetch' },
             success: function (response) {
@@ -38,35 +39,34 @@ $(function () {
             }
         })
     }
-
-    //modification
-    $('body').on('click', '.editBtn', function (e) {
+    //recuperation des elements a modiffier
+    $('body').on('click', '.editBtnClient', function (e) {
         e.preventDefault();
+        console.log(e);
         $.ajax({
-            url: '../controler/processengin.php',
+            url: '../controler/processclient.php',
             type: 'post',
-            data: { workingnumMatricule: this.dataset.id },
+            data: { workingcodeClient: e.currentTarget.dataset.id },
             success: function (response) {
+                console.log(response);
                 let billinfo = JSON.parse(response);
                 console.log('billinfo', billinfo);
-                $('#bill_numMatricule').val(billinfo.numMatricule);
-                $('#UpdatenumMatricule').val(billinfo.numMatricule);
-                $('#UpdatetypeEngin').val(billinfo.chauffeur);
-                let select = document.querySelector('#UpdatetypesEngin');
-                let UpdatetypeproduitOption = Array.from(select.options);
-                UpdatetypeproduitOption.forEach((o, i) => {
-                    if (o.value == billinfo.state) select.selectedIndex = i;
-                })
+                $('#bill_codeClient').val(billinfo.codeClient);
+                $('#UpdateNom').val(billinfo.Nom);
+                $('#UpdateAdresse').val(billinfo.Adresse);
             }
         })
     })
+
+
+    //Modification
     $('#Update').on('click', function (e) {
-        let formOrder = $('#UpdateformOrderEngin')
+        let formOrder = $('#UpdateformOrderClient')
         if (formOrder[0].checkValidity()) {
             console.log('data ', formOrder.serialize());
             e.preventDefault();
             $.ajax({
-                url: '../controler/processengin.php',
+                url: '../controler/processclient.php',
                 type: 'post',
                 data: formOrder.serialize() + '&action=Update',
                 success: function (response) {
@@ -82,21 +82,21 @@ $(function () {
         }
     })
 
-    //affichage info @icon info @actions
-    $('body').on('click', '.infoBtn', function (e) {
+    //affichage de l'information
+    $('body').on('click', '.infoBtnClient', function (e) {
         e.preventDefault();
         $.ajax({
-            url: '../controler/processengin.php',
+            url: '../controler/processclient.php',
             type: 'post',
-            data: { informationnumMatricule: this.dataset.id},
+            data: { informationcodeClient: this.dataset.id },
             success: function (response) {
                 let informations = JSON.parse(response);
                 Swal.fire({
-                    title:  `<strong>Information de l'engin Numero ${informations.numMatricule} </strong> `,
+                    title: `<strong>Information de la chauffeur${informations.codeClient} </strong> `,
                     icon: 'info',
                     html:
-                        `Types d'engin <b>${informations.typesEngin}</b><br>` +
-                        `L'identifiant du chauffeur: <b>${informations.chauffeur}</b><br>` ,
+                        `Nom du client: <b>${informations.Nom}</b><br>` +
+                        `Adresse du client: <b>${informations.Adresse}</b><br>`,
                     showCloseButton: true,
                     showCancelButton: true,
                     focusConfirm: false,
@@ -108,27 +108,28 @@ $(function () {
         })
     })
 
-    $('body').on('click', '.deleteBtn', function (e) {
+    //suppression
+    $('body').on('click', '.deleteBtnClient', function (e) {
         e.preventDefault();
         Swal.fire({
-            title: 'vous volez vraiment supprimer' + this.dataset.id,
+            title: 'vous volez vraiment supprimer? ' + this.dataset.id,
             text: "cette action est irreversible!",
             icon: 'warning',
             showCancelButton: true,
             confirmButtonColor: '#3085d6',
             cancelButtonColor: '#d33',
-            confirmButtonText: 'OK supprimer'
+            confirmButtonText: 'OUI'
         }).then((result) => {
             if (result.isConfirmed) {
                 $.ajax({
-                    url: '../controler/processengin.php',
+                    url: '../controler/processclient.php',
                     type: 'post',
-                    data: { deletenumMatricule: this.dataset.id },
+                    data: { deletecodeClient: this.dataset.id },
                     success: function (response) {
                         if (response == 1) {
                             Swal.fire(
-                                'Supprimer!',
-                                'suppression avec succes!',
+                                'Deleted!',
+                                'Your file has been deleted!',
                                 'success'
                             )
                             getBills();
@@ -139,5 +140,4 @@ $(function () {
             }
         })
     })
-
 })

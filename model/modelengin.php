@@ -42,7 +42,8 @@ class Database
         $q = $this->getconnexion()->prepare("UPDATE  engin SET typesEngin=:typesEngin, chauffeur=:chauffeur WHERE numMatricule=:numMatricule");
         return $q->execute([
            'typesEngin'=>$typesEngin,
-           'chauffeur'=>$chauffeur
+           'chauffeur'=>$chauffeur,
+           'numMatricule'=>$numMatricule
         ]);
     }
     public function delete(int $numMatricule){

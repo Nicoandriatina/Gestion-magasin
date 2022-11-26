@@ -42,9 +42,6 @@
               <a class="nav-link active" href="./viewquai.php">Quai</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Facture</a>
-            </li>
-            <li class="nav-item">
               <a class="nav-link" href="#">Magasin</a>
             </li>
             <li class="nav-item">
@@ -55,7 +52,7 @@
               <a class="nav-link" href="#">Marchandise</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">client</a>
+              <a class="nav-link" href="./viewclient.php">client</a>
             </li>
           </ul>
         </div>

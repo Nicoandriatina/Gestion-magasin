@@ -42,9 +42,6 @@
               <a class="nav-link active" href="./viewquai.php">Quai</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Facture</a>
-            </li>
-            <li class="nav-item">
               <a class="nav-link" href="#">Magasin</a>
             </li>
             <li class="nav-item">
@@ -55,7 +52,7 @@
               <a class="nav-link" href="#">Marchandise</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">client</a>
+              <a class="nav-link" href="./viewclient.php">client</a>
             </li>
           </ul>
         </div>
@@ -122,8 +119,6 @@
           </div>
           <div class="modal-body">
             <form action="update" method="post" id="UpdateformOrderQuai">
-              <!-- code teo aloha ity, diso ny id -->
-              <!-- <input type="hidden" name="id" id="bill_IDchauffeur"> -->
               <input type="hidden" name="id" id="bill_NumQuai">
               <div class="form-floating mb-3">
                 <input type="text" class="form-control" id="UpdateCapacite" name="UpdateCapacite">

@@ -105,7 +105,7 @@ $(function () {
                         `Marque du bateau: <b>${informations.Marque}</b> </br>` +
                         `Categorie du Bateau: <b>${informations.categories}</b><br>` +
                         `charge Maximal du Bateau: <b>${informations.chargemax}</b><br>` +
-                        `Charge Minimal du Bateau: <b>${informations.temps}</b><br>` +
+                        `date et heure d'arriver au port: <b>${informations.temps}</b><br>` +
                         `types de produit que le  Bateau transporte: <b>${informations.typeproduit}</b><br>`,
                     showCloseButton: true,
                     showCancelButton: true,

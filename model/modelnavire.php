@@ -14,7 +14,7 @@ class Database
             die('erreur:' . $e->getMessage());
         }
     }
-    public function create(string $Nombateau, string $Marque, string $categories, string $chargemax,  $temps, string $typeproduit, int $NumQuai)
+    public function create(string $Nombateau, string $Marque, string $categories, string $chargemax, $temps, string $typeproduit, int $NumQuai)
     {
         $q = $this->getconnexion()->prepare("INSERT INTO bateaux(Nombateau, Marque, categories, chargemax, datetimes, typeproduit, NumQuai )
              VALUES (:Nombateau, :Marque, :categories, :chargemax, :temps, :typeproduit, :NumQuai)");
@@ -42,9 +42,9 @@ class Database
         $q->execute(['id' => $id]);
         return $q->fetch(PDO::FETCH_OBJ);
     }
-    public function update(int $id, string $Nombateau, string $Marque, string $categories, string $chargemax, DateTime $temps, string $typeproduit, int $NumQuai)
+    public function update(int $id, string $Nombateau, string $Marque, string $categories, string $chargemax, $temps, string $typeproduit, int $NumQuai)
     {
-        $q = $this->getconnexion()->prepare("UPDATE bateaux SET Nombateau=:Nombateau, Marque=:Marque, categories=:categories, chargemax=:chargemax, temps=:temps, typeproduit=:typeproduit, NumQuai=:NumQuai WHERE ID=:id");
+        $q = $this->getconnexion()->prepare("UPDATE bateaux SET Nombateau=:Nombateau, Marque=:Marque, categories=:categories, chargemax=:chargemax, datetimes=:temps, typeproduit=:typeproduit, NumQuai=:NumQuai WHERE ID=:id");
         return $q->execute([
             'Nombateau' => $Nombateau,
             'Marque' => $Marque,

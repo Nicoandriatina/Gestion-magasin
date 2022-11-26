@@ -42,9 +42,6 @@
               <a class="nav-link" href="#">Transport</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Facture</a>
-            </li>
-            <li class="nav-item">
               <a class="nav-link" href="#">Magasin</a>
             </li>
             <li class="nav-item">
@@ -55,7 +52,7 @@
               <a class="nav-link" href="#">Marchandise</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">client</a>
+              <a class="nav-link" href="./viewclient.php">client</a>
             </li>
           </ul>
         </div>
@@ -175,8 +172,18 @@
                 <label for="UpdateMarque">Marque</label>
               </div>
               <div class="form-floating mb-3">
-                <input type="text" class="form-control" id="UpdateNumQuai" name="UpdateNumQuai">
-                <label for="UpdateNumQuai">Numero du quai</label>
+                <select class="form-select" id="UpdatenumQuai" aria-label="UpdatenumQuai" name="UpdatenumQuai">
+                  <?php
+                  require_once '../model/modelquai.php';
+                  $db = new Database();
+                  $db->countBills();
+                  $bills = $db->read();
+                  var_dump($bills);
+                  foreach ($bills as $bill) { ?>
+                    <option value="<?php echo $bill->NumQuai ?>"><?php echo $bill->ville ?></option>
+                  <?php } ?>
+                </select>
+                <label for="UpdatenumQuai">Numero de Quai</label>
               </div>
               <div class="form-floating mb-3">
                 <select class="form-select" id="Updatetypeproduit" aria-label="Updatetypeproduit" name="Updatetypeproduit">
