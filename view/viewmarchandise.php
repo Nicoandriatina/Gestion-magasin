@@ -65,36 +65,41 @@
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title" id="createModalLabel">Ajout d'un noveau Engins</h5>
+            <h5 class="modal-title" id="createModalLabel">Ajout d'un noveau Marchandise</h5>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
           <div class="modal-body">
-            <form action="create" method="post" id="formOrderEngins">
+            <form action="create" method="post" id="formOrderMarchandise">
               <div class="form-floating mb-3">
-                <input type="text" class="form-control" id="numMatricule" name="numMatricule">
-                <label for="numMatricule">Numero Matricule</label>
+                <input type="text" class="form-control" id="libelle" name="libelle">
+                <label for="libelle">Nom du marchandise</label>
               </div>
               <div class="form-floating mb-3">
-                <select class="form-select" id="typeEngin" aria-label="typeEngin" name="typeEngin">
-                  <option value="Tracteurs portuaire">Tracteurs portuaire</option>
-                  <option value="chariot elevater">chariot elevater</option>
-                  <option value="Camion transporteur">Camion transporteur</option>
+                <select class="form-select" id="typesMarchandise" aria-label="typesMarchandise" name="typesMarchandise">
+                  <option value="Produit métallurgiques">Produit métallurgiques</option>
+                  <option value="Produit Alimentaires">Produit Alimentaires</option>
+                  <option value="Produit Forestiers">Produit Forestiers</option>
+                  <option value="Produit Forestiers">Produit Finis</option>
                 </select>
-                <label for="typeEngin">Types d'Engin</label>
+                <label for="typesMarchandise">types de la marchandise</label>
               </div>
               <div class="form-floating mb-3">
-                <select class="form-select" id="chauffeur" aria-label="chauffeur" name="chauffeur">
+                <select class="form-select" id="bateau" aria-label="bateau" name="bateau">
                   <?php
-                  require_once '../model/modelchauffeur.php';
+                  require_once '../model/modelnavire.php';
                   $db = new Database();
                   $db->countBills();
                   $bills = $db->read();
                   var_dump($bills);
                   foreach ($bills as $bill) { ?>
-                    <option value="<?php echo $bill->IDchauffeur ?>"><?php echo $bill->Nom ?></option>
+                    <option value="<?php echo $bill->ID ?>"><?php echo $bill->Nombateau ?></option>
                   <?php } ?>
                 </select>
-                <label for="chauffeur">identifiant du chauffeur</label>
+                <label for="bateau">transporter par le navire</label>
+              </div>
+              <div class="form-floating mb-3">
+                <input type="text" class="form-control" id="quantite" name="quantite">
+                <label for="quantite">Quantité</label>
               </div>
             </form>
           </div>
@@ -107,13 +112,13 @@
     </div>
     <div class="row">
       <div class="col-lg8 col-sm mb-5 mx-auto">
-        <h1 class="fs-4 text-center lead text-prymary"> Client </h1>
+        <h1 class="fs-4 text-center lead text-prymary"> Marchandise </h1>
       </div>
     </div>
     <div class="dropdown-divider"> </div>
     <div class="row">
       <div class="col-md-6">
-        <h5 class="fw-bold mb-8">Liste des engins</h5>
+        <h5 class="fw-bold mb-8">Liste des Marchandise</h5>
       </div>
       <div class="col-md-6">
         <div class="d-flex justify-content-end">
@@ -132,33 +137,32 @@
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title" id="UpdateModalLabel">Modification du liste du client</h5>
+            <h5 class="modal-title" id="UpdateModalLabel">Modification du liste du Marchandise</h5>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
           <div class="modal-body">
-          <form action="create" method="post" id="UpdateformOrderEngins">
-          <input type="hidden" name="id" id="bill_numMatricule">
+          <form action="create" method="post" id="UpdateformOrderMarchandise">
+          <input type="hidden" name="id" id="bill_codeMarchandise">
               <div class="form-floating mb-3">
-                <select class="form-select" id="UpdatetypeEngin" aria-label="UpdatetypeEngin" name="UpdatetypeEngin">
-                  <option value="Tracteurs portuaire">Tracteurs portuaire</option>
-                  <option value="chariot elevater">chariot elevater</option>
-                  <option value="Camion transporteur">Camion transporteur</option>
-                </select>
-                <label for="UpdatetypeEngin">Types d'Engin</label>
+                <input type="text" class="form-control" id="Updatelibelle" name="Updatelibelle">
+                <label for="Updatelibelle">Nom du marchandise</label>
               </div>
               <div class="form-floating mb-3">
-                <select class="form-select" id="Updatechauffeur" aria-label="Updatechauffeur" name="Updatechauffeur">
-                  <?php
-                  require_once '../model/modelchauffeur.php';
-                  $db = new Database();
-                  $db->countBills();
-                  $bills = $db->read();
-                  var_dump($bills);
-                  foreach ($bills as $bill) { ?>
-                    <option value="<?php echo $bill->IDchauffeur ?>"><?php echo $bill->Nom ?></option>
-                  <?php } ?>
+                <select class="form-select" id="UpdatetypesMarchandise" aria-label="UpdatetypesMarchandise" name="UpdatetypesMarchandise">
+                  <option value="Produit métallurgiques">Produit métallurgiques</option>
+                  <option value="Produit Alimentaires">Produit Alimentaires</option>
+                  <option value="Produit Forestiers">Produit Forestiers</option>
+                  <option value="Produit Forestiers">Produit Finis</option>
                 </select>
-                <label for="Updatechauffeur">identifiant du chauffeur</label>
+                <label for="UpdatetypesMarchandise">types de la marchandise</label>
+              </div>
+              <div class="form-floating mb-3">
+                <input type="text" class="form-control" id="Updatebateau" name="Updatebateau">
+                <label for="Updatebateau">transporter par le navire</label>
+              </div>
+              <div class="form-floating mb-3">
+                <input type="text" class="form-control" id="Updatequantite" name="Updatequantite">
+                <label for="Updatequantite">Quantité</label>
               </div>
             </form>
           </div>
@@ -174,7 +178,7 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
   <script type="text/javascript" src="https://cdn.datatables.net/v/bs5/dt-1.12.1/datatables.min.js"></script>
   <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-  <script src="../controler/processengin.js"></script>
+  <script src="../controler/processmarchandise.js"></script>
 </body>
 
 </html>

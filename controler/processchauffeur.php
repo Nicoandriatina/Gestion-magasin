@@ -1,13 +1,13 @@
 <?php
 require_once '../model/modelchauffeur.php';
 $db = new Database();
-// creation des liste de bateau
+// creation des liste 
 if (isset($_POST['action']) && $_POST['action'] == 'create') {
     extract($_POST);
     $db->create($Nom, $Adresse);
     echo 'perfect';
 }
-//recuperation des liste de bateau
+//recuperation des liste 
 if (isset($_POST['action']) && $_POST['action'] == 'fetch') {
     $output = '';
     if ($db->countBills() > 0) {
@@ -44,12 +44,12 @@ if (isset($_POST['action']) && $_POST['action'] == 'fetch') {
         echo 'aucune liste pour le moment';
     }
 }
-//info pour detail de Chauffeur
+//info pour detail de la liste
 if (isset($_POST['workingIDchauffeur'])) {
     $workingIDchauffeur = (int)$_POST['workingIDchauffeur'];
     echo json_encode($db->getSingleBill($workingIDchauffeur));
 }
-// Modification des Chauffeur
+// update de la liste
 if (isset($_POST['action']) && $_POST['action'] == 'Update') {
     extract($_POST);
     $db->update($id, $UpdateNom, $UpdateAdresse);

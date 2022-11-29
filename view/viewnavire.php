@@ -49,7 +49,7 @@
             </li>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Marchandise</a>
+              <a class="nav-link" href="./viewmarchandise.php">Marchandise</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="./viewclient.php">client</a>

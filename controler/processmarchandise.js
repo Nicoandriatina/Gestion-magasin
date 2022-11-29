@@ -2,14 +2,12 @@ $(function () {
 
     //creation du liste 
     $('#create').on('click', function (e) {
-        let formOrder = $('#formOrderEngins')
-        // io ny code teo aloha, ERREUR COPIER COLLER manque "s"
-        // let formOrder = $('#formOrderEngin')
+        let formOrder = $('#formOrderMarchandise')
         if (formOrder[0].checkValidity())
             console.log('data ', formOrder.serialize());
         e.preventDefault();
         $.ajax({
-            url: '../controler/processengin.php',
+            url: '../controler/processmarchandise.php',
             type: 'post',
             data: formOrder.serialize() + '&action=create',
             success: function (response) {
@@ -27,7 +25,7 @@ $(function () {
     getBills();
     function getBills() {
         $.ajax({
-            url: '../controler/processengin.php',
+            url: '../controler/processmarchandise.php',
             type: 'post',
             data: { action: 'fetch' },
             success: function (response) {
@@ -42,19 +40,21 @@ $(function () {
     }
 
     //modification
-    $('body').on('click', '.editBtn', function (e) {
+    $('body').on('click', '.editBtnMarchandise', function (e) {
         e.preventDefault();
         $.ajax({
-            url: '../controler/processengin.php',
+            url: '../controler/processmarchandise.php',
             type: 'post',
-            data: { workingnumMatricule: this.dataset.id },
+            data: { workingcodeMarchandise: this.dataset.id },
             success: function (response) {
                 let billinfo = JSON.parse(response);
                 console.log('billinfo', billinfo);
-                $('#bill_numMatricule').val(billinfo.numMatricule);
-                $('#UpdatenumMatricule').val(billinfo.numMatricule);
-                $('#UpdatetypeEngin').val(billinfo.chauffeur);
-                let select = document.querySelector('#UpdatetypeEngin');
+                $('#bill_codeMarchandiise').val(billinfo.codeMarchandise);
+                $('#Updatelibelle').val(billinfo.libelle);
+                $('#Updatebateau').val(billinfo.bateau);
+                $('#Updatequantite').val(billinfo.quantite);
+                $('#UpdatetypesMarchandise').val(billinfo.typesMarchandise);
+                let select = document.querySelector('#UpdatetypesMarchandise');
                 let UpdatetypeproduitOption = Array.from(select.options);
                 UpdatetypeproduitOption.forEach((o, i) => {
                     if (o.value == billinfo.state) select.selectedIndex = i;
@@ -63,12 +63,12 @@ $(function () {
         })
     })
     $('#Update').on('click', function (e) {
-        let formOrder = $('#UpdateformOrderEngins')
+        let formOrder = $('#UpdateformOrderMarchandise')
         if (formOrder[0].checkValidity()) {
             console.log('data ', formOrder.serialize());
             e.preventDefault();
             $.ajax({
-                url: '../controler/processengin.php',
+                url: '../controler/processmarchandise.php',
                 type: 'post',
                 data: formOrder.serialize() + '&action=Update',
                 success: function (response) {
@@ -85,20 +85,22 @@ $(function () {
     })
 
     //affichage info @icon info @actions
-    $('body').on('click', '.infoBtn', function (e) {
+    $('body').on('click', '.infoBtnMarchandise', function (e) {
         e.preventDefault();
         $.ajax({
-            url: '../controler/processengin.php',
+            url: '../controler/processmarchandise.php',
             type: 'post',
-            data: { informationnumMatricule: this.dataset.id },
+            data: { informationcodeMarchandise: this.dataset.id },
             success: function (response) {
                 let informations = JSON.parse(response);
                 Swal.fire({
-                    title: `<strong>Information de l'engin Numero ${informations.numMatricule} </strong> `,
+                    title: `<strong>Information de la marchandise Numero ${informations.codeMarchandise} </strong> `,
                     icon: 'info',
                     html:
-                        `Types d'engin <b>${informations.typesEngin}</b><br>` +
-                        `L'identifiant du chauffeur: <b>${informations.chauffeur}</b><br>`,
+                        `Nom de la marchandise :<b>${informations.libelle}</b><br>` +
+                        `Type de la marchandise :<b>${informations.typesMarchandise}</b><br>` +
+                        `Transporter par le navire: <b>${informations.bateau}</b><br>` +
+                        `Quantite de la marchandise: <b>${informations.quantite} tonnes</b><br>`,
                     showCloseButton: true,
                     showCancelButton: true,
                     focusConfirm: false,
@@ -110,7 +112,7 @@ $(function () {
         })
     })
 
-    $('body').on('click', '.deleteBtn', function (e) {
+    $('body').on('click', '.deleteBtnMarchandise', function (e) {
         e.preventDefault();
         Swal.fire({
             title: 'vous volez vraiment supprimer' + this.dataset.id,
@@ -123,9 +125,9 @@ $(function () {
         }).then((result) => {
             if (result.isConfirmed) {
                 $.ajax({
-                    url: '../controler/processengin.php',
+                    url: '../controler/processmarchandise.php',
                     type: 'post',
-                    data: { deletenumMatricule: this.dataset.id },
+                    data: { deletecodeMarchandise: this.dataset.id },
                     success: function (response) {
                         if (response == 1) {
                             Swal.fire(
