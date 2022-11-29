@@ -14,14 +14,17 @@ class Database
             die('erreur:' . $e->getMessage());
         }
     }
-    public function create(int $bateau,string $libelle, string $typesMarchandise, int $quantite)
+    public function create(int $bateau, string $libelle, string $typesMarchandise, int $quantite)
     {
-        $q = $this->getconnexion()->prepare("INSERT INTO marchandise (bateau, libelle, typesMarchandise, quantite) VALUES (:bateau, :libelle, :typesMarchandise, quantite)");
+        $q = $this->getconnexion()->prepare("INSERT INTO marchandise (bateau, libelle, typesMarchandise, quantite) VALUES (:bateau, :libelle, :typesMarchandise, :quantite)");
+        // code teo aloha, manque de ":" sur quantite
+        // $q = $this->getconnexion()->prepare("INSERT INTO marchandise (bateau, libelle, typesMarchandise, quantite) VALUES (:bateau, :libelle, :typesMarchandise, quantite)");
+
         return $q->execute([
-           'bateau' => $bateau,
-           'libelle'=>$libelle,
-           'typesMarchandise'=>$typesMarchandise,
-           'quantite'=>$quantite	
+            'bateau' => $bateau,
+            'libelle' => $libelle,
+            'typesMarchandise' => $typesMarchandise,
+            'quantite' => $quantite
 
         ]);
     }
@@ -36,21 +39,22 @@ class Database
     public function getSingleBill(int $codeMarchandise)
     {
         $q = $this->getConnexion()->prepare("SELECT * FROM marchandise WHERE codeMarchandise = :codeMarchandise");
-        $q->execute(['codeMarchandise' =>$codeMarchandise]);
+        $q->execute(['codeMarchandise' => $codeMarchandise]);
         return $q->fetch(PDO::FETCH_OBJ);
     }
-    public function update($bateau ,string $libelle, string $typesMarchandise, $quantite, int $codeMarchandise)
+    public function update($bateau, string $libelle, string $typesMarchandise, $quantite, int $codeMarchandise)
     {
         $q = $this->getconnexion()->prepare("UPDATE  marchandise SET bateau=:bateau,libelle=:libelle,typesMarchandise=:typesMarchandise, quantite=:quantite WHERE codeMarchandise=:codeMarchandise");
         return $q->execute([
             'bateau' => $bateau,
-           'libelle'=>$libelle,
-           'typesMarchandise'=>$typesMarchandise,
-           'quantite'=>$quantite,
-           'codeMarchandise'=>$codeMarchandise
+            'libelle' => $libelle,
+            'typesMarchandise' => $typesMarchandise,
+            'quantite' => $quantite,
+            'codeMarchandise' => $codeMarchandise
         ]);
     }
-    public function delete(int $codeMarchandise){
+    public function delete(int $codeMarchandise)
+    {
         $q = $this->getconnexion()->prepare(" DELETE FROM marchandise WHERE codeMarchandise = :codeMarchandise");
         return $q->execute(['codeMarchandise' => $codeMarchandise]);
     }
