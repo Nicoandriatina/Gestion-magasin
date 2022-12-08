@@ -25,34 +25,34 @@
               <a class="nav-link " aria-current="page" href="../index.html">Acceuil</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="./viewnavire.php">Navires</a>
+              <a class="nav-link color-white" href="./viewnavire.php">Navires</a>
             </li>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="./viewengin.php">Engins</a>
+              <a class="nav-link color-white" href="./viewengin.php">Engins</a>
             </li>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="./viewchauffeur.php">chauffeur</a>
+              <a class="nav-link color-white" href="./viewchauffeur.php">chauffeur</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Transport</a>
+              <a class="nav-link color-white" href="./viewtransport.php">Transport</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link active" href="./viewquai.php">Quai</a>
+              <a class="nav-link color-white" href="./viewquai.php">Quai</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Magasin</a>
+              <a class="nav-link color-white" href="#">Magasin</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Magasinier</a>
+              <a class="nav-link color-white" href="#">Magasinier</a>
             </li>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="./viewmarchandise.php">Marchandise</a>
+              <a class="nav-link color-white" href="./viewmarchandise.php">Marchandise</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="./viewclient.php">client</a>
+              <a class="nav-link color-white" href="./viewclient.php">client</a>
             </li>
           </ul>
         </div>

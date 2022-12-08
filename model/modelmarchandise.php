@@ -14,17 +14,15 @@ class Database
             die('erreur:' . $e->getMessage());
         }
     }
-    public function create(int $bateau, string $libelle, string $typesMarchandise, int $quantite)
+    public function create(int $bateau, string $libelle, string $typesMarchandise, int $quantite, int $nombreSacs)
     {
-        $q = $this->getconnexion()->prepare("INSERT INTO marchandise (bateau, libelle, typesMarchandise, quantite) VALUES (:bateau, :libelle, :typesMarchandise, :quantite)");
-        // code teo aloha, manque de ":" sur quantite
-        // $q = $this->getconnexion()->prepare("INSERT INTO marchandise (bateau, libelle, typesMarchandise, quantite) VALUES (:bateau, :libelle, :typesMarchandise, quantite)");
-
+        $q = $this->getconnexion()->prepare("INSERT INTO marchandise (bateau, libelle, typesMarchandise, quantite, nombreSacs) VALUES (:bateau, :libelle, :typesMarchandise, :quantite, :nombreSacs)");
         return $q->execute([
             'bateau' => $bateau,
             'libelle' => $libelle,
             'typesMarchandise' => $typesMarchandise,
-            'quantite' => $quantite
+            'quantite' => $quantite,
+            'nombreSacs'=> $nombreSacs
 
         ]);
     }
@@ -42,15 +40,15 @@ class Database
         $q->execute(['codeMarchandise' => $codeMarchandise]);
         return $q->fetch(PDO::FETCH_OBJ);
     }
-    public function update($bateau, string $libelle, string $typesMarchandise, $quantite, int $codeMarchandise)
+    public function update( $bateau, string $libelle, string $typesMarchandise, $quantite, int $codeMarchandise, $nombreSacs)
     {
-        $q = $this->getconnexion()->prepare("UPDATE  marchandise SET bateau=:bateau,libelle=:libelle,typesMarchandise=:typesMarchandise, quantite=:quantite WHERE codeMarchandise=:codeMarchandise");
+        $q = $this->getconnexion()->prepare("UPDATE  marchandise SET libelle=:libelle,typesMarchandise=:typesMarchandise, quantite=:quantite, nombreSacs=:nombreSacs WHERE codeMarchandise=:codeMarchandise");
         return $q->execute([
-            'bateau' => $bateau,
             'libelle' => $libelle,
             'typesMarchandise' => $typesMarchandise,
             'quantite' => $quantite,
-            'codeMarchandise' => $codeMarchandise
+            'codeMarchandise' => $codeMarchandise,
+            'nombreSacs'=> $nombreSacs
         ]);
     }
     public function delete(int $codeMarchandise)

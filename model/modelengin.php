@@ -14,13 +14,16 @@ class Database
             die('erreur:' . $e->getMessage());
         }
     }
-    public function create(int $numMatricule, string $typesEngin, int $chauffeur)
+    public function create(int $numMatricule, string $typesEngin, int $chauffeur, int $numInventaire, $dateAquis)
     {
-        $q = $this->getconnexion()->prepare("INSERT INTO engin(numMatricule, typesEngin, chauffeur)VALUES (:numMatricule, :typesEngin, :chauffeur)");
+        $q = $this->getconnexion()->prepare("INSERT INTO engin(numMatricule, typesEngin, chauffeur, numInventaire, dateAquis)VALUES (:numMatricule, :typesEngin, :chauffeur, :numInventaire ,:dateAquis)");
         return $q->execute([
            'numMatricule' => $numMatricule,
            'typesEngin'=>$typesEngin,
-           'chauffeur'=>$chauffeur
+           'chauffeur'=>$chauffeur,
+           'numInventaire'=>$numInventaire,
+           'dateAquis'=> $dateAquis
+           
         ]);
     }
     public function read()
@@ -37,13 +40,15 @@ class Database
         $q->execute(['numMatricule' => $numMatricule]);
         return $q->fetch(PDO::FETCH_OBJ);
     }
-    public function update(int $numMatricule, string $typesEngin, int $chauffeur)
+    public function update(int $numMatricule, string $typesEngin, int $chauffeur, int $numInventaire, $dateAquis)
     {
-        $q = $this->getconnexion()->prepare("UPDATE  engin SET typesEngin=:typesEngin, chauffeur=:chauffeur WHERE numMatricule=:numMatricule");
+        $q = $this->getconnexion()->prepare("UPDATE  engin SET typesEngin=:typesEngin, chauffeur=:chauffeur, numInventaire=:numInventaire, dateAquis=:dateAquis WHERE numMatricule=:numMatricule");
         return $q->execute([
-           'typesEngin'=>$typesEngin,
-           'chauffeur'=>$chauffeur,
-           'numMatricule'=>$numMatricule
+            'numMatricule' => $numMatricule,
+            'typesEngin'=>$typesEngin,
+            'chauffeur'=>$chauffeur,
+            'numInventaire'=>$numInventaire,
+            'dateAquis'=> $dateAquis
         ]);
     }
     public function delete(int $numMatricule){

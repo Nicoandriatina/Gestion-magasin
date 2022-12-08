@@ -36,7 +36,7 @@
               <a class="nav-link" href="./viewchauffeur.php">chauffeur</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Transport</a>
+              <a class="nav-link" href="./viewtransport.php">Transport</a>
             </li>
             <li class="nav-item">
               <a class="nav-link active" href="./viewquai.php">Quai</a>
@@ -71,12 +71,14 @@
           <div class="modal-body">
             <form action="create" method="post" id="formOrderChauffeur">
               <div class="form-floating mb-3">
+                <input type="text" class="form-control" id="matChauffeur" name="matChauffeur">
+                <label for="matChauffeur">Imatriculation du chauffeur</label>
+              </div>
+              <div class="form-floating mb-3">
                 <input type="text" class="form-control" id="Nom" name="Nom">
                 <label for="Nom">Nom du chauffeur</label>
               </div>
               <div class="form-floating mb-3">
-                <!-- code teo aloha, misy espace le adresse id="Adresse " -->
-                <!-- <input type="text" class="form-control" id="Adresse " name="Adresse "> -->
                 <input type="text" class="form-control" id="Adresse" name="Adresse">
                 <label for="Adresse ">L'adresse du chauffeur</label>
               </div>
@@ -122,6 +124,10 @@
           <div class="modal-body">
             <form action="update" method="post" id="UpdateformOrderChauffeur">
               <input type="hidden" name="id" id="bill_IDchauffeur">
+              <div class="form-floating mb-3">
+                <input type="text" class="form-control" id="UpdatematChauffeur" name="UpdatematChauffeur">
+                <label for="UpdatematChauffeur">Imatriculation du chauffeur</label>
+              </div>
               <div class="form-floating mb-3">
                 <input type="text" class="form-control" id="UpdateNom" name="UpdateNom">
                 <label for="UpdateNom"></label>

@@ -4,7 +4,7 @@ $db = new Database();
 // creation des liste 
 if (isset($_POST['action']) && $_POST['action'] == 'create') {
     extract($_POST);
-    $db->create($Nom, $Adresse);
+    $db->create($Nom, $Adresse, $matChauffeur);
     echo 'perfect';
 }
 //recuperation des liste 
@@ -17,6 +17,7 @@ if (isset($_POST['action']) && $_POST['action'] == 'fetch') {
           <thead>
             <tr>
               <th scope="col">Identifiant du chauffeur</th>
+              <th scope="col">Imatriculation du chauffeur</th>
               <th scope="col">Nom</th>
               <th scope="col">Adresse</th>
               <th scope="col">Action</th>
@@ -28,6 +29,7 @@ if (isset($_POST['action']) && $_POST['action'] == 'fetch') {
             $output .= " 
                 <tr>
                     <th scope=\"row\">$bill->IDchauffeur</th>
+                    <td>$bill->matChauffeur</td>
                     <td>$bill->Nom</td>
                     <td>$bill->Adresse</td>
                     <td>
@@ -52,7 +54,7 @@ if (isset($_POST['workingIDchauffeur'])) {
 // update de la liste
 if (isset($_POST['action']) && $_POST['action'] == 'Update') {
     extract($_POST);
-    $db->update($id, $UpdateNom, $UpdateAdresse);
+    $db->update($id, $UpdateNom, $UpdateAdresse, $UpdatematChauffeur);
     echo 'perfect';
 }
 

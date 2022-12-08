@@ -36,7 +36,7 @@
               <a class="nav-link" href="./viewchauffeur.php">chauffeur</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Transport</a>
+              <a class="nav-link" href="./viewtransport.php">Transport</a>
             </li>
             <li class="nav-item">
               <a class="nav-link active" href="./viewquai.php">Quai</a>
@@ -101,6 +101,11 @@
                 <input type="text" class="form-control" id="quantite" name="quantite">
                 <label for="quantite">Quantité</label>
               </div>
+              <div class="form-floating mb-3">
+                <input type="text" class="form-control" id="nombreSacs" name="nombreSacs">
+                <label for="nombreSacs">Nombre de sacs</label>
+              </div>
+
             </form>
           </div>
           <div class="modal-footer">
@@ -163,6 +168,10 @@
               <div class="form-floating mb-3">
                 <input type="text" class="form-control" id="Updatequantite" name="Updatequantite">
                 <label for="Updatequantite">Quantité</label>
+              </div>
+              <div class="form-floating mb-3">
+                <input type="text" class="form-control" id="UpdatenombreSacs" name="UpdatenombreSacs">
+                <label for="UpdatenombreSacs">Nombre de sacs</label>
               </div>
             </form>
           </div>

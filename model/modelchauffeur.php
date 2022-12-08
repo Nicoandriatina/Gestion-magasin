@@ -14,12 +14,13 @@ class Database
             die('erreur:' . $e->getMessage());
         }
     }
-    public function create(string $Nom, string $Adresse)
+    public function create(string $Nom, string $Adresse, $matChauffeur)
     {
-        $q = $this->getconnexion()->prepare("INSERT INTO chauffeur (Nom, Adresse)  VALUES (:Nom, :Adresse)");
+        $q = $this->getconnexion()->prepare("INSERT INTO chauffeur (Nom, Adresse, matChauffeur)  VALUES (:Nom, :Adresse, :matChauffeur)");
         return $q->execute([
             'Nom' => $Nom,
-            'Adresse' => $Adresse
+            'Adresse' => $Adresse,
+            'matChauffeur' => $matChauffeur
         ]);
     }
     public function read()
@@ -36,25 +37,14 @@ class Database
         $q->execute(['IDchauffeur' => $IDchauffeur]);
         return $q->fetch(PDO::FETCH_OBJ);
     }
-    public function update( int $IDchauffeur, string $Nom, string $Adresse)
+    public function update( int $IDchauffeur, string $Nom, string $Adresse, $matChauffeur)
     {
-        // rehefa manao update dia tsy atao update ny ID, jereo tsara foana ny correspondance des variables
-        // ito ny code taloha
-        // $q = $this->getconnexion()->prepare("UPDATE quai SET NumQuai=:NumQuai Capacite=:Capacite, ville=:ville WHERE NumQuai=:NumQuai");
-
-        $q = $this->getconnexion()->prepare("UPDATE chauffeur SET Nom=:Nom, Adresse=:Adresse WHERE IDchauffeur=:IDchauffeur");
-
-        //ity ny code teo aloha,
-        // return $q->execute([
-        //     'Capacite' => $Capacite,
-        //     'ville' => $ville,
-        //     'NumQuai' => $NumQuai
-        // ]);
-
+           $q = $this->getconnexion()->prepare("UPDATE chauffeur SET Nom=:Nom, Adresse=:Adresse, matChauffeur=:matChauffeur WHERE IDchauffeur=:IDchauffeur");
         return $q->execute([
             'Nom' => $Nom,
             'Adresse' => $Adresse,
-            'IDchauffeur'=>$IDchauffeur
+            'IDchauffeur'=>$IDchauffeur,
+            'matChauffeur' => $matChauffeur
         ]);
     }
     public function delete(int $IDchauffeur)

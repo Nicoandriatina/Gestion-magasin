@@ -8,7 +8,7 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs5/dt-1.12.1/datatables.min.css" />
-  <title>SMMC Port Toamasina</title>
+   <title>SMMC Port Toamasina</title>
 </head>
 
 <body>
@@ -60,49 +60,54 @@
     </nav>
   </header>
   <section class="container py-5">
-    <!--create Modal -->
-    <div class="modal fade" id="createModal" tabindex="-1" aria-labelledby="createModalLabel" aria-hidden="true">
+     <!-- create modal label -->
+     <div class="modal fade" id="createModal" tabindex="-1" aria-labelledby="createModalLabel" aria-hidden="true">
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title" id="createModalLabel">Ajout d'un noveau Engins</h5>
+            <h5 class="modal-title" id="createModalLabel">Ajout d'un novelle Transport</h5>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
           <div class="modal-body">
-            <form action="create" method="post" id="formOrderEngins">
+            <form action="create" method="post" id="formOrderTransport">
               <div class="form-floating mb-3">
-                <input type="text" class="form-control" id="numMatricule" name="numMatricule">
-                <label for="numMatricule">Numero Matricule</label>
+                <input type="text" class="form-control" id="numTransport" name="numTransport">
+                <label for="numTransport">Numero du Transport</label>
               </div>
               <div class="form-floating mb-3">
-                <input type="text" class="form-control" id="numInventaire" name="numInventaire">
-                <label for="numInventaire">Numero d'inventaire</label>
+                <input type="datetime-local" class="form-control" id="dateTransport" name="dateTransport">
+                <label for="dateTransport">Date et heure de Transport</label>
               </div>
               <div class="form-floating mb-3">
-                <select class="form-select" id="typeEngin" aria-label="typeEngin" name="typeEngin">
-                  <option value="Tracteurs portuaire">Tracteurs portuaire</option>
-                  <option value="chariot elevater">chariot elevater</option>
-                  <option value="Camion transporteur">Camion transporteur</option>
-                </select>
-                <label for="typeEngin">Types d'Engin</label>
-              </div>
-              <div class="form-floating mb-3">
-                <select class="form-select" id="chauffeur" aria-label="chauffeur" name="chauffeur">
+                <select class="form-select" id="marchandise" aria-label="marchandise" name="marchandise">
                   <?php
-                  require_once '../model/modelchauffeur.php';
+                  require_once '../model/modeltransport.php';
                   $db = new Database();
                   $db->countBills();
-                  $bills = $db->read();
+                  $bills = $db->readmarchandise();
                   var_dump($bills);
                   foreach ($bills as $bill) { ?>
-                    <option value="<?php echo $bill->IDchauffeur ?>"><?php echo $bill->Nom ?></option>
+                    <option value="<?php echo $bill->codeMarchandise ?>"><?php echo $bill->libelle ?></option>
                   <?php } ?>
                 </select>
-                <label for="chauffeur">identifiant du chauffeur</label>
+                <label for="marchandise">identifiant du Marchandise</label>
               </div>
               <div class="form-floating mb-3">
-                <input type="datetime-local" class="form-control" id="dateAquis" name="dateAquis">
-                <label for="dateAquis">date d'aquisition</label>
+                <select class="form-select" id="vehicule" aria-label="vehicule" name="vehicule">
+                  <?php
+                  $db = new Database();
+                  $db->countBills();
+                  $bills = $db->readengin();
+                  var_dump($bills);
+                  foreach ($bills as $bill) { ?>
+                    <option value="<?php echo $bill->numMatricule ?>"><?php echo $bill->numInventaire ?></option>
+                  <?php } ?>
+                </select>
+                <label for="vehicule">identifiant du Marchandise</label>
+              </div>
+              <div class="form-floating mb-3">
+                <input type="text" class="form-control" id="magasin" name="magasin">
+                <label for="magasin">identifiant du magasin</label>
               </div>
             </form>
           </div>
@@ -113,15 +118,15 @@
         </div>
       </div>
     </div>
-    <div class="row">
+     <div class="row">
       <div class="col-lg8 col-sm mb-5 mx-auto">
-        <h1 class="fs-4 text-center lead text-prymary"> Engin </h1>
+        <h1 class="fs-4 text-center lead text-prymary">Transport</h1>
       </div>
     </div>
     <div class="dropdown-divider"> </div>
     <div class="row">
       <div class="col-md-6">
-        <h5 class="fw-bold mb-8">Liste des engins</h5>
+        <h5 class="fw-bold mb-8">Liste des Transport</h5>
       </div>
       <div class="col-md-6">
         <div class="d-flex justify-content-end">
@@ -135,46 +140,52 @@
       <div class="table-responsive" id="orderTable">
       </div>
     </div>
+    
     <!-- update Modal -->
-    <div class="modal fade" id="UpdateModal" tabindex="-1" aria-labelledby="createModalLabel" aria-hidden="true">
+    <div class="modal fade" id="UpdateModal" tabindex="-1" aria-labelledby="UpdateModalLabel" aria-hidden="true">
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title" id="UpdateModalLabel">Modification du liste du client</h5>
+            <h5 class="modal-title" id="UpdateModalLabel">Modification du liste du Marchandise</h5>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
           <div class="modal-body">
-          <form action="create" method="post" id="UpdateformOrderEngins">
-          <input type="hidden" name="id" id="bill_numMatricule">
-          <div class="form-floating mb-3">
-                <input type="text" class="form-control" id="UpdatenumInventaire" name="UpdatenumInventaire">
-                <label for="UpdatenumInventaire">Numero d'inventaire</label>
+          <form action="Update" method="post" id="UpdateformOrderTransport">
+          <input type="hidden" name="id" id="bill_numTransport">
+              <div class="form-floating mb-3">
+                <input type="datetime-local" class="form-control" id="UpdatedateTransport" name="UpdatedateTransport">
+                <label for="UpdatedateTransport">Date et heure de Transport</label>
               </div>
               <div class="form-floating mb-3">
-                <select class="form-select" id="UpdatetypeEngin" aria-label="UpdatetypeEngin" name="UpdatetypeEngin">
-                  <option value="Tracteurs portuaire">Tracteurs portuaire</option>
-                  <option value="chariot elevater">chariot elevater</option>
-                  <option value="Camion transporteur">Camion transporteur</option>
-                </select>
-                <label for="UpdatetypeEngin">Types d'Engin</label>
-              </div>
-              <div class="form-floating mb-3">
-                <select class="form-select" id="Updatechauffeur" aria-label="Updatechauffeur" name="Updatechauffeur">
+                <select class="form-select" id="Updatemarchandise" aria-label="Updatemarchandise" name="Updatemarchandise">
                   <?php
-                  require_once '../model/modelchauffeur.php';
+                  require_once '../model/modeltransport.php';
                   $db = new Database();
                   $db->countBills();
-                  $bills = $db->read();
+                  $bills = $db->readmarchandise();
                   var_dump($bills);
                   foreach ($bills as $bill) { ?>
-                    <option value="<?php echo $bill->IDchauffeur ?>"><?php echo $bill->Nom ?></option>
+                    <option value="<?php echo $bill->codeMarchandise ?>"><?php echo $bill->libelle ?></option>
                   <?php } ?>
                 </select>
-                <label for="Updatechauffeur">identifiant du chauffeur</label>
+                <label for="Updatemarchandise">identifiant du Marchandise</label>
               </div>
               <div class="form-floating mb-3">
-                <input type="datetime-local" class="form-control" id="UpdatedateAquis" name="UpdatedateAquis">
-                <label for="UpdatedateAquis">Date d'aquisition</label>
+                <select class="form-select" id="Updatevehicule" aria-label="Updatevehicule" name="Updatevehicule">
+                  <?php
+                  $db = new Database();
+                  $db->countBills();
+                  $bills = $db->readengin();
+                  var_dump($bills);
+                  foreach ($bills as $bill) { ?>
+                    <option value="<?php echo $bill->numMatricule ?>"><?php echo $bill->numInventaire ?></option>
+                  <?php } ?>
+                </select>
+                <label for="Updatevehicule">identifiant du Marchandise</label>
+              </div>
+              <div class="form-floating mb-3">
+                <input type="text" class="form-control" id="Updatemagasin" name="Updatemagasin">
+                <label for="Updatemagasin">identifiant du magasin</label>
               </div>
             </form>
           </div>
@@ -190,7 +201,7 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
   <script type="text/javascript" src="https://cdn.datatables.net/v/bs5/dt-1.12.1/datatables.min.js"></script>
   <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-  <script src="../controler/processengin.js"></script>
+  <script src="../controler/proesstransport.js"></script>
 </body>
 
 </html>

@@ -2,12 +2,12 @@ $(function () {
 
     //creation du liste 
     $('#create').on('click', function (e) {
-        let formOrder = $('#formOrderEngins')
+        let formOrder = $('#formOrderTransport')
         if (formOrder[0].checkValidity())
             console.log('data ', formOrder.serialize());
         e.preventDefault();
         $.ajax({
-            url: '../controler/processengin.php',
+            url: '../controler/processtransport.php',
             type: 'post',
             data: formOrder.serialize() + '&action=create',
             success: function (response) {
@@ -21,11 +21,11 @@ $(function () {
             }
         })
     })
-    //recuperation du la liste 
+    //recuperation du la liste de bateau
     getBills();
     function getBills() {
         $.ajax({
-            url: '../controler/processengin.php',
+            url: '../controler/processtransport.php',
             type: 'post',
             data: { action: 'fetch' },
             success: function (response) {
@@ -40,34 +40,36 @@ $(function () {
     }
 
     //modification
-    $('body').on('click', '.editBtn', function (e) {
+    $('body').on('click', '.editBtnTransport', function (e) {
         e.preventDefault();
         $.ajax({
-            url: '../controler/processengin.php',
+            url: '../controler/processtransport.php',
             type: 'post',
-            data: { workingnumMatricule: this.dataset.id },
+            data: { workingcodeMarchandise: this.dataset.id },
             success: function (response) {
                 let billinfo = JSON.parse(response);
                 console.log('billinfo', billinfo);
-                $('#bill_numMatricule').val(billinfo.numMatricule);
-                $('#UpdatenumInventaire').val(billinfo.numInventaire);
-                $('#UpdatedateAquis').val(billinfo.dateAquis);
-                $('#UpdatetypeEngin').val(billinfo.chauffeur);
-                let select = document.querySelector('#UpdatetypeEngin');
+                $('#bill_numTransport').val(billinfo.numTransport);
+                $('#UpdatedateTransport').val(billinfo.dateTransport);
+                $('#Updatevehicule').val(billinfo.vehicule);
+                $('#Updatemagasin').val(billinfo.magasin);
+                $('#Updatemarchandise').val(billinfo.marchandise);
+                let select = document.querySelector('#Updatemarchandise');
                 let UpdatetypeproduitOption = Array.from(select.options);
                 UpdatetypeproduitOption.forEach((o, i) => {
                     if (o.value == billinfo.state) select.selectedIndex = i;
                 })
+                
             }
         })
     })
     $('#Update').on('click', function (e) {
-        let formOrder = $('#UpdateformOrderEngins')
+        let formOrder = $('#UpdateformOrderTransport')
         if (formOrder[0].checkValidity()) {
             console.log('data ', formOrder.serialize());
             e.preventDefault();
             $.ajax({
-                url: '../controler/processengin.php',
+                url: '../controler/processtransport.php',
                 type: 'post',
                 data: formOrder.serialize() + '&action=Update',
                 success: function (response) {
@@ -84,22 +86,22 @@ $(function () {
     })
 
     //affichage info @icon info @actions
-    $('body').on('click', '.infoBtn', function (e) {
+    $('body').on('click', '.infoBtnTransport', function (e) {
         e.preventDefault();
         $.ajax({
-            url: '../controler/processengin.php',
+            url: '../controler/processtransport.php',
             type: 'post',
-            data: { informationnumMatricule: this.dataset.id },
+            data: { informationnumTransport: this.dataset.id },
             success: function (response) {
                 let informations = JSON.parse(response);
                 Swal.fire({
-                    title: `<strong>Information de l'engin Numero ${informations.numMatricule} </strong> `,
+                    title: `<strong>Information de la marchandise Numero ${informations.numTransport} </strong> `,
                     icon: 'info',
                     html:
-                        `Numero d'inventaire : <b>${informations.numInventaire}</b><br>` +
-                        `Types d'engin : <b>${informations.typesEngin}</b><br>` +
-                        `date d'aquisition : <b>${informations.dateAquis}</b><br>` +
-                        `L'identifiant du chauffeur: <b>${informations.chauffeur}</b><br>`,
+                        `Date et heure du transport :<b>${informations.dateTransport}</b><br>` +
+                        `Identifiant de la marchandise :<b>${informations.marchandise}</b><br>` +
+                        `Identifiant de l'engin de transport: <b>${informations.vehicule}</b><br>` +
+                        `Identifiant de la magasin: <b>${informations.magasin} tonnes</b><br>`,
                     showCloseButton: true,
                     showCancelButton: true,
                     focusConfirm: false,
@@ -111,7 +113,7 @@ $(function () {
         })
     })
 
-    $('body').on('click', '.deleteBtn', function (e) {
+    $('body').on('click', '.deleteBtnTransport', function (e) {
         e.preventDefault();
         Swal.fire({
             title: 'vous volez vraiment supprimer' + this.dataset.id,
@@ -124,9 +126,9 @@ $(function () {
         }).then((result) => {
             if (result.isConfirmed) {
                 $.ajax({
-                    url: '../controler/processengin.php',
+                    url: '../controler/processtransport.php',
                     type: 'post',
-                    data: { deletenumMatricule: this.dataset.id },
+                    data: { deletenumTransport: this.dataset.id },
                     success: function (response) {
                         if (response == 1) {
                             Swal.fire(

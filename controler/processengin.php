@@ -5,7 +5,7 @@ $db = new Database();
 if (isset($_POST['action']) && $_POST['action'] == 'create') {
     extract($_POST);
 
-    $db->create($numMatricule, $typeEngin, $chauffeur);
+    $db->create($numMatricule, $typeEngin, $chauffeur, $numInventaire, $dateAquis);
 
     // code teo aloha , ERREUR COPIER COLLER plus de "s" sur $typesEngin
     // $db->create( $numMatricule, $typesEngin, $chauffeur);
@@ -21,8 +21,10 @@ if (isset($_POST['action']) && $_POST['action'] == 'fetch') {
           <thead>
             <tr>
               <th scope="col">Numero matricule</th>
+              <th scope="col">Numero Inventaire</th>
               <th scope="col">types engins</th>
               <th scope="col">identifiant du chauffeur</th>
+              <th scope="col">date Aquisition</th>
               <th scope="col">Action</th>
             </tr>
           </thead>
@@ -32,8 +34,10 @@ if (isset($_POST['action']) && $_POST['action'] == 'fetch') {
             $output .= " 
                 <tr>
                     <th scope=\"row\">$bill->numMatricule</th>
+                    <td>$bill->numInventaire</th>
                     <td>$bill->typesEngin</td>
                     <td>$bill->chauffeur</td>
+                    <td>$bill->dateAquis</td>
                     <td>
                     <a href=\"#\" class=\"text-info me-2 infoBtn\" title=\"voir detail\" data-id=\"$bill->numMatricule\"> <i class=\"fas fa-info-circle\"></i> </a>
                     <a href=\"#\" class=\"text-primary me-2 editBtn\" title=\"voir detail\" data-id=\"$bill->numMatricule\"> <i class=\"fas fa-edit\" data-bs-toggle='modal' data-bs-target='#UpdateModal'></i> </a>
@@ -56,7 +60,7 @@ if (isset($_POST['workingnumMatricule'])) {
 // Modification des bateau
 if (isset($_POST['action']) && $_POST['action'] == 'Update') {
     extract($_POST);
-    $db->update($id, $UpdatetypeEngin, $Updatechauffeur);
+    $db->update($id, $UpdatetypeEngin, $Updatechauffeur, $UpdatenumInventaire, $UpdatedateAquis);
 
     echo 'perfect';
 }

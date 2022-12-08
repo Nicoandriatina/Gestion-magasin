@@ -53,6 +53,7 @@ $(function () {
                 $('#Updatelibelle').val(billinfo.libelle);
                 $('#Updatebateau').val(billinfo.bateau);
                 $('#Updatequantite').val(billinfo.quantite);
+                $('#UpdatenombreSacs').val(billinfo.nombreSacs);
                 $('#UpdatetypesMarchandise').val(billinfo.typesMarchandise);
                 let select = document.querySelector('#UpdatetypesMarchandise');
                 let UpdatetypeproduitOption = Array.from(select.options);
@@ -100,7 +101,8 @@ $(function () {
                         `Nom de la marchandise :<b>${informations.libelle}</b><br>` +
                         `Type de la marchandise :<b>${informations.typesMarchandise}</b><br>` +
                         `Transporter par le navire: <b>${informations.bateau}</b><br>` +
-                        `Quantite de la marchandise: <b>${informations.quantite} tonnes</b><br>`,
+                        `Quantite de la marchandise: <b>${informations.quantite} tonnes</b><br>`+
+                        `Nobre de sacs: <b>${informations.nombreSacs}</b><br>`,
                     showCloseButton: true,
                     showCancelButton: true,
                     focusConfirm: false,

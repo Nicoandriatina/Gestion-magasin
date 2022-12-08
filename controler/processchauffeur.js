@@ -54,6 +54,7 @@ $(function () {
                 $('#bill_IDchauffeur').val(billinfo.IDchauffeur);
                 $('#UpdateNom').val(billinfo.Nom);
                 $('#UpdateAdresse').val(billinfo.Adresse);
+                $('#UpdatematChauffeur').val(billinfo.matChauffeur);
             }
         })
     })
@@ -95,8 +96,9 @@ $(function () {
                     title: `<strong>Information de la chauffeur${informations.IDchauffeur} </strong> `,
                     icon: 'info',
                     html:
-                        `Capacite du quai: <b>${informations.Nom}</b><br>` +
-                        `ville d'emplacement du quai: <b>${informations.Adresse}</b><br>`,
+                        `Imatriculation du chauffeur: <b>${informations.matChauffeur}</b><br>` +
+                        `Nom du chauffeur: <b>${informations.Nom}</b><br>` +
+                        `Adresse du chauffeur: <b>${informations.Adresse}</b><br>`,
                     showCloseButton: true,
                     showCancelButton: true,
                     focusConfirm: false,
