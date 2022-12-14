@@ -14,12 +14,15 @@ class Database
             die('erreur:' . $e->getMessage());
         }
     }
-    public function create(string $Nom, string $Adresse)
+    public function create(string $Nom, string $Adresse, $statClient, $nifClient)
     {
-        $q = $this->getconnexion()->prepare("INSERT INTO client (Nom, Adresse)  VALUES (:Nom, :Adresse)");
+        $q = $this->getconnexion()->prepare("INSERT INTO client (Nom, Adresse, statClient, nifClient)  VALUES (:Nom, :Adresse, :statClient, :nifClient)");
         return $q->execute([
             'Nom' => $Nom,
-            'Adresse' => $Adresse
+            'Adresse' => $Adresse,
+            'statClient' => $statClient,
+            'nifClient'=> $nifClient
+
         ]);
     }
     public function read()
@@ -36,12 +39,14 @@ class Database
         $q->execute(['codeClient' => $codeClient]);
         return $q->fetch(PDO::FETCH_OBJ);
     }
-    public function update( int $codeClient, string $Nom, string $Adresse)
+    public function update( int $codeClient,string $Nom, string $Adresse, $statClient, $nifClient)
     {
-        $q = $this->getconnexion()->prepare("UPDATE client SET Nom=:Nom, Adresse=:Adresse WHERE codeClient=:codeClient");
+        $q = $this->getconnexion()->prepare("UPDATE client SET Nom=:Nom, Adresse=:Adresse, statclient=:statclient ,nifclient=:nifclient WHERE codeClient=:codeClient");
         return $q->execute([
             'Nom' => $Nom,
             'Adresse' => $Adresse,
+            'statClient' => $statClient,
+            'nifClient'=> $nifClient,
             'codeClient'=>$codeClient
         ]);
     }

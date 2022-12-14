@@ -42,7 +42,7 @@
               <a class="nav-link active" href="./viewquai.php">Quai</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Magasin</a>
+              <a class="nav-link" href="./viewmagentree.php">Magasin entree</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="#">Magasinier</a>
@@ -70,10 +70,6 @@
           </div>
           <div class="modal-body">
             <form action="create" method="post" id="formOrderTransport">
-              <div class="form-floating mb-3">
-                <input type="text" class="form-control" id="numTransport" name="numTransport">
-                <label for="numTransport">Numero du Transport</label>
-              </div>
               <div class="form-floating mb-3">
                 <input type="datetime-local" class="form-control" id="dateTransport" name="dateTransport">
                 <label for="dateTransport">Date et heure de Transport</label>

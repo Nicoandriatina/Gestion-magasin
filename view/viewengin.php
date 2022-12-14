@@ -42,7 +42,7 @@
               <a class="nav-link active" href="./viewquai.php">Quai</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Magasin</a>
+              <a class="nav-link" href="./viewmagentree.php">Magasin entree</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="#">Magasinier</a>
@@ -85,6 +85,10 @@
                   <option value="Camion transporteur">Camion transporteur</option>
                 </select>
                 <label for="typeEngin">Types d'Engin</label>
+              </div>
+              <div class="form-floating mb-3">
+                <input type="text" class="form-control" id="marque" name="marque">
+                <label for="marque">Marque</label>
               </div>
               <div class="form-floating mb-3">
                 <select class="form-select" id="chauffeur" aria-label="chauffeur" name="chauffeur">
@@ -157,6 +161,10 @@
                   <option value="Camion transporteur">Camion transporteur</option>
                 </select>
                 <label for="UpdatetypeEngin">Types d'Engin</label>
+              </div>
+              <div class="form-floating mb-3">
+                <input type="text" class="form-control" id="Updatemarque" name="Updatemarque">
+                <label for="Updatemarque">Marque</label>
               </div>
               <div class="form-floating mb-3">
                 <select class="form-select" id="Updatechauffeur" aria-label="Updatechauffeur" name="Updatechauffeur">

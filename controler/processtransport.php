@@ -4,7 +4,7 @@ $db = new Database();
 // creation des liste 
 if (isset($_POST['action']) && $_POST['action'] == 'create') {
     extract($_POST);
-    $db->create(  $numTransport, $dateTransport, $marchandise, $vehicule, $magasin);
+    $db->create(  $dateTransport, $marchandise, $vehicule);
     echo 'perfect';
 }
 //recuperation des liste de bateau
@@ -33,7 +33,7 @@ if (isset($_POST['action']) && $_POST['action'] == 'fetch') {
                     <td>$bill->dateTransport</td>
                     <td>$bill->marchandise</td>
                     <td>$bill->vehicule </td>
-                    <td>$bill->magasin</td>
+                    
                     <td>
                     <a href=\"#\" class=\"text-info me-2 infoBtnTransport\" title=\"voir detail\" data-id=\"$bill->numTransport\"> <i class=\"fas fa-info-circle\"></i> </a>
                     <a href=\"#\" class=\"text-primary me-2 editBtnTransport\" title=\"voir detail\" data-id=\"$bill->numTransport\"> <i class=\"fas fa-edit\" data-bs-toggle='modal' data-bs-target='#UpdateModal'></i> </a>

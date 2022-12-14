@@ -25,7 +25,10 @@
               <a class="nav-link " aria-current="page" href="../index.html">Acceuil</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="./viewnavire.php">Navires</a>
+              <a class="nav-link active" href="./viewnavire.php">Navires</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link " href="./viewquai.php">Quai</a>
             </li>
             </li>
             <li class="nav-item">
@@ -39,10 +42,7 @@
               <a class="nav-link" href="./viewtransport.php">Transport</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link active" href="./viewquai.php">Quai</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="./viewmagentree.php">Magasin Entree</a>
+              <a class="nav-link" href="#">Magasin</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="#">Magasinier</a>
@@ -65,22 +65,38 @@
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title" id="createModalLabel">Ajout d'un noveau chauffeur</h5>
+            <h5 class="modal-title" id="createModalLabel">Novelle entree de Marchandise</h5>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
           <div class="modal-body">
-            <form action="create" method="post" id="formOrderChauffeur">
-              <div class="form-floating mb-3">
-                <input type="text" class="form-control" id="matChauffeur" name="matChauffeur">
-                <label for="matChauffeur">Imatriculation du chauffeur</label>
-              </div>
+            <form action="" method="post" id="formOrderMagSortie">
               <div class="form-floating mb-3">
                 <input type="text" class="form-control" id="Nom" name="Nom">
-                <label for="Nom">Nom du chauffeur</label>
+                <label for="Nom">Libelle du magasin</label>
               </div>
               <div class="form-floating mb-3">
-                <input type="text" class="form-control" id="Adresse" name="Adresse">
-                <label for="Adresse ">L'adresse du chauffeur</label>
+                <input type="text" class="form-control" id="codeMarchandise" name="codeMarchandise">
+                <label for="codeMarchandise">Identifiant du Marchandise</label>
+              </div>
+              <div class="form-floating mb-3">
+                <input type="text" class="form-control" id="nombreSacs" name="nombreSacs">
+                <label for="nombreSacs">Nombre de Sacs</label>
+              </div>
+              <div class="form-floating mb-3">
+                <input type="text" class="form-control" id="numInventaire" name="numInventaire">
+                <label for="numInventaire">Numero d'inventaire</label>
+              </div>
+              <div class="form-floating mb-3">
+                <input type="text" class="form-control" id="client" name="client">
+                <label for="client">Numero fiscale du client</label>
+              </div>
+              <div class="form-floating mb-3">
+                <input type="text" class="form-control" id="statClient" name="statClient">
+                <label for="statClient">Numero STAT du client</label>
+              </div>
+              <div class="form-floating mb-3">
+                <input type="datetime-local" class="form-control" id="dateSortie" name="dateSortie">
+                <label for="dateSortie">date de sortie du Marchandise</label>
               </div>
             </form>
           </div>
@@ -93,18 +109,18 @@
     </div>
     <div class="row">
       <div class="col-lg8 col-sm mb-5 mx-auto">
-        <h1 class="fs-4 text-center lead text-prymary"> Chauffeur </h1>
+        <h1 class="fs-4 text-center lead text-prymary">Magasin Sortie</h1>
       </div>
     </div>
     <div class="dropdown-divider"> </div>
     <div class="row">
       <div class="col-md-6">
-        <h5 class="fw-bold mb-8">Liste des chauffeur</hh5>
+        <h5 class="fw-bold mb-8">Liste Marchandise Sortie</h5>
       </div>
       <div class="col-md-6">
         <div class="d-flex justify-content-end">
           <button class="btn btn-primary btn-sm me-3" data-bs-toggle="modal" data-bs-target="#createModal"> <i class="fas fa-folder-plus">Nouveau</i> </button>
-          <a href="../controler/processquai.php?action=Exporter" class="btn btn-success-btn-sm" id="export"> <i class="fas fa-table">Exporter</i> </a>
+          <a href="../controler/processnavire.php?action=export" class="btn btn-success-btn-sm" id="export"> <i class="fas fa-table">Exporter</i> </a>
         </div>
       </div>
     </div>
@@ -118,23 +134,39 @@
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title" id="UpdateModalLabel">Modification du liste du chauffeur</h5>
+            <h5 class="modal-title" id="UpdateModalLabel">Modifier les Marchandises entree </h5>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
           <div class="modal-body">
-            <form action="update" method="post" id="UpdateformOrderChauffeur">
-              <input type="hidden" name="id" id="bill_IDchauffeur">
-              <div class="form-floating mb-3">
-                <input type="text" class="form-control" id="UpdatematChauffeur" name="UpdatematChauffeur">
-                <label for="UpdatematChauffeur">Imatriculation du chauffeur</label>
-              </div>
+          <form action="" method="post" id="formOrderMagSortie">
+          <input type="hidden" name="id" id="bill_idMagSortie">
               <div class="form-floating mb-3">
                 <input type="text" class="form-control" id="UpdateNom" name="UpdateNom">
-                <label for="UpdateNom"></label>
+                <label for="UpdateNom">Libelle du magasin</label>
               </div>
               <div class="form-floating mb-3">
-                <input type="text" class="form-control" id="UpdateAdresse" name="UpdateAdresse">
-                <label for="UpdateAdresse ">L'adresse du chauffeur</label>
+                <input type="text" class="form-control" id="UpdatecodeMarchandise" name="UpdatecodeMarchandise">
+                <label for="UpdatecodeMarchandise">Identifiant du Marchandise</label>
+              </div>
+              <div class="form-floating mb-3">
+                <input type="text" class="form-control" id="UpdatenombreSacs" name="UpdatenombreSacs">
+                <label for="UpdatenombreSacs">Nombre de Sacs</label>
+              </div>
+              <div class="form-floating mb-3">
+                <input type="text" class="form-control" id="UpdatenumInventaire" name="UpdatenumInventaire">
+                <label for="UpdatenumInventaire">Numero d'inventaire</label>
+              </div>
+              <div class="form-floating mb-3">
+                <input type="text" class="form-control" id="Updateclient" name="Updateclient">
+                <label for="Updateclient">Numero fiscale du client</label>
+              </div>
+              <div class="form-floating mb-3">
+                <input type="text" class="form-control" id="UpdatestatClient" name="UpdatestatClient">
+                <label for="UpdatestatClient">Numero STAT du client</label>
+              </div>
+              <div class="form-floating mb-3">
+                <input type="datetime-local" class="form-control" id="UpdatedateSortie" name="UpdatedateSortie">
+                <label for="UpdatedateSortie">date de sortie du Marchandise</label>
               </div>
             </form>
           </div>
@@ -150,7 +182,7 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
   <script type="text/javascript" src="https://cdn.datatables.net/v/bs5/dt-1.12.1/datatables.min.js"></script>
   <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-  <script src="../controler/processchauffeur.js"></script>
+  <script src="../controler/processmagsortie.js"></script>
 </body>
 
 </html>

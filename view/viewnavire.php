@@ -42,7 +42,7 @@
               <a class="nav-link" href="./viewtransport.php">Transport</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Magasin</a>
+              <a class="nav-link" href="./viewmagentree.php">Magasin entree</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="#">Magasinier</a>

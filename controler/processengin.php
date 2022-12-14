@@ -5,7 +5,7 @@ $db = new Database();
 if (isset($_POST['action']) && $_POST['action'] == 'create') {
     extract($_POST);
 
-    $db->create($numMatricule, $typeEngin, $chauffeur, $numInventaire, $dateAquis);
+    $db->create($numMatricule, $typeEngin, $marque, $chauffeur, $numInventaire, $dateAquis, $marque);
 
     // code teo aloha , ERREUR COPIER COLLER plus de "s" sur $typesEngin
     // $db->create( $numMatricule, $typesEngin, $chauffeur);
@@ -22,7 +22,8 @@ if (isset($_POST['action']) && $_POST['action'] == 'fetch') {
             <tr>
               <th scope="col">Numero matricule</th>
               <th scope="col">Numero Inventaire</th>
-              <th scope="col">types engins</th>
+              <th scope="col">Types engins</th>
+              <th scope="col">Marque</th>
               <th scope="col">identifiant du chauffeur</th>
               <th scope="col">date Aquisition</th>
               <th scope="col">Action</th>
@@ -36,6 +37,7 @@ if (isset($_POST['action']) && $_POST['action'] == 'fetch') {
                     <th scope=\"row\">$bill->numMatricule</th>
                     <td>$bill->numInventaire</th>
                     <td>$bill->typesEngin</td>
+                    <td>$bill->marque</td>
                     <td>$bill->chauffeur</td>
                     <td>$bill->dateAquis</td>
                     <td>
@@ -60,7 +62,7 @@ if (isset($_POST['workingnumMatricule'])) {
 // Modification des bateau
 if (isset($_POST['action']) && $_POST['action'] == 'Update') {
     extract($_POST);
-    $db->update($id, $UpdatetypeEngin, $Updatechauffeur, $UpdatenumInventaire, $UpdatedateAquis);
+    $db->update($id, $UpdatetypeEngin, $Updatechauffeur, $UpdatenumInventaire, $UpdatedateAquis, $Updatemarque);
 
     echo 'perfect';
 }

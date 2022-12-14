@@ -14,17 +14,17 @@ class Database
             die('erreur:' . $e->getMessage());
         }
     }
-    public function create( $numTransport, $dateTransport, $marchandise,  $vehicule, $magasin)
+    public function create(  $dateTransport, $marchandise,  $vehicule, )
     {
-        echo gettype ($magasin);
-        // $q = $this->getconnexion()->prepare("INSERT INTO transport (dateTransport , marchandise, vehicule, magasin) 
-        // VALUES ( :dateTransport, :marchandise, :vehicule, :magasin)");
-        // return $q->execute([
-        //     'dateTransport' =>$dateTransport,
-        //     'marchandise' => $marchandise,
-        //     'vehicule,' => $vehicule,
-        //     'magasin'=>$magasin
-        // ]);
+      
+        $q = $this->getconnexion()->prepare("INSERT INTO transport (dateTransport , marchandise, vehicule) 
+        VALUES ( :dateTransport, :marchandise, :vehicule)");
+        return $q->execute([
+            'dateTransport' =>$dateTransport,
+            'marchandise' => $marchandise,
+            'vehicule,' => $vehicule,
+            
+        ]);
     }
     public function read()
     {
@@ -55,6 +55,7 @@ class Database
     {
         $q = $this->getconnexion()->prepare(" DELETE FROM transport WHERE numTransport = :numTransport");
         return $q->execute(['numTransport' => $numTransport]);
+        
     }
     public function readmarchandise()
     {

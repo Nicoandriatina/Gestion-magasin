@@ -54,6 +54,8 @@ $(function () {
                 $('#bill_codeClient').val(billinfo.codeClient);
                 $('#UpdateNom').val(billinfo.Nom);
                 $('#UpdateAdresse').val(billinfo.Adresse);
+                $('#UpdatestatClient').val(billinfo.statClient);
+                $('#UpdatenifClient').val(billinfo.nifClient);
             }
         })
     })
@@ -96,7 +98,9 @@ $(function () {
                     icon: 'info',
                     html:
                         `Nom du client: <b>${informations.Nom}</b><br>` +
-                        `Adresse du client: <b>${informations.Adresse}</b><br>`,
+                        `Adresse du client: <b>${informations.Adresse}</b><br>`+
+                        `Numero Stat du client: <b>${informations.statClient}</b><br>`+
+                        `Numero fiscal du client: <b>${informations.nifclient}</b><br>`,
                     showCloseButton: true,
                     showCancelButton: true,
                     focusConfirm: false,

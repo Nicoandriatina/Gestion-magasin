@@ -4,7 +4,7 @@ $db = new Database();
 // creation des liste de bateau
 if (isset($_POST['action']) && $_POST['action'] == 'create') {
     extract($_POST);
-    $db->create($Nom, $Adresse);
+    $db->create($Nom,  $Adresse, $statClient, $nifClient);
     echo 'perfect';
 }
 //recuperation des liste de bateau
@@ -19,6 +19,8 @@ if (isset($_POST['action']) && $_POST['action'] == 'fetch') {
               <th scope="col">Identifiant du client</th>
               <th scope="col">Nom</th>
               <th scope="col">Adresse</th>
+              <th scope="col">Numero stat du client</th> </th>
+              <th scope="col">Numero fiscal du client</th>
               <th scope="col">Action</th>
             </tr>
           </thead>
@@ -30,6 +32,8 @@ if (isset($_POST['action']) && $_POST['action'] == 'fetch') {
                     <th scope=\"row\">$bill->codeClient</th>
                     <td>$bill->Nom</td>
                     <td>$bill->Adresse</td>
+                    <td>$bill->statClient</td>
+                    <td>$bill->nifClient</td>
                     <td>
                     <a href=\"#\" class=\"text-info me-2 infoBtnClient\" title=\"voir detail\" data-id=\"$bill->codeClient\"> <i class=\"fas fa-info-circle\"></i> </a>
                     <a href=\"#\" class=\"text-primary me-2 editBtnClient\" title=\"voir detail\" data-id=\"$bill->codeClient\"> <i class=\"fas fa-edit\" data-bs-toggle='modal' data-bs-target='#UpdateModal'></i> </a>
@@ -52,7 +56,7 @@ if (isset($_POST['workingcodeClient'])) {
 // Modification des Chauffeur
 if (isset($_POST['action']) && $_POST['action'] == 'Update') {
     extract($_POST);
-    $db->update($id, $UpdateNom, $UpdateAdresse);
+    $db->update($id, $UpdateNom, $UpdateAdresse, $UpdatestatClient, $UpdatenifClient);
     echo 'perfect';
 }
 

@@ -42,7 +42,7 @@
               <a class="nav-link color-white" href="./viewquai.php">Quai</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link color-white" href="#">Magasin</a>
+              <a class="nav-link color-white" href="./viewmagentree.php">Magasin entree</a>
             </li>
             <li class="nav-item">
               <a class="nav-link color-white" href="#">Magasinier</a>

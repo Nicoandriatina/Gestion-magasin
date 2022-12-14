@@ -38,19 +38,7 @@ class Database
     }
     public function update(int $NumQuai, string $Capacite, string $ville)
     {
-        // rehefa manao update dia tsy atao update ny ID, jereo tsara foana ny correspondance des variables
-        // ito ny code taloha
-        // $q = $this->getconnexion()->prepare("UPDATE quai SET NumQuai=:NumQuai Capacite=:Capacite, ville=:ville WHERE NumQuai=:NumQuai");
-
         $q = $this->getconnexion()->prepare("UPDATE quai SET Capacite=:Capacite, ville=:ville WHERE NumQuai=:NumQuai");
-
-    //ity ny code teo aloha,
-        // return $q->execute([
-        //     'Capacite' => $Capacite,
-        //     'ville' => $ville,
-        //     'NumQuai' => $NumQuai
-        // ]);    
-
         return $q->execute([
             'Capacite' => $Capacite,
             'ville' => $ville,
@@ -59,9 +47,6 @@ class Database
     }
     public function delete(int $NumQuai)
     {
-        // ity ny code teo aloha, tandremo lay copier/coller
-        // $q = $this->getconnexion()->prepare(" DELETE FROM bateaux WHERE NumQuai = :NumQuai");
-
         $q = $this->getconnexion()->prepare(" DELETE FROM quai WHERE NumQuai=:NumQuai");
         return $q->execute(['NumQuai' => $NumQuai]);
     }

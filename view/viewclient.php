@@ -42,7 +42,7 @@
               <a class="nav-link active" href="./viewquai.php">Quai</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Magasin</a>
+              <a class="nav-link" href="./viewmagentree.php">Magasin entree</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="#">Magasinier</a>
@@ -77,6 +77,14 @@
               <div class="form-floating mb-3">
                 <input type="text" class="form-control" id="Adresse" name="Adresse">
                 <label for="Adresse ">L'adresse du client</label>
+              </div>
+              <div class="form-floating mb-3">
+                <input type="text" class="form-control" id="statClient" name="statClient">
+                <label for="statClient ">Numero stat de client</label>
+              </div>
+              <div class="form-floating mb-3">
+                <input type="text" class="form-control" id="nifClient" name="nifClient">
+                <label for="nifClient ">Numero fiscale de client</label>
               </div>
             </form>
           </div>
@@ -127,6 +135,14 @@
               <div class="form-floating mb-3">
                 <input type="text" class="form-control" id="UpdateAdresse" name="UpdateAdresse">
                 <label for="UpdateAdresse ">L'adresse du client</label>
+              </div>
+              <div class="form-floating mb-3">
+                <input type="text" class="form-control" id="UpdatestatClient" name="UpdatestatClient">
+                <label for="UpdatestatClient ">Numero stat de client</label>
+              </div>
+              <div class="form-floating mb-3">
+                <input type="text" class="form-control" id="UpdatenifClient" name="UpdatenifClient">
+                <label for="UpdatenifClient ">Numero fiscale de client</label>
               </div>
             </form>
           </div>

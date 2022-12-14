@@ -14,15 +14,16 @@ class Database
             die('erreur:' . $e->getMessage());
         }
     }
-    public function create(int $numMatricule, string $typesEngin, int $chauffeur, int $numInventaire, $dateAquis)
+    public function create(int $numMatricule, string $typesEngin, int $chauffeur, int $numInventaire, $dateAquis, $marque)
     {
-        $q = $this->getconnexion()->prepare("INSERT INTO engin(numMatricule, typesEngin, chauffeur, numInventaire, dateAquis)VALUES (:numMatricule, :typesEngin, :chauffeur, :numInventaire ,:dateAquis)");
+        $q = $this->getconnexion()->prepare("INSERT INTO engin(numMatricule,  numInventaire, marque, typesEngin, chauffeur, dateAquis)VALUES (:numMatricule, :numInventaire, :typesEngin, :marque ,:chauffeur ,:dateAquis)");
         return $q->execute([
            'numMatricule' => $numMatricule,
            'typesEngin'=>$typesEngin,
            'chauffeur'=>$chauffeur,
            'numInventaire'=>$numInventaire,
-           'dateAquis'=> $dateAquis
+           'dateAquis'=> $dateAquis,
+           'marque'=> $marque,
            
         ]);
     }
@@ -40,15 +41,16 @@ class Database
         $q->execute(['numMatricule' => $numMatricule]);
         return $q->fetch(PDO::FETCH_OBJ);
     }
-    public function update(int $numMatricule, string $typesEngin, int $chauffeur, int $numInventaire, $dateAquis)
+    public function update(int $numMatricule, string $typesEngin, int $chauffeur, int $numInventaire, $dateAquis, $marque)
     {
-        $q = $this->getconnexion()->prepare("UPDATE  engin SET typesEngin=:typesEngin, chauffeur=:chauffeur, numInventaire=:numInventaire, dateAquis=:dateAquis WHERE numMatricule=:numMatricule");
+        $q = $this->getconnexion()->prepare("UPDATE  engin SET typesEngin=:typesEngin, chauffeur=:chauffeur, numInventaire=:numInventaire, dateAquis=:dateAquis , marque=:marque WHERE numMatricule=:numMatricule");
         return $q->execute([
             'numMatricule' => $numMatricule,
             'typesEngin'=>$typesEngin,
             'chauffeur'=>$chauffeur,
             'numInventaire'=>$numInventaire,
-            'dateAquis'=> $dateAquis
+            'dateAquis'=> $dateAquis,
+            'marque'=>$marque,
         ]);
     }
     public function delete(int $numMatricule){
