@@ -79,6 +79,7 @@ if (isset($_POST['deleteId'])) {
     echo ($db->delete($deleteId));
 }
 
+
 // //exportation
 // if (isset($_GET['action']) && $_GET['action'] == 'export') {
 //     $excelFileName = "Liste des bateaux" . date('YmdHis') . 'xls';

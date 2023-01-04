@@ -78,24 +78,5 @@ if (isset($_POST['deleteId'])) {
     echo ($db->delete($deleteId));
 }
 
-//exportation
-if (isset($_GET['action']) && $_GET['action'] == 'export') {
-    $excelFileName = "Liste des bateaux" . date('YmdHis') . 'xls';
-    header("contein-Type: application/vnd.ms-excel");
-    header("conteint-Disposition: attachement; filename=$excelFileName");
 
-    $nomcolonne = ['Identifiant', 'Numquai', 'Nom', 'Marque', 'categories', 'chargemaximale', 'chargemine', 'Type'];
-
-    $data = implode("\t", array_values($nomcolonne)) . "\n";
-    if ($db->countBills() > 0) {
-        $bills = $db->read();
-        foreach ($bills as $bill) {
-            $excelData = [$bill->ID, $bill->NumQuai, $bill->Nombateau, $bill->Marque, $bill->categories, $bill->chargemax, $bill->chargemax, $bill->typeproduit];
-            $data .= implode("\t", $excelData) . "\n";
-        }
-    } else {
-        $data = "Aucun liste trouver...." . "\n";
-    }
-    echo $data;
-    die();
-}
+?>

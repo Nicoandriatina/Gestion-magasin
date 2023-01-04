@@ -1,13 +1,13 @@
 <?php
 require_once '../model/modelmagsortie.php';
 $db = new Database();
-// creation des liste de bateau
+// creation des liste DANS bd
 if (isset($_POST['action']) && $_POST['action'] == 'create') {
     extract($_POST);
     $db->create($Nom, $codeMarchandise, $nombreSacs, $numInventaire, $client, $statClient, $dateSortie);
     echo 'perfect';
 }
-//recuperation de liste des bateau
+//recuperation de liste et affichage dans l'interfaces
 if (isset($_POST['action']) && $_POST['action'] == 'fetch') {
     $output = '';
     if ($db->countBills() > 0) {

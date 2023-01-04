@@ -51,7 +51,7 @@ $(function () {
                 let billinfo = JSON.parse(response);
                 console.log('billinfo', billinfo);
                 $('#bill_id').val(billinfo.ID);
-                $('#UpdatenumQuai').val(billinfo.numQuai);
+                $('#UpdatenumQuai').val(billinfo.NumQuai);
                 $('#UpdateNombateau').val(billinfo.Nombateau);
                 $('#UpdateMarque').val(billinfo.Marque);
                 $('#Updatecategories').val(billinfo.categories);
@@ -121,7 +121,7 @@ $(function () {
     $('body').on('click', '.deleteBtn', function (e) {
         e.preventDefault();
         Swal.fire({
-            title: 'vous volez vraiment supprimer' + this.dataset.id,
+            title: 'vous voulez vraiment supprimer?' + this.dataset.id,
             text: "cette action est irreversible!",
             icon: 'warning',
             showCancelButton: true,
@@ -137,8 +137,8 @@ $(function () {
                     success: function (response) {
                         if (response == 1) {
                             Swal.fire(
-                                'Supprimer!',
-                                'suppression avec succes!',
+                                'supprimer!',
+                                'Votre fichier a bien été supprimé!',
                                 'success'
                             )
                             getBills();
@@ -151,3 +151,5 @@ $(function () {
     })
 
 })
+
+

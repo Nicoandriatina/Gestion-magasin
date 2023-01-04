@@ -45,7 +45,7 @@
               <a class="nav-link color-white" href="./viewmagentree.php">Magasin entree</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link color-white" href="#">Magasinier</a>
+            <a class="nav-link" href="./viewmagsortie.php">Magasin Sortie</a>
             </li>
             </li>
             <li class="nav-item">
@@ -100,7 +100,7 @@
       <div class="col-md-6">
         <div class="d-flex justify-content-end">
           <button class="btn btn-primary btn-sm me-3" data-bs-toggle="modal" data-bs-target="#createModal"> <i class="fas fa-folder-plus">Nouveau</i> </button>
-          <a href="../controler/processquai.php?action=Exporter" class="btn btn-success-btn-sm" id="export"> <i class="fas fa-table">Exporter</i> </a>
+          <button onclick="HtmlTOExcel('xlsx')" type="exporter" name="exporter" id="exporter" class="btn btn-success-btn-sm"><i class="fas fa-table">Exporter</i></button> 
         </div>
       </div>
     </div>
@@ -137,14 +137,22 @@
         </div>
       </div>
     </div>
-    <!-- Jereo tsara fa misy mifandipatra le code, lasa tsy tafiditra ao am modal, mila mahay copier/coller 😜 -->
-    <!-- </div> -->
   </section>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js" integrity="sha512-aVKKRRi/Q/YV+4mjoKBsE4x3H+BkegoM/em46NNlCqNTmUYADjBbeNefNxYV7giUp0VxICtqdrbqU7iVaeZNXA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
   <script type="text/javascript" src="https://cdn.datatables.net/v/bs5/dt-1.12.1/datatables.min.js"></script>
   <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   <script type="text/javascript" src="../controler/processquai.js"></script>
+  <script type="text/javascript" src="https://unpkg.com/xlsx@0.15.1/dist/xlsx.full.min.js"></script>
+  <script>
+    function HtmlTOExcel(type, fun, dl) {
+    var elt = document.getElementById('table');
+    var wb = XLSX.utils.table_to_book(elt, { sheet: "sheet1" });
+    return dl ?
+        XLSX.write(wb, { bookType: type, bookSST: true, type: 'base64' }) :
+        XLSX.writeFile(wb, fun || ('student-recored.' + (type || 'xlsx')));
+}
+  </script>
 </body>
 
 </html>

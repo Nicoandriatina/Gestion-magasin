@@ -102,8 +102,18 @@
                 <label for="vehicule">identifiant du Marchandise</label>
               </div>
               <div class="form-floating mb-3">
-                <input type="text" class="form-control" id="magasin" name="magasin">
-                <label for="magasin">identifiant du magasin</label>
+                <select class="form-select" id="magasin" aria-label="magasin" name="magasin">
+                  <?php
+                  require_once '../model/modeltransport.php';
+                  $db = new Database();
+                  $db->countBills();
+                  $bills = $db->readmagasin();
+                  var_dump($bills);
+                  foreach ($bills as $bill) { ?>
+                    <option value="<?php echo $bill->idMagEntree ?>"><?php echo $bill->Nom ?></option>
+                  <?php } ?>
+                </select>
+                <label for="magasin">identifiant du Marchandise</label>
               </div>
             </form>
           </div>
@@ -127,7 +137,7 @@
       <div class="col-md-6">
         <div class="d-flex justify-content-end">
           <button class="btn btn-primary btn-sm me-3" data-bs-toggle="modal" data-bs-target="#createModal"> <i class="fas fa-folder-plus">Nouveau</i> </button>
-          <a href="../controler/processquai.php?action=Exporter" class="btn btn-success-btn-sm" id="export"> <i class="fas fa-table">Exporter</i> </a>
+          <button onclick="HtmlTOExcel('xlsx')" type="exporter" name="exporter" id="exporter" class="btn btn-success-btn-sm"><i class="fas fa-table">Exporter</i></button> 
         </div>
       </div>
     </div>
@@ -198,6 +208,16 @@
   <script type="text/javascript" src="https://cdn.datatables.net/v/bs5/dt-1.12.1/datatables.min.js"></script>
   <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   <script src="../controler/proesstransport.js"></script>
+  <script type="text/javascript" src="https://unpkg.com/xlsx@0.15.1/dist/xlsx.full.min.js"></script>
+  <script>
+    function HtmlTOExcel(type, fun, dl) {
+    var elt = document.getElementById('table');
+    var wb = XLSX.utils.table_to_book(elt, { sheet: "sheet1" });
+    return dl ?
+        XLSX.write(wb, { bookType: type, bookSST: true, type: 'base64' }) :
+        XLSX.writeFile(wb, fun || ('student-recored.' + (type || 'xlsx')));
+}
+  </script>
 </body>
 
 </html>

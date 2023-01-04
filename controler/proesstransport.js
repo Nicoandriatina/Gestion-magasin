@@ -116,7 +116,7 @@ $(function () {
     $('body').on('click', '.deleteBtnTransport', function (e) {
         e.preventDefault();
         Swal.fire({
-            title: 'vous volez vraiment supprimer' + this.dataset.id,
+            title: 'vous voulez vraiment supprimer?' + this.dataset.id,
             text: "cette action est irreversible!",
             icon: 'warning',
             showCancelButton: true,
@@ -132,8 +132,8 @@ $(function () {
                     success: function (response) {
                         if (response == 1) {
                             Swal.fire(
-                                'Supprimer!',
-                                'suppression avec succes!',
+                                'supprimer!',
+                                'Votre fichier a bien été supprimé!',
                                 'success'
                             )
                             getBills();

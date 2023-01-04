@@ -21,7 +21,7 @@ class Database
             'bateau' => $bateau,
             'libelle' => $libelle,
             'typesMarchandise' => $typesMarchandise,
-            'quantite' => $quantite,
+            'quantite' => $quantite, 
             'nombreSacs'=> $nombreSacs
 
         ]);

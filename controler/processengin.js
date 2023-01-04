@@ -116,7 +116,7 @@ $(function () {
     $('body').on('click', '.deleteBtn', function (e) {
         e.preventDefault();
         Swal.fire({
-            title: 'vous volez vraiment supprimer' + this.dataset.id,
+            title: 'vous voulez vraiment supprimer?' + this.dataset.id,
             text: "cette action est irreversible!",
             icon: 'warning',
             showCancelButton: true,

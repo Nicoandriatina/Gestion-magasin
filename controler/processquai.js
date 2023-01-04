@@ -113,7 +113,7 @@ $(function () {
     $('body').on('click', '.deleteBtnQuai', function (e) {
         e.preventDefault();
         Swal.fire({
-            title: 'vous volez vraiment supprimer ' + this.dataset.id,
+            title: 'vous voulez vraiment supprimer?S ' + this.dataset.id,
             text: "cette action est irreversible!",
             icon: 'warning',
             showCancelButton: true,
@@ -125,16 +125,12 @@ $(function () {
                 $.ajax({
                     url: '../controler/processquai.php',
                     type: 'post',
-                    // jereo tsara ny correspondance des variables
-                    // code teo aloha
-                    // data: { deleteId: this.dataset.id },
-
                     data: { deleteNumQuai: this.dataset.id },
                     success: function (response) {
                         if (response == 1) {
                             Swal.fire(
-                                'Deleted!',
-                                'Your file has been deleted!',
+                                'supprimer!',
+                                'Votre fichier a bien été supprimé!',
                                 'success'
                             )
                             getBills();

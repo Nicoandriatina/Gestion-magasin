@@ -94,3 +94,4 @@ if (isset($_GET['action']) && $_GET['action'] == 'Exporter') {
     echo $data;
     die();
 }
+?>

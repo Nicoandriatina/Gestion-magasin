@@ -2,6 +2,7 @@
 
 class Database
 {
+    
     private $host = 'mysql:host=localhost;dbname=crudajax';
     private $user = 'root';
     private $password = '';
@@ -65,4 +66,9 @@ class Database
     {
         return $this->getconnexion()->query("SELECT * FROM engin ORDER BY numMatricule")->fetchAll(PDO::FETCH_OBJ);
     }
+    public function readmagasin()
+    {
+        return $this->getconnexion()->query("SELECT * FROM magasinsortie ORDER BY idMagsortie")->fetchAll(PDO::FETCH_OBJ);
+    }
+   
 }

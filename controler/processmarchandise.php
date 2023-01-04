@@ -76,32 +76,5 @@ if (isset($_POST['deletecodeMarchandise'])) {
 
 
 
+?>
 
-
-
-
-
-
-
-
-// //exportation
-// if (isset($_GET['action']) && $_GET['action'] == 'Exporter') {
-//     $excelFileName = "Liste des quais" . date('YmdHis') . 'xls';
-//     header("contein-Type: application/vnd.ms-excel");
-//     header("conteint-Disposition: attachement; filename=$excelFileName");
-
-//     $nomcolonne = ['NumeroQuai', 'Capacite', 'ville'];
-
-//     $data = implode("\t", array_values($nomcolonne)) . "\n";
-//     if ($db->countBills() > 0) {
-//         $bills = $db->read();
-//         foreach ($bills as $bill) {
-//             $exceldata = [$bill->NumQuai, $bill->Capacite, $bill->ville];
-//             $data .= implode("\t", $exceldata) . "\n";
-//         }
-//     } else {
-//         $data = "Aucun liste trouver...." . "\n";
-//     }
-//     echo $data;
-//     die();
-// }

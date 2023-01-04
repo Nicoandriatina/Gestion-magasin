@@ -11,7 +11,7 @@
   <title>SMMC Port Toamasina</title>
 </head>
 
-<body>
+<body> 
   <header>
     <nav class="navbar navbar-expand-lg  bg-success">
       <div class="container-fluid">
@@ -42,10 +42,10 @@
               <a class="nav-link" href="./viewtransport.php">Transport</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Magasin</a>
+              <a class="nav-link" href="./viewmagentree.php">Magasin Entree</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Magasinier</a>
+            <a class="nav-link" href="./viewmagsortie.php">Magasin Sortie</a>
             </li>
             </li>
             <li class="nav-item">
@@ -65,7 +65,7 @@
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title" id="createModalLabel">Novelle entree de Marchandise</h5>
+            <h5 class="modal-title" id="createModalLabel">Nouvelle entree de Marchandise</h5>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
           <div class="modal-body">
@@ -75,37 +75,92 @@
                 <label for="Nom">Libelle du magasin</label>
               </div>
               <div class="form-floating mb-3">
-                <input type="text" class="form-control" id="codeMarchandise" name="codeMarchandise">
-                <label for="codeMarchandise">Identifiant du Marchandise</label>
+                <select class="form-select" id="codeMarchandise" aria-label="codeMarchandise" name="codeMarchandise">
+                  <?php
+                  require_once '../model/modelmagentree.php';
+                  $db = new Database();
+                  $db->countBills();
+                  $bills = $db->readmarchandise();
+                  var_dump($bills);
+                  foreach ($bills as $bill) { ?>
+                    <option value="<?php echo $bill->codeMarchandise ?>"><?php echo $bill->libelle ?></option>
+                  <?php } ?>
+                </select>
+                <label for="codeMarchandise">identifiant du Marchandise</label>
               </div>
               <div class="form-floating mb-3">
                 <select class="form-select" id="typesMarchandise" aria-label="typesMarchandise" name="typesMarchandise">
-                  <option value="Produit métallurgiques">Produit métallurgiques</option>
-                  <option value="Produit Alimentaires">Produit Alimentaires</option>
-                  <option value="Produit Forestiers">Produit Forestiers</option>
-                  <option value="Produit Forestiers">Produit Finis</option>
+                  <?php
+                  require_once '../model/modelmagentree.php';
+                  $db = new Database();
+                  $db->countBills();
+                  $bills = $db->readmarchandise();
+                  var_dump($bills);
+                  foreach ($bills as $bill) { ?>
+                    <option value="<?php echo $bill->typesMarchandise ?>"><?php echo $bill->typesMarchandise ?></option>
+                  <?php } ?>
                 </select>
-                <label for="typesMarchandise">Types Marchandise</label>
+                <label for="typesMarchandise">Types de la Marchandise</label>
               </div>
               <div class="form-floating mb-3">
-                <input type="text" class="form-control" id="nombreSacs" name="nombreSacs">
-                <label for="nombreSacs">Nombre de Sacs</label>
+                <select class="form-select" id="nombreSacs" aria-label="nombreSacs" name="nombreSacs">
+                  <?php
+                  require_once '../model/modelmagentree.php';
+                  $db = new Database();
+                  $db->countBills();
+                  $bills = $db->readmarchandise();
+                  var_dump($bills);
+                  foreach ($bills as $bill) { ?>
+                    <option value="<?php echo $bill->nombreSacs ?>"><?php echo $bill->nombreSacs ?></option>
+                  <?php } ?>
+                </select>
+                <label for="nombreSacs">Nombre de sacs</label>
               </div>
               <div class="form-floating mb-3">
                 <input type="datetime-local" class="form-control" id="dateEntree" name="dateEntree">
                 <label for="dateEntree">Date entree du Marchandise</label>
               </div>
               <div class="form-floating mb-3">
-                <input type="text" class="form-control" id="numInventaire" name="numInventaire">
+                <select class="form-select" id="numInventaire" aria-label="numInventaire" name="numInventaire">
+                  <?php
+                  require_once '../model/modelmagentree.php';
+                  $db = new Database();
+                  $db->countBills();
+                  $bills = $db->readengin();
+                  var_dump($bills);
+                  foreach ($bills as $bill) { ?>
+                    <option value="<?php echo $bill->numInventaire ?>"><?php echo $bill->numInventaire ?></option>
+                  <?php } ?>
+                </select>
                 <label for="numInventaire">Numero d'inventaire</label>
               </div>
               <div class="form-floating mb-3">
-                <input type="text" class="form-control" id="matriculeChauffeur" name="matriculeChauffeur">
+                <select class="form-control" id="matriculeChauffeur" aria-label="matriculeChauffeur" name="matriculeChauffeur" >
+                  <?php
+                  require_once '../model/modelmagentree.php';
+                  $db = new Database();
+                  $db->countBills();
+                  $bills = $db->readchauffeur();
+                  var_dump($bills);
+                  foreach ($bills as $bill) { ?>
+                    <option value="<?php echo $bill->IDchauffeur ?>"><?php echo $bill->matChauffeur ?></option>
+                  <?php } ?>
+                </select>
                 <label for="matriculeChauffeur">Numero matricule du Chauffeur</label>
               </div>
               <div class="form-floating mb-3">
-                <input type="datetime-local" class="form-control" id="dateNav" name="dateNav">
-                <label for="dateNav">date d'entree du Navire</label>
+                <select class="form-control" id="dateNav" aria-label="dateNav" name="dateNav" >
+                  <?php
+                  require_once '../model/modelmagentree.php';
+                  $db = new Database();
+                  $db->countBills();
+                  $bills = $db->readnav();
+                  var_dump($bills);
+                  foreach ($bills as $bill) { ?>
+                    <option value="<?php echo $bill->datetimes ?>"><?php echo $bill->datetimes ?></option>
+                  <?php } ?>
+                </select>
+                <label for="dateNav">Numero matricule du Chauffeur</label>
               </div>
             </form>
           </div>
@@ -129,7 +184,7 @@
       <div class="col-md-6">
         <div class="d-flex justify-content-end">
           <button class="btn btn-primary btn-sm me-3" data-bs-toggle="modal" data-bs-target="#createModal"> <i class="fas fa-folder-plus">Nouveau</i> </button>
-          <a href="../controler/processnavire.php?action=export" class="btn btn-success-btn-sm" id="export"> <i class="fas fa-table">Exporter</i> </a>
+          <button onclick="HtmlTOExcel('xlsx')" type="exporter" name="exporter" id="exporter" class="btn btn-success-btn-sm"><i class="fas fa-table">Exporter</i></button> 
         </div>
       </div>
     </div>
@@ -201,6 +256,16 @@
   <script type="text/javascript" src="https://cdn.datatables.net/v/bs5/dt-1.12.1/datatables.min.js"></script>
   <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   <script src="../controler/processmagentree.js"></script>
+  <script type="text/javascript" src="https://unpkg.com/xlsx@0.15.1/dist/xlsx.full.min.js"></script>
+  <script>
+    function HtmlTOExcel(type, fun, dl) {
+    var elt = document.getElementById('table');
+    var wb = XLSX.utils.table_to_book(elt, { sheet: "sheet1" });
+    return dl ?
+        XLSX.write(wb, { bookType: type, bookSST: true, type: 'base64' }) :
+        XLSX.writeFile(wb, fun || ('student-recored.' + (type || 'xlsx')));
+}
+  </script>
 </body>
 
 </html>

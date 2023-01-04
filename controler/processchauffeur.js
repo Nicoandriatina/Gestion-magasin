@@ -14,7 +14,7 @@ $(function () {
                 $('#creatModal').modal('hide');
                 Swal.fire({
                     icon: 'success',
-                    title: 'ajouter avec succes',
+                    title: 'effectué avec succes',
                 })
                 formOrder[0].reset();
                 getBills();
@@ -74,7 +74,7 @@ $(function () {
                     $('#UpdateModal').modal('hide');
                     Swal.fire({
                         icon: 'success',
-                        title: 'Modifier avec succes',
+                        title: 'Modiffier avec succes',
                     })
                     formOrder[0].reset();
                     getBills();
@@ -103,8 +103,8 @@ $(function () {
                     showCancelButton: true,
                     focusConfirm: false,
                     confirmButtonText:
-                        '<i class="fa fa-thumbs-up"></i> super!',
-                    confirmButtonAriaLabel: 'Thumbs up, great!',
+                        '<i class="fa fa-thumbs-up"></i> ok!',
+                    confirmButtonAriaLabel: 'Thumbs up, parfait!',
                 })
             }
         })
@@ -114,7 +114,7 @@ $(function () {
     $('body').on('click', '.deleteBtnChauffeur', function (e) {
         e.preventDefault();
         Swal.fire({
-            title: 'vous volez vraiment supprimer ' + this.dataset.id,
+            title: 'vous voulez vraiment supprimer ?' + this.dataset.id,
             text: "cette action est irreversible!",
             icon: 'warning',
             showCancelButton: true,
@@ -130,8 +130,8 @@ $(function () {
                     success: function (response) {
                         if (response == 1) {
                             Swal.fire(
-                                'Deleted!',
-                                'Your file has been deleted!',
+                                'supprimer!',
+                                'Votre fichier a bien été supprimé!',
                                 'success'
                             )
                             getBills();

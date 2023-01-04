@@ -18,7 +18,10 @@ class Database
     {
         $q = $this->getconnexion()->prepare("INSERT INTO magasinentree (Nom, codeMarchandise, typesMarchandise, nombreSacs, dateEntree, numInventaire, matriculeChauffeur, dateNav )
              VALUES (:Nom, :codeMarchandise, :typesMarchandise, :nombreSacs, :dateEntree , :numInventaire, :matriculeChauffeur, :dateNav)");
-        return $q->execute([
+        $req = $this->getconnexion()->query("SELECT * FROM magasinentree WHERE idMagEntree=:idMagEntree AND codeMarchandise=:codeMarchandise ");
+        if ($req !=0){
+          return $this->getconnexion()->query("SELECT SUM nombreSacs WHERE idMagEntree=:idMagEntree AND codeMarchandise=:codeMarchandise ")->fetchAll(PDO::FETCH_OBJ);
+        } else( $q->execute([
             'Nom' => $Nom,
             'codeMarchandise' => $codeMarchandise,
             'typesMarchandise' => $typesMarchandise,
@@ -27,7 +30,9 @@ class Database
             'numInventaire' =>$numInventaire,
             'matriculeChauffeur,' => $matriculeChauffeur,
             'dateNav'=>$dateNav
-        ]);
+        ]));
+    
+        
     }
     public function read()
     {
@@ -64,4 +69,21 @@ class Database
         $q = $this->getconnexion()->prepare(" DELETE FROM magasinentree WHERE idMagEntree = :idMagEntree");
         return $q->execute(['idMagEntree' => $idMagEntree]);
     }
+    public function readmarchandise()
+    {
+        return $this->getconnexion()->query("SELECT * FROM marchandise ORDER BY codeMarchandise")->fetchAll(PDO::FETCH_OBJ);
+    }
+    public function readengin()
+    {
+        return $this->getconnexion()->query("SELECT * FROM engin ORDER BY numMatricule")->fetchAll(PDO::FETCH_OBJ);
+    }
+    public function readchauffeur()
+    {
+        return $this->getconnexion()->query("SELECT * FROM chauffeur ORDER BY IDchauffeur")->fetchAll(PDO::FETCH_OBJ);
+    }
+    public function readnav()
+    {
+        return $this->getconnexion()->query("SELECT * FROM bateaux ORDER BY id")->fetchAll(PDO::FETCH_OBJ);
+    }
+   
 }
