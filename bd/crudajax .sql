@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1
--- Généré le : ven. 06 jan. 2023 à 06:08
+-- Généré le : ven. 06 jan. 2023 à 08:42
 -- Version du serveur : 10.4.25-MariaDB
 -- Version de PHP : 8.1.10
 
@@ -143,6 +143,13 @@ CREATE TABLE `magasinentree` (
   `dateNav` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Déchargement des données de la table `magasinentree`
+--
+
+INSERT INTO `magasinentree` (`idMagEntree`, `Nom`, `codeMarchandise`, `typesMarchandise`, `nombreSacs`, `dateEntree`, `numInventaire`, `matriculeChauffeur`, `dateNav`) VALUES
+(1, 'A1', 2, 'Produit Alimentaires', 20, '2023-01-06 08:39:32', 125, 2018071, '2023-01-06 08:39:32');
+
 -- --------------------------------------------------------
 
 --
@@ -159,6 +166,13 @@ CREATE TABLE `magasinsortie` (
   `statClient` int(11) NOT NULL,
   `dateSortie` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Déchargement des données de la table `magasinsortie`
+--
+
+INSERT INTO `magasinsortie` (`idMagSortie`, `Nom`, `codeMarchandise`, `nombreSacs`, `numInventaire`, `client`, `statClient`, `dateSortie`) VALUES
+(1, 'A1', 2, 20, 125, 1, 1232421, '2023-01-03');
 
 -- --------------------------------------------------------
 
@@ -222,6 +236,13 @@ CREATE TABLE `transport` (
   `vehicule` int(11) NOT NULL,
   `magasin` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Déchargement des données de la table `transport`
+--
+
+INSERT INTO `transport` (`numTransport`, `dateTransport`, `machandise`, `vehicule`, `magasin`) VALUES
+(1, '2023-01-06 08:40:19', 2, 1, 1);
 
 --
 -- Index pour les tables déchargées
@@ -315,7 +336,7 @@ ALTER TABLE `client`
 -- AUTO_INCREMENT pour la table `magasinentree`
 --
 ALTER TABLE `magasinentree`
-  MODIFY `idMagEntree` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `idMagEntree` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT pour la table `magasinsortie`
@@ -339,7 +360,7 @@ ALTER TABLE `quai`
 -- AUTO_INCREMENT pour la table `transport`
 --
 ALTER TABLE `transport`
-  MODIFY `numTransport` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `numTransport` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- Contraintes pour les tables déchargées
