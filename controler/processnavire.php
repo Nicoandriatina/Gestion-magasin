@@ -37,7 +37,7 @@ if (isset($_POST['action']) && $_POST['action'] == 'fetch') {
                     <td>$bill->Nombateau</td>
                     <td>$bill->Marque</td>
                     <td>$bill->categories</td>
-                    <td>$bill->chargemax</td>
+                    <td>$bill->chargemax tonneaux</td>
                     <td>$bill->datetimes</td>
                     <td>$bill->typeproduit</td>
                     <td>
@@ -62,7 +62,7 @@ if (isset($_POST['workingId'])) {
 // Modification des bateau
 if (isset($_POST['action']) && $_POST['action'] == 'Update') {
     extract($_POST);
-    $db->update($id, $UpdateNombateau, $UpdateMarque, $Updatecategories, $Updatechargemax, $Updatetemps, $Updatetypeproduit, $UpdateNumQuai);
+    $db->update($id, $UpdateNombateau, $UpdateMarque, $Updatecategories, $Updatechargemax, $Updatetemps, $Updatetypeproduit, $UpdatenumQuai);
 
     echo 'perfect';
 }

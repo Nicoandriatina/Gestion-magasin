@@ -86,7 +86,7 @@
                     <option value="<?php echo $bill->codeMarchandise ?>"><?php echo $bill->libelle ?></option>
                   <?php } ?>
                 </select>
-                <label for="marchandise">identifiant du Marchandise</label>
+                <label for="marchandise">Nom du Marchandise</label>
               </div>
               <div class="form-floating mb-3">
                 <select class="form-select" id="vehicule" aria-label="vehicule" name="vehicule">
@@ -99,7 +99,7 @@
                     <option value="<?php echo $bill->numMatricule ?>"><?php echo $bill->numInventaire ?></option>
                   <?php } ?>
                 </select>
-                <label for="vehicule">identifiant du Marchandise</label>
+                <label for="vehicule">identifiant d'engins</label>
               </div>
               <div class="form-floating mb-3">
                 <select class="form-select" id="magasin" aria-label="magasin" name="magasin">
@@ -113,7 +113,7 @@
                     <option value="<?php echo $bill->idMagEntree ?>"><?php echo $bill->Nom ?></option>
                   <?php } ?>
                 </select>
-                <label for="magasin">identifiant du Marchandise</label>
+                <label for="magasin">Nom du Magasin</label>
               </div>
             </form>
           </div>

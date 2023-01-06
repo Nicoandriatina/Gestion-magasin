@@ -160,7 +160,7 @@
                     <option value="<?php echo $bill->datetimes ?>"><?php echo $bill->datetimes ?></option>
                   <?php } ?>
                 </select>
-                <label for="dateNav">Numero matricule du Chauffeur</label>
+                <label for="dateNav">date d'entree du Navire</label>
               </div>
             </form>
           </div>

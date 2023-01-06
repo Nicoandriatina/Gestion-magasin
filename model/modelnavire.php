@@ -42,7 +42,7 @@ class Database
         $q->execute(['id' => $id]);
         return $q->fetch(PDO::FETCH_OBJ);
     }
-    public function update(int $id, string $Nombateau, string $Marque, string $categories, string $chargemax, $temps, string $typeproduit, int $numQuai)
+    public function update(int $id, string $Nombateau, string $Marque, string $categories, string $chargemax, $temps, string $typeproduit, $numQuai)
     {
         $q = $this->getconnexion()->prepare("UPDATE bateaux SET Nombateau=:Nombateau, Marque=:Marque, categories=:categories, chargemax=:chargemax, datetimes=:temps, typeproduit=:typeproduit, NumQuai=:NumQuai WHERE ID=:id");
         return $q->execute([

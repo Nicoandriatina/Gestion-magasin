@@ -41,7 +41,7 @@ class Database
         $q->execute(['numMatricule' => $numMatricule]);
         return $q->fetch(PDO::FETCH_OBJ);
     }
-    public function update(int $numMatricule, string $typesEngin, int $chauffeur, int $numInventaire, $dateAquis, $marque)
+    public function update(int $numMatricule,  $typesEngin, int $chauffeur, int $numInventaire, $dateAquis, $marque)
     {
         $q = $this->getconnexion()->prepare("UPDATE  engin SET typesEngin=:typesEngin, chauffeur=:chauffeur, numInventaire=:numInventaire, dateAquis=:dateAquis , marque=:marque WHERE numMatricule=:numMatricule");
         return $q->execute([

@@ -78,6 +78,13 @@
                 <input type="text" class="form-control" id="ville" name="ville">
                 <label for="ville">Ville d'emplacement</label>
               </div>
+              <div class="form-floating mb-3">
+                <select class="form-select" id="occupation" aria-label="occupation" name="occupation">
+                  <option value="oui">oui</option>
+                  <option value="non">non</option>
+                </select>
+                <label for="state">Occupation</label>
+              </div>
             </form>
           </div>
           <div class="modal-footer">
@@ -127,6 +134,13 @@
               <div class="form-floating mb-3">
                 <input type="text" class="form-control" id="Updateville" name="Updateville">
                 <label for="Updateville">ville d'emplacement</label>
+              </div>
+              <div class="form-floating mb-3">
+                <select class="form-select" id="Updateoccupation" aria-label="Updateoccupation" name="Updateoccupation">
+                  <option value="oui">oui</option>
+                  <option value="non">non</option>
+                </select>
+                <label for="state">Occupation</label>
               </div>
             </form>
           </div>

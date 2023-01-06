@@ -6,9 +6,6 @@ if (isset($_POST['action']) && $_POST['action'] == 'create') {
     extract($_POST);
 
     $db->create($numMatricule, $typeEngin, $marque, $chauffeur, $numInventaire, $dateAquis, $marque);
-
-    // code teo aloha , ERREUR COPIER COLLER plus de "s" sur $typesEngin
-    // $db->create( $numMatricule, $typesEngin, $chauffeur);
     echo 'perfect';
 }
 //recuperation de liste des bateau
@@ -78,25 +75,4 @@ if (isset($_POST['deletenumMatricule'])) {
     echo ($db->delete($deletenumMatricule));
 }
 
-// //exportation
-// if (isset($_GET['action']) && $_GET['action'] == 'export') {
-//     $excelFileName="Liste des bateaux".date('YmdHis').'xls';
-//     header("contein-Type: application/vnd.ms-excel");
-//     header("conteint-Disposition: attachement; filename=$excelFileName");
-
-//     $nomcolonne = ['Identifiant','Numquai', 'Nom', 'Marque', 'categories', 'chargemaximale', 'chargemine', 'Type'];
-
-//     $data = implode("\t", array_values($nomcolonne)). "\n";
-//     if($db->countBills()>0){
-//         $bills= $db->read();  
-//         foreach ($bills as $bill) {
-//             $excelData = [$bill->ID,$bill->NumQuai ,$bill->Nombateau, $bill->Marque, $bill->categories, $bill->chargemax, $bill->chargemax, $bill->typeproduit];
-//             $data .= implode("\t", $excelData). "\n";
-
-//         } 
-//     }else{
-//         $data="Aucun liste trouver...." . "\n"; 
-//     }
-//    echo $data;
-//    die();
-// }
+?>

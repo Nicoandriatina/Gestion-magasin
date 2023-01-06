@@ -15,13 +15,10 @@ class Database
         }
     }
     public function create($Nom, $codeMarchandise, $typesMarchandise, $nombreSacs, $dateEntree, $numInventaire, $matriculeChauffeur, $dateNav)
-    {
+    {   
         $q = $this->getconnexion()->prepare("INSERT INTO magasinentree (Nom, codeMarchandise, typesMarchandise, nombreSacs, dateEntree, numInventaire, matriculeChauffeur, dateNav )
              VALUES (:Nom, :codeMarchandise, :typesMarchandise, :nombreSacs, :dateEntree , :numInventaire, :matriculeChauffeur, :dateNav)");
-        $req = $this->getconnexion()->query("SELECT * FROM magasinentree WHERE idMagEntree=:idMagEntree AND codeMarchandise=:codeMarchandise ");
-        if ($req !=0){
-          return $this->getconnexion()->query("SELECT SUM nombreSacs WHERE idMagEntree=:idMagEntree AND codeMarchandise=:codeMarchandise ")->fetchAll(PDO::FETCH_OBJ);
-        } else( $q->execute([
+            return $q->execute([
             'Nom' => $Nom,
             'codeMarchandise' => $codeMarchandise,
             'typesMarchandise' => $typesMarchandise,
@@ -30,7 +27,7 @@ class Database
             'numInventaire' =>$numInventaire,
             'matriculeChauffeur,' => $matriculeChauffeur,
             'dateNav'=>$dateNav
-        ]));
+        ]);
     
         
     }

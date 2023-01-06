@@ -102,7 +102,7 @@
                     <option value="<?php echo $bill->IDchauffeur ?>"><?php echo $bill->Nom ?></option>
                   <?php } ?>
                 </select>
-                <label for="chauffeur">identifiant du chauffeur</label>
+                <label for="chauffeur">Nom du chauffeur</label>
               </div>
               <div class="form-floating mb-3">
                 <input type="datetime-local" class="form-control" id="dateAquis" name="dateAquis">
@@ -178,7 +178,7 @@
                     <option value="<?php echo $bill->IDchauffeur ?>"><?php echo $bill->Nom ?></option>
                   <?php } ?>
                 </select>
-                <label for="Updatechauffeur">identifiant du chauffeur</label>
+                <label for="Updatechauffeur">Nom du chauffeur</label>
               </div>
               <div class="form-floating mb-3">
                 <input type="datetime-local" class="form-control" id="UpdatedateAquis" name="UpdatedateAquis">

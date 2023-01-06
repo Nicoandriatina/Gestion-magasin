@@ -87,7 +87,7 @@
                   $bills = $db->read();
                   var_dump($bills);
                   foreach ($bills as $bill) { ?>
-                    <option value="<?php echo $bill->NumQuai ?>"><?php echo $bill->ville ?></option>
+                    <option value="<?php echo $bill->NumQuai ?>"><?php echo $bill->NumQuai ?></option>
                   <?php } ?>
                 </select>
                 <label for="numQuai">Numero de Quai</label>

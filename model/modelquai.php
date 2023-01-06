@@ -14,12 +14,13 @@ class Database
             die('erreur:' . $e->getMessage());
         }
     }
-    public function create(string $Capacite, string $ville)
+    public function create(string $Capacite, string $ville, string $occupation)
     {
-        $q = $this->getconnexion()->prepare("INSERT INTO quai (Capacite, ville)  VALUES (:Capacite, :ville)");
+        $q = $this->getconnexion()->prepare("INSERT INTO quai (Capacite, ville, occupation)  VALUES (:Capacite, :ville, :occupation)");
         return $q->execute([
             'Capacite' => $Capacite,
-            'ville' => $ville
+            'ville' => $ville,
+            'occupation' => $occupation
         ]);
     }
     public function read()
@@ -36,12 +37,13 @@ class Database
         $q->execute(['NumQuai' => $NumQuai]);
         return $q->fetch(PDO::FETCH_OBJ);
     }
-    public function update(int $NumQuai, string $Capacite, string $ville)
+    public function update(int $NumQuai, string $Capacite, string $ville, $occupation)
     {
-        $q = $this->getconnexion()->prepare("UPDATE quai SET Capacite=:Capacite, ville=:ville WHERE NumQuai=:NumQuai");
+        $q = $this->getconnexion()->prepare("UPDATE quai SET Capacite=:Capacite, ville=:ville, occupation=:occupation WHERE NumQuai=:NumQuai");
         return $q->execute([
             'Capacite' => $Capacite,
             'ville' => $ville,
+            'occupation' => $occupation,
             'NumQuai' => $NumQuai
         ]);
     }

@@ -55,6 +55,11 @@ $(function () {
                 $('#bill_NumQuai').val(billinfo.NumQuai);
                 $('#UpdateCapacite').val(billinfo.Capacite);
                 $('#Updateville').val(billinfo.ville);
+                let select = document.querySelector('#Updateoccupation');
+                let UpdatetypeproduitOption = Array.from(select.options);
+                UpdatetypeproduitOption.forEach((o, i) => {
+                    if (o.value == billinfo.state) select.selectedIndex = i;
+                })
             }
         })
     })
@@ -97,7 +102,8 @@ $(function () {
                     icon: 'info',
                     html:
                         `Capacite du quai: <b>${informations.Capacite}</b><br>` +
-                        `ville d'emplacement du quai: <b>${informations.ville}</b><br>`,
+                        `ville d'emplacement du quai: <b>${informations.ville}</b><br>`+
+                        `Le quai est elle occupé  :<b>${informations.occupation}</b><br>`,
                     showCloseButton: true,
                     showCancelButton: true,
                     focusConfirm: false,
@@ -113,7 +119,7 @@ $(function () {
     $('body').on('click', '.deleteBtnQuai', function (e) {
         e.preventDefault();
         Swal.fire({
-            title: 'vous voulez vraiment supprimer?S ' + this.dataset.id,
+            title: 'vous voulez vraiment supprimer? ' + this.dataset.id,
             text: "cette action est irreversible!",
             icon: 'warning',
             showCancelButton: true,

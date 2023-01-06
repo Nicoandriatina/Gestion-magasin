@@ -53,7 +53,7 @@ $(function () {
                 $('#UpdatenumInventaire').val(billinfo.numInventaire);
                 $('#UpdatedateAquis').val(billinfo.dateAquis);
                 $('#Updatemarque').val(billinfo.marque);
-                $('#UpdatetypeEngin').val(billinfo.chauffeur);
+                $('#Updatechauffeur').val(billinfo.chauffeur);
                 let select = document.querySelector('#UpdatetypeEngin');
                 let UpdatetypeproduitOption = Array.from(select.options);
                 UpdatetypeproduitOption.forEach((o, i) => {
@@ -132,8 +132,8 @@ $(function () {
                     success: function (response) {
                         if (response == 1) {
                             Swal.fire(
-                                'Supprimer!',
-                                'suppression avec succes!',
+                                'supprimer!',
+                                'Votre fichier a bien été supprimé!',
                                 'success'
                             )
                             getBills();

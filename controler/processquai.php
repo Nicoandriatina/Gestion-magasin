@@ -4,7 +4,7 @@ $db = new Database();
 // creation des liste de bateau
 if (isset($_POST['action']) && $_POST['action'] == 'create') {
     extract($_POST);
-    $db->create($Capacite, $ville);
+    $db->create($Capacite, $ville, $occupation);
     echo 'perfect';
 }
 //recuperation des liste de bateau
@@ -19,6 +19,7 @@ if (isset($_POST['action']) && $_POST['action'] == 'fetch') {
               <th scope="col">Numero du Quai</th>
               <th scope="col">Capacite</th>
               <th scope="col">Ville</th>
+              <th scope="col">occupation</th>
               <th scope="col">Action</th>
             </tr>
           </thead>
@@ -30,6 +31,7 @@ if (isset($_POST['action']) && $_POST['action'] == 'fetch') {
                     <th scope=\"row\">$bill->NumQuai</th>
                     <td>$bill->Capacite</td>
                     <td>$bill->ville</td>
+                    <td>$bill->occupation</td>
                     <td>
                     <a href=\"#\" class=\"text-info me-2 infoBtnQuai\" title=\"voir detail\" data-id=\"$bill->NumQuai\"> <i class=\"fas fa-info-circle\"></i> </a>
                     <a href=\"#\" class=\"text-primary me-2 editBtnQuai\" title=\"voir detail\" data-id=\"$bill->NumQuai\"> <i class=\"fas fa-edit\" data-bs-toggle='modal' data-bs-target='#UpdateModal'></i> </a>
@@ -52,13 +54,7 @@ if (isset($_POST['workingNumQuai'])) {
 // Modification des bateau
 if (isset($_POST['action']) && $_POST['action'] == 'Update') {
     extract($_POST);
-
-    // jereo tsara ny correspondance de variable, ny avy any front id fa tsy NumQuai, 
-    //ampiasao foana ny console.log sns
-    // io ny code teo aloha
-    // $db->update($NumQuai, $UpdateCapacite, $Updateville);
-
-    $db->update($id, $UpdateCapacite, $Updateville);
+    $db->update($id, $UpdateCapacite, $Updateville, $Updateoccupation);
     echo 'perfect';
 }
 
